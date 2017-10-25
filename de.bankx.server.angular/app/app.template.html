@@ -1,0 +1,8 @@
+<div class="col-md-12">
+    <h1>Calculator</h1>
+    <input type="text" placeholder="number1" [(ngModel)]="num1">
+    <input type="text" placeholder="number2" [(ngModel)]="num2">
+    <h3>{{result}}</h3>
+    <button (click)="calcLocal()" class="btn btn-primary">calc local</button>
+    <button (click)="calcRest()" class="btn btn-secondary">calc rest</button>
+</div>
