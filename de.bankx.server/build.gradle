@@ -1,0 +1,33 @@
+group 'de.bankx.server'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'de.bankx.server.main.JettyServer'
+    }
+}
+
+dependencies {
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.7.v20170914'
+    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.7.v20170914'
+    compile group: 'com.sun.jersey', name: 'jersey-bundle', version: '1.9.1'
+    compile group: 'asm', name: 'asm', version: '3.3.1'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.1.10'
+    compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.11'
+    // Derby Database
+    compile group: 'org.apache.derby', name: 'derby', version: '10.14.1.0'
+    // Log4Java
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    // connection pooling
+    compile group: 'c3p0', name: 'c3p0', version: '0.9.1.2'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

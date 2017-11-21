@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://wadl.dev.java.net/2009/02">
+    <doc xmlns:jersey="http://jersey.java.net/" jersey:generatedBy="Jersey: 1.17.1 02/28/2013 03:28 PM" />
+    <grammars/>
+    <resources base="http://localhost:9998/rest/">
+        <resource path="/">
+            <resource path="/account/{number}">
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="number" style="template" type="xs:string" />
+                <method id="getAccount" name="GET">
+                    <response>
+                        <representation mediaType="application/json; charset=utf-8" />
+                    </response>
+                </method>
+            </resource>
+            <resource path="/transaction">
+                <method id="executeTransaction" name="POST">
+                    <request>
+                        <representation mediaType="application/x-www-form-urlencoded">
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="senderNumber" style="query" type="xs:string" />
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="receiverNumber" style="query" type="xs:string" />
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="amount" style="query" type="xs:string" />
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="reference" style="query" type="xs:string" />
+                        </representation>
+                    </request>
+                    <response>
+                        <representation mediaType="*/*" />
+                    </response>
+                </method>
+            </resource>
+        </resource>
+    </resources>
+</application>

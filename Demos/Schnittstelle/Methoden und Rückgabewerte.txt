@@ -1,0 +1,33 @@
+GET http://[localhost]:9998/rest/account/{number}
+Pfad-Parameter: number
+Rückgabe: Account
+-> Erlaubte Zeichen bei owner: A-Z, a-z, Leerzeichen
+-> Format für das Datum (UTC): yyyy-MM-dd'T'HH:mm:ssZ (siehe auch Aufrufbeispiel). Stichworte für die Implementierung: @XmlJavaTypeAdapter und SimpleDateFormat
+-> Format amount: 2 Nachkommastellen durch "." getrennt (z.B. 1234.99)
+-> Format number: Die Kontonummer ist stets 4-stellig und beginnt mit einer 1 (z.B. 1005, Ausnahme: Konto der Bank: 0000)
+-> Bei Fehlern soll neben dem passendem Responsecode auch eine aussagekräftige Fehlermeldung zurückgegeben werden
+
+Response-Codes:
+	200 (OK - Account im JSON Format)
+	400 (BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler)
+	404 (NOT FOUND - Account nicht gefunden)
+	500 (INTERNAL SERVER ERROR - Fehler auf dem Server aufgetreten (z.B. SQL Exception)
+
+POST http://[localhost]:9998/rest/transaction
+application/x-www-form-urlencoded-Parameter: senderNumber, receiverNumber, amount, reference
+-> Erlaubte Zeichen bei reference: A-Z, a-z, 0-9, Leerzeichen (Pflichtfeld)
+-> Format amount: - Muss immer >0 sein
+				  - Genau 2 Nachkommastellen durch "." getrennt oder keine (z.B. 1234.99 oder 1234) (Pflichtfeld)
+-> Format receiverNumber: Die Kontonummer ist stets 4-stellig und beginnt mit einer 1 (z.B. 1005) (Pflichtfeld)
+-> Format senderNumber: Die Kontonummer ist stets 4-stellig und beginnt mit einer 1 (z.B. 1005) (Pflichtfeld)
+-> Bei Fehlern soll neben dem passendem Responsecode auch eine aussagekräftige Fehlermeldung zurückgegeben werden
+
+Response-Codes:
+	200 (OK - Überweisung wurde duchgeführt)
+	400 (BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler)
+	404 (NOT FOUND - Account nicht gefunden)
+	412 (PRECONDITION FAILED - Nicht genug Geld für Überweisung)	
+	500 (INTERNAL SERVER ERROR - Fehler auf dem Server aufgetreten (z.B. SQL Exception)
+	
+Details: application.wadl
+Encoding: UTF-8

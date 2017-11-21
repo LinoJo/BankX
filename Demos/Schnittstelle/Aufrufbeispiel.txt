@@ -1,0 +1,30 @@
+http://localhost:9998/rest/account/1000
+{
+  "number" : "1000",
+  "owner" : "Hans",
+  "transactions" : [ {
+    "amount" : 1000.00,
+    "receiver" : {
+      "number" : "1000",
+      "owner" : "Hans"
+    },
+    "reference" : "Bonus",
+    "sender" : {
+      "number" : "0000",
+      "owner" : "Bank"
+    },
+    "transactionDate" : "2016-03-11T17:08:14+0100"
+  }, {
+    "amount" : 3000.00,
+    "receiver" : {
+      "number" : "1000",
+      "owner" : "Hans"
+    },
+    "reference" : "Gehalt",
+    "sender" : {
+      "number" : "0000",
+      "owner" : "Bank"
+    },
+    "transactionDate" : "2016-03-11T17:08:14+0100"
+  } ]
+}
