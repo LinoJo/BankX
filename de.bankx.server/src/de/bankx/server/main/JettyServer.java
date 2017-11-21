@@ -18,20 +18,20 @@ public class JettyServer {
 		Server server = new Server(9998);
 
 		// JERSEY
-		ResourceConfig resourceConfig = new PackagesResourceConfig("de.fhdw.server.example.rest");
+		ResourceConfig resourceConfig = new PackagesResourceConfig("de.bankx.server.rest");
 		ServletContextHandler sh = new ServletContextHandler();
 		sh.setContextPath("/rest");
 		sh.addServlet(new ServletHolder(new ServletContainer(resourceConfig)), "/*");
-
+		
 		// Angular2
 		ResourceHandler resourceHandler = new ResourceHandler();
 		resourceHandler.setDirectoriesListed(true);
         resourceHandler.setWelcomeFiles(new String[]{ "index.html" });
-        resourceHandler.setResourceBase("../de.bankx.server.angular");
-
+        resourceHandler.setResourceBase("../de.fhdw.client.angular2.start");
+        
         ContextHandler contextHandler = new ContextHandler("/angular");
 		contextHandler.setHandler(resourceHandler);
-
+		
 		HandlerList handlers = new HandlerList();
 		handlers.setHandlers(new Handler[] { contextHandler, sh });
         server.setHandler(handlers);
