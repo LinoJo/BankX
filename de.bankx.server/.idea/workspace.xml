@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6893b824-11cf-4302-abce-80c8044d066a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/Account.java" afterPath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/Account.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountWrapper.java" afterPath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/Transaction.java" afterPath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/Transaction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java" afterPath="$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/de/bankx/server/core/Account.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/de/bankx/server/core/AccountWrapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/de/bankx/server/core/Transaction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/de/bankx/server/main/JettyServer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/de/bankx/server/rest/JAXBContextResolver.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/de/bankx/server/rest/RestResource.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/de/bankx/server/services/DatabaseService.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -53,8 +57,8 @@
       <file leaf-file-name="JettyServer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/main/JettyServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="123" column="40" lean-forward="false" selection-start-line="123" selection-start-column="25" selection-end-line="123" selection-end-column="40" />
+            <state relative-caret-position="277">
+              <caret line="116" column="78" lean-forward="false" selection-start-line="116" selection-start-column="78" selection-end-line="116" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <marker date="1511391814283" expanded="true" signature="3327:3512" ph="CREATE TABLE... Accounts" />
@@ -113,7 +117,7 @@
       <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="-1382">
               <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
               <folding>
                 <element signature="e#2609#2610#0" expanded="true" />
@@ -733,12 +737,12 @@
       <workItem from="1511292764896" duration="46000" />
       <workItem from="1511292834311" duration="1733000" />
       <workItem from="1511347044453" duration="2737000" />
-      <workItem from="1511349864785" duration="28624000" />
+      <workItem from="1511349864785" duration="28942000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34885000" />
+    <option name="totallyTimeSpent" value="35203000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
@@ -964,23 +968,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding>
-            <element signature="e#2609#2610#0" expanded="true" />
-            <element signature="e#2629#2630#0" expanded="true" />
-            <marker date="1511394463483" expanded="true" signature="779:817" ph="SELECT * FRO... Accounts" />
-            <marker date="1511394463483" expanded="true" signature="779:832" ph="SELECT * FRO... Accounts" />
-            <marker date="1511394463483" expanded="true" signature="779:853" ph="SELECT * FRO... Accounts" />
-            <marker date="1511394463483" expanded="true" signature="1416:1472" ph="SELECT id FR... Transactions" />
-            <marker date="1511394463483" expanded="true" signature="1808:1852" ph="SELECT id FR... Transactions" />
-            <marker date="1511394463483" expanded="true" signature="1808:1866" ph="SELECT id FR... Transactions" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-10">
@@ -1009,10 +996,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1382">
+          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding>
+            <element signature="e#2609#2610#0" expanded="true" />
+            <element signature="e#2629#2630#0" expanded="true" />
+            <marker date="1511394463483" expanded="true" signature="779:817" ph="SELECT * FRO... Accounts" />
+            <marker date="1511394463483" expanded="true" signature="779:832" ph="SELECT * FRO... Accounts" />
+            <marker date="1511394463483" expanded="true" signature="779:853" ph="SELECT * FRO... Accounts" />
+            <marker date="1511394463483" expanded="true" signature="1416:1472" ph="SELECT id FR... Transactions" />
+            <marker date="1511394463483" expanded="true" signature="1808:1852" ph="SELECT id FR... Transactions" />
+            <marker date="1511394463483" expanded="true" signature="1808:1866" ph="SELECT id FR... Transactions" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/main/JettyServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="123" column="40" lean-forward="false" selection-start-line="123" selection-start-column="25" selection-end-line="123" selection-end-column="40" />
+        <state relative-caret-position="277">
+          <caret line="116" column="78" lean-forward="false" selection-start-line="116" selection-start-column="78" selection-end-line="116" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1511391814283" expanded="true" signature="3327:3512" ph="CREATE TABLE... Accounts" />
