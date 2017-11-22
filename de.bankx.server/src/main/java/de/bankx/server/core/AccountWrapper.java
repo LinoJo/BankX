@@ -4,23 +4,46 @@ package de.bankx.server.core;
 import de.bankx.server.services.DatabaseService;
 import org.apache.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class AccountWrapper {
     private int id;
     private String owner;
     private String number;
 
-    public AccountWrapper(){}
     static Logger log = Logger.getLogger(AccountWrapper.class);
+
+    public AccountWrapper(){}
 
     public AccountWrapper(Account account)
     {
         this.id = account.getId();
         this.owner = account.getOwner();
         this.number = account.getNumber();
+    }
+
+    public AccountWrapper(String number){
+        try {
+            Connection con = DatabaseService.getInstance().getConnection();
+            Statement sta = con.createStatement();
+            ResultSet res = sta.executeQuery("SELECT * FROM Accounts WHERE number ='" + number + "' FETCH FIRST ROW ONLY");
+            if (!res.next()) {
+                // Kein Account gefunden!
+                this.id = 0;
+                log.info("Kein Account unter der Nummer '" + number + "' gefunden");
+            } else {
+                // ID, Number, Owner erhalten
+                this.id = res.getInt("id");
+                this.number = res.getString("number");
+                this.owner = res.getString("owner").replaceAll("\\s+$", "");
+                log.debug("Objekt erzeugt: AccountWrapper(number: " + number + ")");
+                res.close();
+            }
+            sta.close();
+            con.close();
+        } catch(SQLException e) {
+            log.error("SQLException Class:AccountWrapper Constructor(): " + e.getMessage());
+        }
     }
 
     public String getNumber() {

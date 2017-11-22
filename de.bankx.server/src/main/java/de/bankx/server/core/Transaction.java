@@ -36,11 +36,12 @@ public class Transaction {
 			}
 			while (res.next()){
 				this.id = res.getInt("id");
-				// this.sender =
-				// this.receiver =
+				this.sender = new AccountWrapper(res.getString("sender"));
+				this.receiver = new AccountWrapper(res.getString("receiver"));
 				this.amount = res.getBigDecimal("amount");
 				this.reference = res.getString("reference");
 				this.transactionDate = res.getTimestamp("transactionDate");
+				log.debug("Objekt erzeugt: Transaktion(id: " + id + ")");
 			}
 			res.close();
 			sta.close();

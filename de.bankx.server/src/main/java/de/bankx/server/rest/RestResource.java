@@ -33,7 +33,7 @@ public class RestResource {
 
 		// Eingabeüberprüfung
 		if (!number.matches("[0-9]+") || (number.length() != 4)){
-			log.debug("REST-API: 'localhost:9998/rest/account/" + number + "' - FEHLERHAFTE EINGABE!");
+			log.info("REST-API Call: 'localhost:9998/rest/account/" + number + "' - FEHLERHAFTE EINGABE!");
 			return Response.status(Response.Status.BAD_REQUEST).entity("account '" + number + "' invalid").type(MediaType.APPLICATION_JSON).build();
 		}
 
@@ -42,38 +42,31 @@ public class RestResource {
 
 		// Objekt nicht in DB vorhanden
 		if (acc.getId() == 0){
-			log.debug("REST-API: 'localhost:9998/rest/account/" + number + "' - ACCOUNT NICHT GEFUNDEN!");
+			log.info("REST-API Call: 'localhost:9998/rest/account/" + number + "' - ACCOUNT NICHT GEFUNDEN!");
 			return Response.status(Response.Status.NOT_FOUND).entity("account '" + number + "' not found").type(MediaType.APPLICATION_JSON).build();
 		}
 
-		log.debug("REST-API: 'localhost:9998/rest/account/" + number + "'");
-
-		Account bank = new Account();
-		bank.setId(0);
-		bank.setNumber("0000");
-		bank.setOwner("Bank");
-
-		List<Transaction> transactionList = new ArrayList<>();
-
-		Transaction testTransaction = new Transaction();
-		testTransaction.setId(0);
-		testTransaction.setAmount(new BigDecimal(150));
-		testTransaction.setReceiver(new AccountWrapper(acc));
-		testTransaction.setSender(new AccountWrapper(bank));
-		testTransaction.setTransactionDate(new Date());
-
-		transactionList.add(testTransaction);
-
-		acc.setTransactions(transactionList);
-
-		//try {
-		//	Connection con = DatabaseService.getInstance().getConnection();
-		//	con.close();
-		//} catch (SQLException e) {
-		//	e.printStackTrace();
-		//}
 
 
+		//Account bank = new Account();
+		//bank.setId(0);
+		//bank.setNumber("0000");
+		//bank.setOwner("Bank");
+
+		//List<Transaction> transactionList = new ArrayList<>();
+
+		//Transaction testTransaction = new Transaction();
+		//testTransaction.setId(0);
+		//testTransaction.setAmount(new BigDecimal(150));
+		//testTransaction.setReceiver(new AccountWrapper(acc));
+		//testTransaction.setSender(new AccountWrapper(bank));
+		//testTransaction.setTransactionDate(new Date());
+
+		//transactionList.add(testTransaction);
+
+		//acc.setTransactions(transactionList);
+
+		log.info("REST-API Call: 'localhost:9998/rest/account/" + number + "'");
 		return Response.ok(acc).build();
 	}
 }

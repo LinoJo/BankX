@@ -38,8 +38,10 @@ public class Account {
 				this.id = res.getInt("id");
 				this.number = res.getString( "number");
 				this.owner = res.getString("owner").replaceAll("\\s+$", "");
+				log.debug("Objekt erzeugt: Account(number: " + number + ")");
 				res.close();
 			}
+			sta.close();
 
 			if (this.id != 0){
 				// Transaktionen zum Objekt hinzufügen
@@ -75,9 +77,10 @@ public class Account {
 				}
 			}
 
-
 			sta.close();
-			con.close();
+			if (!con.isClosed()){
+				con.close();
+			}
 		} catch(SQLException e) {
 			log.error("SQLException Class:Account Constructor(): " + e.getMessage());
 		}
