@@ -27,7 +27,7 @@ public class DatabaseService {
     }
 
     private DatabaseService() {
-        String dbPath = "jdbc:derby:;databaseName=memory:InMemDerbyDB;create=true";
+        String dbPath = "jdbc:derby:;databaseName=DerbyDB;create=true";
         log.info("Initialisiere Datenbank-Service");
         connectionPool = new ComboPooledDataSource();
 
