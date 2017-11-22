@@ -7,6 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.spi.resource.Singleton;
 import de.bankx.server.core.*;
 import de.bankx.server.services.DatabaseService;
@@ -30,17 +31,27 @@ public class RestResource {
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response account(@PathParam("number") String number) {
 
+		// Eingabeüberprüfung
+		if (!number.matches("[0-9]+") || (number.length() != 4)){
+			log.debug("REST-API: 'localhost:9998/rest/account/" + number + "' - FEHLERHAFTE EINGABE!");
+			return Response.status(Response.Status.BAD_REQUEST).entity("account '" + number + "' invalid").type(MediaType.APPLICATION_JSON).build();
+		}
+
+		// Objekt Account erstellen und Daten aus der DB zum Objekt laden
+		Account acc = new Account(number);
+
+		// Objekt nicht in DB vorhanden
+		if (acc.getId() == 0){
+			log.debug("REST-API: 'localhost:9998/rest/account/" + number + "' - ACCOUNT NICHT GEFUNDEN!");
+			return Response.status(Response.Status.NOT_FOUND).entity("account '" + number + "' not found").type(MediaType.APPLICATION_JSON).build();
+		}
+
 		log.debug("REST-API: 'localhost:9998/rest/account/" + number + "'");
 
 		Account bank = new Account();
 		bank.setId(0);
 		bank.setNumber("0000");
 		bank.setOwner("Bank");
-
-		Account acc = new Account();
-		acc.setId(1);
-		acc.setNumber(number);
-		acc.setOwner("Peter Pan");
 
 		List<Transaction> transactionList = new ArrayList<>();
 

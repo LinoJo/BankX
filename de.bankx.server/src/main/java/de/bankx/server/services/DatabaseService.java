@@ -41,8 +41,4 @@ public class DatabaseService {
 
         connectionPool.setJdbcUrl(dbPath);
     }
-
-    public void DatabaseDefault() {
-
-    }
 }

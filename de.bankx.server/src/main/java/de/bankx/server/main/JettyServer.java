@@ -103,7 +103,7 @@ public class JettyServer {
 				stmt.execute("CREATE TABLE Accounts(" +
 						"id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
 						"owner CHAR(50) NOT NULL," +
-						"number CHAR(20) NOT NULL," +
+						"number CHAR(4) NOT NULL," +
 						"CONSTRAINT primary_key_acc PRIMARY KEY (id)," +
 						"UNIQUE (number)" +
 						")"
@@ -111,8 +111,8 @@ public class JettyServer {
 				log.info("Tabelle Accounts angelegt");
 				stmt.executeUpdate("INSERT INTO Accounts(owner , number) values('Bank' , '0000')");
 				log.info("owner 'Bank' mit number '0000' zu Accounts hinzugefügt");
-				stmt.executeUpdate("INSERT INTO Accounts(owner , number) values('Timon' , '1000')");
-				log.info("owner 'Timon' mit number '1000' zu Accounts hinzugefügt");
+				stmt.executeUpdate("INSERT INTO Accounts(owner , number) values('Caspari, Timon' , '1000')");
+				log.info("owner 'Caspari, Timon' mit number '1000' zu Accounts hinzugefügt");
 
                 // Tabelle Transaction anlegen und mit Standard-Daten befüllen
                 stmt.execute("CREATE TABLE Transactions(" +
@@ -128,8 +128,9 @@ public class JettyServer {
                 log.info("Tabelle Transactions angelegt");
                 stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values(1, 2, 250.00, 'Startgeld')");
                 log.info("transaction '0000' an '1000' mit amount '250.00' und reference 'Startgeld' zu Transactions hinzugefügt");
-			}
 
+                stmt.close();
+			}
 			con.close();
 		} catch (SQLException e) {
 			log.error("SQLException dbdefaults(): " + e.getMessage());
