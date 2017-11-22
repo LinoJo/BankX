@@ -1,12 +1,15 @@
 package de.bankx.server.services;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.apache.log4j.Logger;
 
 import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DatabaseService {
+
+    static Logger log = Logger.getLogger(DatabaseService.class);
 
     private ComboPooledDataSource connectionPool;
 
@@ -24,8 +27,8 @@ public class DatabaseService {
     }
 
     private DatabaseService() {
-        String dbPath = "jdbc:derby:testDB;create=true";
-        //log.info("init db-service");
+        String dbPath = "jdbc:derby:;databaseName=memory:InMemDerbyDB;create=true";
+        log.info("Initialisiere Datenbank-Service");
         connectionPool = new ComboPooledDataSource();
 
         try {
@@ -33,14 +36,11 @@ public class DatabaseService {
             connectionPool.setMaxPoolSize(10);
             connectionPool.setMinPoolSize(5);
         } catch (PropertyVetoException e) {
-            //log.error("Unable to setup Connection Pool for Derby DB.");
-            //log.error(e.getMessage());
-            //log.error(e.getStackTrace());
+            log.error("Apache Derby: Fehler im Connectionpool");
+            log.error(e.getMessage());
+            log.error(e.getStackTrace());
         }
 
         connectionPool.setJdbcUrl(dbPath);
-
-
-
     }
 }

@@ -10,6 +10,7 @@ import javax.ws.rs.core.Response;
 import com.sun.jersey.spi.resource.Singleton;
 import de.bankx.server.core.*;
 import de.bankx.server.services.DatabaseService;
+import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -22,10 +23,14 @@ import java.util.List;
 @Singleton
 public class RestResource {
 
+	static Logger log = Logger.getLogger(RestResource.class);
+
 	@GET
 	@Path("/account/{number}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response account(@PathParam("number") String number) {
+
+		log.debug("REST-API: 'localhost:9998/rest/account/" + number + "'");
 
 		Account bank = new Account();
 		bank.setId(0);
