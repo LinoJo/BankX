@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -33,15 +34,52 @@ public class Account {
 				log.info("Kein Account unter der Nummer '"+ number +"' gefunden");
 			}
 			else{
-				this.id = res.getInt("ID");
-				this.number = res.getString( "Number");
-				this.owner = res.getString("Owner").replaceAll("\\s+$", "");
+				// ID, Number, Owner erhalten
+				this.id = res.getInt("id");
+				this.number = res.getString( "number");
+				this.owner = res.getString("owner").replaceAll("\\s+$", "");
 				res.close();
 			}
+
+			if (this.id != 0){
+				// Transaktionen zum Objekt hinzufügen
+				sta = con.createStatement();
+				res = sta.executeQuery("SELECT id FROM Transactions WHERE sender =" + number + "");
+				List<Integer> transactionIDs = new ArrayList<>();
+
+				// Für alle sender
+				while (res.next()){
+					Integer currid = res.getInt("sender");
+					if(!transactionIDs.contains(currid)){
+						transactionIDs.add(currid);
+					}
+				}
+				sta.close();
+				res.close();
+
+				sta = con.createStatement();
+				res = sta.executeQuery("SELECT id FROM Transactions WHERE receiver =" + number + "");
+
+				// Für alle empfänger
+				while (res.next()){
+					Integer currid = res.getInt("receiver");
+					if(!transactionIDs.contains(currid)){
+						transactionIDs.add(currid);
+					}
+				}
+				sta.close();
+				res.close();
+
+				for (Integer i : transactionIDs){
+					this.transactions.add(new Transaction(i));
+				}
+			}
+
+
 			sta.close();
 			con.close();
 		} catch(SQLException e) {
-			log.error("SQLException AccountWrapper.addToDb(): " + e.getMessage());
+			log.error("SQLException Class:Account Constructor(): " + e.getMessage());
 		}
 
 	}

@@ -1,6 +1,13 @@
 package de.bankx.server.core;
 
+import de.bankx.server.services.DatabaseService;
+import org.apache.log4j.Logger;
+
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -14,6 +21,34 @@ public class Transaction {
 	private BigDecimal amount;
 	private String reference;
 	private Date transactionDate;
+
+	static Logger log = Logger.getLogger(Transaction.class);
+
+	public Transaction(){}
+	public Transaction(Integer id){
+		try{
+			Connection con = DatabaseService.getInstance().getConnection();
+			Statement sta = con.createStatement();
+			ResultSet res = sta.executeQuery("SELECT * FROM Transactions WHERE id = " + id + " FETCH FIRST ROW ONLY");
+			if (!res.next()){
+				// Keine Transaktion unter der ID gefunden!
+				log.info("Keine Transaktion unter der ID '"+ id +"' gefunden");
+			}
+			while (res.next()){
+				this.id = res.getInt("id");
+				// this.sender =
+				// this.receiver =
+				this.amount = res.getBigDecimal("amount");
+				this.reference = res.getString("reference");
+				this.transactionDate = res.getTimestamp("transactionDate");
+			}
+			res.close();
+			sta.close();
+			con.close();
+		}catch(SQLException e) {
+			log.error("SQLException Class:Transaction Constructor(): " + e.getMessage());
+		}
+	}
 
 	@XmlTransient
 	public int getId() {
