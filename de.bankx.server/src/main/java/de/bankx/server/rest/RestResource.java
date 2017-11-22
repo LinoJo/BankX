@@ -55,12 +55,13 @@ public class RestResource {
 
 		acc.setTransactions(transactionList);
 
-		try {
-			Connection con = DatabaseService.getInstance().getConnection();
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		//try {
+		//	Connection con = DatabaseService.getInstance().getConnection();
+		//	con.close();
+		//} catch (SQLException e) {
+		//	e.printStackTrace();
+		//}
+
 
 		return Response.ok(acc).build();
 	}

@@ -4,16 +4,14 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.apache.log4j.Logger;
 
 import java.beans.PropertyVetoException;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DatabaseService {
 
     static Logger log = Logger.getLogger(DatabaseService.class);
-
     private ComboPooledDataSource connectionPool;
-
     private static DatabaseService instance;
+
     public static DatabaseService getInstance()
     {
         if (instance == null)
@@ -42,5 +40,9 @@ public class DatabaseService {
         }
 
         connectionPool.setJdbcUrl(dbPath);
+    }
+
+    public void DatabaseDefault() {
+
     }
 }
