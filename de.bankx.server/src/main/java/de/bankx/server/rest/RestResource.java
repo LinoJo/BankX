@@ -11,8 +11,12 @@ import com.sun.jersey.spi.resource.Singleton;
 import de.bankx.server.core.*;
 import de.bankx.server.services.DatabaseService;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Path("/")
 @Singleton
@@ -22,13 +26,31 @@ public class RestResource {
 	@Path("/account/{number}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response account(@PathParam("number") String number) {
+
+		Account bank = new Account();
+		bank.setId(0);
+		bank.setNumber("0000");
+		bank.setOwner("Bank");
+
 		Account acc = new Account();
-		acc.setId(0);
+		acc.setId(1);
 		acc.setNumber(number);
 		acc.setOwner("Peter Pan");
 
-		try {
+		List<Transaction> transactionList = new ArrayList<>();
 
+		Transaction testTransaction = new Transaction();
+		testTransaction.setId(0);
+		testTransaction.setAmount(new BigDecimal(150));
+		testTransaction.setReceiver(new AccountWrapper(acc));
+		testTransaction.setSender(new AccountWrapper(bank));
+		testTransaction.setTransactionDate(new Date());
+
+		transactionList.add(testTransaction);
+
+		acc.setTransactions(transactionList);
+
+		try {
 			Connection con = DatabaseService.getInstance().getConnection();
 			con.close();
 		} catch (SQLException e) {

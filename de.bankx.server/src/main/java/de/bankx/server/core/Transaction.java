@@ -9,8 +9,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 public class Transaction {
 	private int id;
-	private Account sender;
-	private Account receiver;
+	private AccountWrapper sender;
+	private AccountWrapper receiver;
 	private BigDecimal amount;
 	private String reference;
 	private Date transactionDate;
@@ -24,19 +24,19 @@ public class Transaction {
 		this.id = id;
 	}
 
-	public Account getSender() {
+	public AccountWrapper getSender() {
 		return sender;
 	}
 
-	public void setSender(Account sender) {
+	public void setSender(AccountWrapper sender) {
 		this.sender = sender;
 	}
 
-	public Account getReceiver() {
+	public AccountWrapper getReceiver() {
 		return receiver;
 	}
 
-	public void setReceiver(Account receiver) {
+	public void setReceiver(AccountWrapper receiver) {
 		this.receiver = receiver;
 	}
 
