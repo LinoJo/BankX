@@ -1,3 +1,0 @@
-interface RestData {
-  info: string
-}

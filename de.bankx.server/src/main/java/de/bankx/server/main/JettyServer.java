@@ -65,7 +65,7 @@ public class JettyServer {
         resourceHandler.setWelcomeFiles(new String[]{ "index.html" });
         resourceHandler.setResourceBase("../de.bankx.server.angular");
 
-        ContextHandler contextHandler = new ContextHandler("/angular");
+        ContextHandler contextHandler = new ContextHandler("/admin");
 		contextHandler.setHandler(resourceHandler);
 
 		HandlerList handlers = new HandlerList();
