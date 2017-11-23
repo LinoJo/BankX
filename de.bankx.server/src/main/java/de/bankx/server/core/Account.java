@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -46,12 +47,12 @@ public class Account {
 			if (this.id != 0){
 				// Transaktionen zum Objekt hinzufügen
 				sta = con.createStatement();
-				res = sta.executeQuery("SELECT id FROM Transactions WHERE sender =" + number + "");
+				res = sta.executeQuery("SELECT id FROM Transactions WHERE SENDER ='" + number + "'");
 				List<Integer> transactionIDs = new ArrayList<>();
 
 				// Für alle sender
 				while (res.next()){
-					Integer currid = res.getInt("sender");
+					Integer currid = res.getInt("id");
 					if(!transactionIDs.contains(currid)){
 						transactionIDs.add(currid);
 					}
@@ -60,11 +61,11 @@ public class Account {
 				res.close();
 
 				sta = con.createStatement();
-				res = sta.executeQuery("SELECT id FROM Transactions WHERE receiver =" + number + "");
+				res = sta.executeQuery("SELECT id FROM Transactions WHERE RECEIVER ='" + number + "'");
 
 				// Für alle empfänger
 				while (res.next()){
-					Integer currid = res.getInt("receiver");
+					Integer currid = res.getInt("id");
 					if(!transactionIDs.contains(currid)){
 						transactionIDs.add(currid);
 					}
@@ -72,9 +73,14 @@ public class Account {
 				sta.close();
 				res.close();
 
+				// Transaktionen sortieren und Objekt Account als Attribut hinzufügen
+				Collections.sort(transactionIDs);
+				List<Transaction> transactionList = new ArrayList<>();
 				for (Integer i : transactionIDs){
-					this.transactions.add(new Transaction(i));
+					Transaction ta = new Transaction(i);
+					transactionList.add(ta);
 				}
+				this.transactions = transactionList;
 			}
 
 			sta.close();

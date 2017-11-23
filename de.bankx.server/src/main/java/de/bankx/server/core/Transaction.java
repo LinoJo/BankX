@@ -30,17 +30,17 @@ public class Transaction {
 			Connection con = DatabaseService.getInstance().getConnection();
 			Statement sta = con.createStatement();
 			ResultSet res = sta.executeQuery("SELECT * FROM Transactions WHERE id = " + id + " FETCH FIRST ROW ONLY");
-			if (!res.next()){
-				// Keine Transaktion unter der ID gefunden!
-				log.info("Keine Transaktion unter der ID '"+ id +"' gefunden");
-			}
 			while (res.next()){
 				this.id = res.getInt("id");
 				this.sender = new AccountWrapper(res.getString("sender"));
 				this.receiver = new AccountWrapper(res.getString("receiver"));
 				this.amount = res.getBigDecimal("amount");
-				this.reference = res.getString("reference");
+				this.reference = res.getString("reference").replaceAll("\\s+$", "");
 				this.transactionDate = res.getTimestamp("transactionDate");
+				if (this.id == 0){
+					// Keine Transaktion unter der ID gefunden!
+					log.info("Keine Transaktion unter der ID '"+ id +"' gefunden");
+				}
 				log.debug("Objekt erzeugt: Transaktion(id: " + id + ")");
 			}
 			res.close();

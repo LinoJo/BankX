@@ -117,8 +117,8 @@ public class JettyServer {
                 // Tabelle Transaction anlegen und mit Standard-Daten befüllen
                 stmt.execute("CREATE TABLE Transactions(" +
                         "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
-                        "sender INTEGER NOT NULL," +
-                        "receiver INTEGER NOT NULL," +
+                        "sender CHAR(4) NOT NULL," +
+                        "receiver CHAR(4) NOT NULL," +
                         "amount DECIMAL NOT NULL," +
                         "reference CHAR(100) NOT NULL," +
                         "transactionDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP," +
@@ -126,9 +126,9 @@ public class JettyServer {
                         ")"
                 );
                 log.info("Tabelle Transactions angelegt");
-                stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values(1, 2, 250.00, 'Darlehen')");
+                stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '1000', 250.00, 'Darlehen')");
                 log.info("transaction '0000' an '1000' mit amount '250.00' und reference 'Darlehen' zu Transactions hinzugefügt");
-                stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values(2, 1, 250.00, 'Rückzahlung Darlehen')");
+                stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('1000', '0000', 250.00, 'Rückzahlung Darlehen')");
                 log.info("transaction '1000' an '0000' mit amount '250.00' und reference 'Rückzahlung Darlehen' zu Transactions hinzugefügt");
 
                 stmt.close();
