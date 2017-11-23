@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6893b824-11cf-4302-abce-80c8044d066a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/bankx/server/main/JettyServer.java" afterPath="$PROJECT_DIR$/src/main/java/de/bankx/server/main/JettyServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -731,12 +731,12 @@
       <workItem from="1511292764896" duration="46000" />
       <workItem from="1511292834311" duration="1733000" />
       <workItem from="1511347044453" duration="2737000" />
-      <workItem from="1511349864785" duration="29075000" />
+      <workItem from="1511349864785" duration="29105000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35336000" />
+    <option name="totallyTimeSpent" value="35366000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
