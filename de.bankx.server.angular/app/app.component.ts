@@ -1,30 +1,34 @@
-import {CalcService} from "./calc.service";
 import {Component} from '@angular/core';
-import {Response} from '@angular/http';
+import {DataDetailComponent} from "./data-detail.component";
+import {DataService} from "./data.service";
 
 @Component({
-    selector: 'my-app',
     templateUrl: 'app/app.template.html',
-    providers: [CalcService]
+    selector: 'my-app',
+    providers: [DataService]
 })
 
 export class AppComponent {
-    num1: string;
-    num2: string;
-    result: string;
+  title: string = "RestDataViewer";
+  selectedData: RestData;
+  dataList: RestData[] = [];
 
-    constructor(private calcService: CalcService){}
+  constructor(private dataService : DataService){}
 
-    calcLocal() {
-        this.result = String(Number(this.num1) + Number(this.num2));
-        // this.result = "" + (+this.num1 + +this.num2);
-    }
+  getData() {
+    //this.dataList.push(this.dataService.getData())
+    this.dataService.getData().subscribe(
+      (data: RestData) => this.dataList.push(data),
+      (error: Response) => console.log("Error: " + error.statusText),
+      () => console.log("GetRequest sent")
+    )
+  }
 
-    calcRest() {
-        this.calcService.calcNumbers(this.num1, this.num2).subscribe(
-            result => this.result = result,
-            error => console.log(error)
-        );
-    }
+  clearData() {
+    this.dataList.length = 0;
+  }
 
+  onSelect(data: RestData){
+    this.selectedData = data;
+  }
 }

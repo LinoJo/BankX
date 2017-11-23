@@ -1,8 +1,11 @@
-<div class="col-md-12">
-    <h1>Calculator</h1>
-    <input type="text" placeholder="number1" [(ngModel)]="num1">
-    <input type="text" placeholder="number2" [(ngModel)]="num2">
-    <h3>{{result}}</h3>
-    <button (click)="calcLocal()" class="btn btn-primary">calc local</button>
-    <button (click)="calcRest()" class="btn btn-secondary">calc rest</button>
+<div class="col-md-6">
+  <h1>Neu: {{title}}</h1>
+  <button class="btn btn-primary" (click)="getData()">Get Data</button>
+  <button class="btn btn-primary" (click)="clearData()">Clear</button>
+  <ul class="list-group">
+    <li class="list-group-item" (click)="onSelect(data)" *ngFor="let data of dataList">{{data.info}}</li>
+  </ul>
+</div>
+<div class="col-md-6">
+  <my-data-detail [data] = "selectedData" *ngIf="selectedData"></my-data-detail>
 </div>

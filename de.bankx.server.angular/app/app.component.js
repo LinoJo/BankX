@@ -9,29 +9,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var calc_service_1 = require("./calc.service");
 var core_1 = require("@angular/core");
+var data_service_1 = require("./data.service");
 var AppComponent = (function () {
-    function AppComponent(calcService) {
-        this.calcService = calcService;
+    function AppComponent(dataService) {
+        this.dataService = dataService;
+        this.title = "RestDataViewer";
+        this.dataList = [];
     }
-    AppComponent.prototype.calcLocal = function () {
-        this.result = String(Number(this.num1) + Number(this.num2));
-        // this.result = "" + (+this.num1 + +this.num2);
-    };
-    AppComponent.prototype.calcRest = function () {
+    AppComponent.prototype.getData = function () {
         var _this = this;
-        this.calcService.calcNumbers(this.num1, this.num2).subscribe(function (result) { return _this.result = result; }, function (error) { return console.log(error); });
+        //this.dataList.push(this.dataService.getData())
+        this.dataService.getData().subscribe(function (data) { return _this.dataList.push(data); }, function (error) { return console.log("Error: " + error.statusText); }, function () { return console.log("GetRequest sent"); });
     };
+    AppComponent.prototype.clearData = function () {
+        this.dataList.length = 0;
+    };
+    AppComponent.prototype.onSelect = function (data) {
+        this.selectedData = data;
+    };
+    AppComponent = __decorate([
+        core_1.Component({
+            templateUrl: 'app/app.template.html',
+            selector: 'my-app',
+            providers: [data_service_1.DataService]
+        }),
+        __metadata("design:paramtypes", [data_service_1.DataService])
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        templateUrl: 'app/app.template.html',
-        providers: [calc_service_1.CalcService]
-    }),
-    __metadata("design:paramtypes", [calc_service_1.CalcService])
-], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

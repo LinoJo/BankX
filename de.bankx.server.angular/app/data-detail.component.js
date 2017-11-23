@@ -10,20 +10,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-require("rxjs/add/operator/map");
-var CalcService = (function () {
-    function CalcService(http) {
-        this.http = http;
+var data_service_1 = require("./data.service");
+var DataDetailComponent = (function () {
+    function DataDetailComponent(dataService) {
+        this.dataService = dataService;
     }
-    CalcService.prototype.calcNumbers = function (num1, num2) {
-        return this.http.get("http://localhost:9998/rest/add/" + num1 + "/" + num2).map(function (response) { return response.text(); });
+    DataDetailComponent.prototype.sendData = function () {
+        console.log("Data: " + this.data.info);
     };
-    return CalcService;
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], DataDetailComponent.prototype, "data", void 0);
+    DataDetailComponent = __decorate([
+        core_1.Component({
+            selector: 'my-data-detail',
+            templateUrl: 'app/data-detail.template.html'
+        }),
+        __metadata("design:paramtypes", [data_service_1.DataService])
+    ], DataDetailComponent);
+    return DataDetailComponent;
 }());
-CalcService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], CalcService);
-exports.CalcService = CalcService;
-//# sourceMappingURL=calc.service.js.map
+exports.DataDetailComponent = DataDetailComponent;
+//# sourceMappingURL=data-detail.component.js.map
