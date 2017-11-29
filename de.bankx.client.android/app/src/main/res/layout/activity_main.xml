@@ -13,7 +13,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/eingabeIP"
         android:layout_marginBottom="78dp"
-        android:onClick="loginServer"
         android:text="Login"
         tools:layout_editor_absoluteX="72dp"
         tools:layout_editor_absoluteY="455dp" />

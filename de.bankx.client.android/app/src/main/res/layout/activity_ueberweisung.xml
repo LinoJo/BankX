@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="de.bankx.client.android.UeberweisungActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonUeberweisen"
+        android:layout_alignStart="@+id/buttonUeberweisen"
+        android:layout_marginBottom="149dp"
+        android:text="Betrag"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="241dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/eingabeEmpfaenger"
+        android:layout_alignStart="@+id/eingabeEmpfaenger"
+        android:text="Empfänger"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="135dp" />
+
+    <Button
+        android:id="@+id/buttonUeberweisen"
+        android:layout_width="234dp"
+        android:layout_height="76dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="112dp"
+        android:layout_marginEnd="80dp"
+        android:text="Überweisen"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="465dp" />
+
+    <EditText
+        android:id="@+id/eingabeEmpfaenger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginBottom="78dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/eingabeBetrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView"
+        android:layout_below="@+id/eingabeEmpfaenger"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:inputType="number" />
+</RelativeLayout>
