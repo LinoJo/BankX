@@ -29,8 +29,9 @@ public class RestResource {
 	public Response getAccounts(){
 		try {
 			log.info("REST-API Call: 'localhost:9998/rest/admin/getAllAccounts");
-			Account acc = new Account();
-			return Response.ok(acc.getListOfAccounts()).build();
+			AccountWrapper acc = new AccountWrapper();
+			AccountListWrapper accList = new AccountListWrapper(acc.getListOfAccounts());
+			return Response.ok(accList).build();
 		} catch (Exception ex){
 			log.error("Exception in @Path('/admin/getAllAccounts'): " + ex.getMessage());
 			return Response.serverError().build();
