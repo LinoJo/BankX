@@ -31,12 +31,12 @@ public class Transaction {
 			Statement sta = con.createStatement();
 			ResultSet res = sta.executeQuery("SELECT * FROM Transactions WHERE id = " + id + " FETCH FIRST ROW ONLY");
 			while (res.next()){
-				this.id = res.getInt("id");
-				this.sender = new AccountWrapper(res.getString("sender"));
-				this.receiver = new AccountWrapper(res.getString("receiver"));
-				this.amount = res.getBigDecimal("amount");
-				this.reference = res.getString("reference").replaceAll("\\s+$", "");
-				this.transactionDate = res.getTimestamp("transactionDate");
+				this.id = res.getInt(1);
+				this.sender = new AccountWrapper(res.getString(2));
+				this.receiver = new AccountWrapper(res.getString(3));
+				this.amount = res.getBigDecimal(4);
+				this.reference = res.getString(5).replaceAll("\\s+$", "");
+				this.transactionDate = res.getTimestamp(6);
 				if (this.id == 0){
 					// Keine Transaktion unter der ID gefunden!
 					log.info("Keine Transaktion unter der ID '"+ id +"' gefunden");

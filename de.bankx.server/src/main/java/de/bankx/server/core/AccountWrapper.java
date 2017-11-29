@@ -13,7 +13,7 @@ public class AccountWrapper {
     private int id;
     private String owner;
     private String number;
-    private BigDecimal amount;
+    private String value;
 
     static Logger log = Logger.getLogger(AccountWrapper.class);
 
@@ -34,6 +34,7 @@ public class AccountWrapper {
                 this.id = res.getInt("id");
                 this.number = res.getString( "number");
                 this.owner = res.getString("owner").replaceAll("\\s+$", "");
+                this.value = this.getActualValue(this.number);
                 log.debug("Objekt erzeugt: AccountWrapper(number: " + number + ")");
                 res.close();
             }
@@ -76,6 +77,43 @@ public class AccountWrapper {
         this.id = id;
     }
 
+    public String getValue() { return value; }
+
+    public void setValue(String value) { this.value = value; }
+
+
+    private String getActualValue(String number){
+        try{
+            Float gesamount = new Float(0);
+            Float curamount = new Float(0);
+
+            Connection con = DatabaseService.getInstance().getConnection();
+            Statement sta = con.createStatement();
+            ResultSet res = sta.executeQuery("SELECT AMOUNT FROM TRANSACTIONS WHERE RECEIVER ='" + number + "'");
+            while (res.next()){
+                curamount = res.getFloat(1);
+                gesamount = gesamount + curamount;
+            }
+            res.close();
+            sta.close();
+
+            sta = con.createStatement();
+            res = sta.executeQuery("SELECT AMOUNT FROM TRANSACTIONS WHERE SENDER ='" + number + "'");
+            while (res.next()){
+                curamount = res.getFloat(1);
+                gesamount = gesamount - curamount;
+            }
+            res.close();
+            sta.close();
+            con.close();
+            return gesamount.toString();
+        }
+        catch(SQLException e) {
+            log.error("SQLException getActualValue(String number): " + e.getMessage());
+            return "0";
+        }
+    }
+
     public void addToDb(AccountWrapper acc){
         Connection con = null;
         PreparedStatement prep = null;
@@ -100,10 +138,6 @@ public class AccountWrapper {
             log.error("SQLException AccountWrapper.addToDb(): " + e.getMessage());
         }
 
-    }
-
-    private void getAmount(){
-        
     }
 
     public List<AccountWrapper> getListOfAccounts(){

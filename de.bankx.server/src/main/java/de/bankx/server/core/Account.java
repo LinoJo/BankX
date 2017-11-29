@@ -72,6 +72,7 @@ public class Account {
 				}
 				sta.close();
 				res.close();
+				con.close();
 
 				// Transaktionen sortieren und Objekt Account als Attribut hinzufügen
 				Collections.sort(transactionIDs);
@@ -84,9 +85,7 @@ public class Account {
 			}
 
 			sta.close();
-			if (!con.isClosed()){
-				con.close();
-			}
+			con.close();
 		} catch(SQLException e) {
 			log.error("SQLException Class:Account Constructor(): " + e.getMessage());
 		}
