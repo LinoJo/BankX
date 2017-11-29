@@ -39,6 +39,21 @@ public class RestResource {
 	}
 
 	@GET
+	@Path("/admin/getAllTransactions")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response getTransactions(){
+		try {
+			log.info("REST-API Call: 'localhost:9998/rest/admin/getAllTransactions");
+			Transaction tra = new Transaction();
+			TransactionListWrapper traList = new TransactionListWrapper(tra.getListOfTransactions());
+			return Response.ok(traList).build();
+		} catch (Exception ex){
+			log.error("Exception in @Path('/admin/getAllTransactions'): " + ex.getMessage());
+			return Response.serverError().build();
+		}
+	}
+
+	@GET
 	@Path("/account/{number}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response account(@PathParam("number") String number) {

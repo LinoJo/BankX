@@ -26,4 +26,5 @@ public class AccountListWrapper implements Serializable {
     public void setItems(List<AccountWrapper> items) {
         this.items = items;
     }
+
 }

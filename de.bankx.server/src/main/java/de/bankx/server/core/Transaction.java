@@ -8,7 +8,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -98,6 +100,31 @@ public class Transaction {
 
 	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
+	}
+
+
+	public List<Transaction> getListOfTransactions(){
+
+		List<Transaction> accList = new ArrayList<Transaction>();
+
+		try{
+			Connection con = DatabaseService.getInstance().getConnection();
+			Statement sta = con.createStatement();
+			ResultSet res = sta.executeQuery("SELECT ID FROM TRANSACTIONS");
+			while(res.next()){
+				Transaction acc = new Transaction( res.getInt( 1));
+				accList.add(acc);
+			}
+			res.close();
+			sta.close();
+			con.close();
+
+			log.debug("getListOfTransactions() executed");
+			return accList;
+		}catch(SQLException e) {
+			log.error("SQLException getListOfTransactions(): " + e.getMessage());
+			return accList;
+		}
 	}
 
 }

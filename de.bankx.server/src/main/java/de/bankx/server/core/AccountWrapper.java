@@ -156,7 +156,7 @@ public class AccountWrapper {
             sta.close();
             con.close();
 
-            log.debug("getListOfAccounts executed");
+            log.debug("getListOfAccounts() executed");
             return accList;
         }catch(SQLException e) {
             log.error("SQLException getListOfAccounts(): " + e.getMessage());
