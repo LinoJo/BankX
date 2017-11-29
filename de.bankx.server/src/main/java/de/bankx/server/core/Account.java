@@ -130,4 +130,28 @@ public class Account {
 		Account acc = new Account();
 		return acc;
 	}
+
+	public List<Account> getListOfAccounts(){
+
+		List<Account> accList = new ArrayList<Account>();
+
+		try{
+			Connection con = DatabaseService.getInstance().getConnection();
+			Statement sta = con.createStatement();
+			ResultSet res = sta.executeQuery("SELECT number FROM Accounts");
+			while(res.next()){
+				Account acc = new Account( res.getString( "number"));
+				accList.add(acc);
+				log.debug("Objekt erzeugt: Account(number: " + number + ")");
+				res.close();
+			}
+			sta.close();
+			con.close();
+
+			return accList;
+		}catch(SQLException e) {
+			log.error("SQLException Class:Account getListOfAccounts(): " + e.getMessage());
+			return accList;
+		}
+	}
 }

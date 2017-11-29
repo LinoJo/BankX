@@ -24,6 +24,20 @@ public class RestResource {
 	static Logger log = Logger.getLogger(RestResource.class);
 
 	@GET
+	@Path("/admin/getAllAccounts")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response getAccounts(){
+		try {
+			log.info("REST-API Call: 'localhost:9998/rest/admin/getAllAccounts");
+			Account acc = new Account();
+			return Response.ok(acc.getListOfAccounts()).build();
+		} catch (Exception ex){
+			log.error("Exception in @Path('/admin/getAllAccounts'): " + ex.getMessage());
+			return Response.serverError().build();
+		}
+	}
+
+	@GET
 	@Path("/account/{number}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response account(@PathParam("number") String number) {
@@ -49,7 +63,7 @@ public class RestResource {
 			return Response.ok(acc).build();
 
 		} catch (Exception ex){
-			log.error("Exception in @Path('transaction'): " + ex.getMessage());
+			log.error("Exception in @Path('/account/{number}'): " + ex.getMessage());
 			return Response.serverError().build();
 		}
 	}

@@ -76,13 +76,13 @@ public class JettyServer {
 			log.info("Jetty Server auf Port " + port + " gestartet");
 
 			// Datenbank-Defaults setzen, falls erster Start der Anwendung
-			dbdefaults();
+			dbDefaults();
 		} catch (Exception ex){
 			log.error(ex);
 		}
 	}
 
-	private static void dbdefaults(){
+	private static void dbDefaults(){
 		// Datenbank-Defaults-Setzen
 		try {
 			Connection con = DatabaseService.getInstance().getConnection();
