@@ -1,0 +1,16 @@
+<table>
+    <tr>
+      <td>Sender</td>
+      <td>Empfänger</td>
+      <td>Verwendungszweck</td>
+      <td>Summe</td>
+      <td>Datum</td>
+    </tr>
+    <tr *ngFor="let tra of transactionList">
+      <td>{{tra.sender.owner}}</td>
+      <td>{{tra.receiver.owner}}</td>
+      <td>{{tra.reference}}</td>
+      <td>{{tra.amount}}</td>
+      <td>{{tra.transactionDate}}</td>
+    </tr>
+</table>

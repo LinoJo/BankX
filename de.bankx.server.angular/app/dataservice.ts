@@ -21,7 +21,7 @@ export class DataService {
 
   getTransactions(){
     return this.http.get('http://localhost:9998/rest/admin/getAllTransactions').map(
-      (response: Response) => response.json()
+      (response: Response) => response.json().items
     )
   }
 }

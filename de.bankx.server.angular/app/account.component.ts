@@ -15,11 +15,10 @@ export class AccountComponent {
   }
 
   getData() {
-    //this.dataList.push(this.dataService.getData())
     this.dataService.getAccounts().subscribe(
       (data: AccountData[]) => this.accountList=data,
       (error: Response) => console.log("Error: " + error.statusText),
-      () => console.log("Anzahl Accounts: "+ this.accountList.length)
+      () => console.log("Anzahl geladener Accounts: "+ this.accountList.length)
     )
   }
 }

@@ -25,7 +25,7 @@ var DataService = (function () {
         this.http.post('http://localhost:9998/rest/admin/addAccount', "info=$(data.info)", { headers: headers });
     };
     DataService.prototype.getTransactions = function () {
-        return this.http.get('http://localhost:9998/rest/admin/getAllTransactions').map(function (response) { return response.json(); });
+        return this.http.get('http://localhost:9998/rest/admin/getAllTransactions').map(function (response) { return response.json().items; });
     };
     DataService = __decorate([
         core_1.Injectable(),

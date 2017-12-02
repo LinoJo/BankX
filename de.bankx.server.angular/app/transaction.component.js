@@ -11,25 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var dataservice_1 = require("./dataservice");
-var AccountComponent = (function () {
-    function AccountComponent(dataService) {
+var TransactionComponent = (function () {
+    function TransactionComponent(dataService) {
         this.dataService = dataService;
-        this.accountList = [];
+        this.transactionList = [];
         this.getData();
     }
-    AccountComponent.prototype.getData = function () {
+    TransactionComponent.prototype.getData = function () {
         var _this = this;
-        this.dataService.getAccounts().subscribe(function (data) { return _this.accountList = data; }, function (error) { return console.log("Error: " + error.statusText); }, function () { return console.log("Anzahl geladener Accounts: " + _this.accountList.length); });
+        this.dataService.getTransactions().subscribe(function (data) { return _this.transactionList = data; }, function (error) { return console.log("Error: " + error.statusText); }, function () { return console.log("Anzahl geladener Transaktionen: " + JSON.stringify(_this.transactionList)); });
     };
-    AccountComponent = __decorate([
+    TransactionComponent = __decorate([
         core_1.Component({
-            templateUrl: 'views/account.html',
-            selector: 'account-list',
+            templateUrl: 'views/transaction.html',
+            selector: 'transact-list',
             providers: [dataservice_1.DataService]
         }),
         __metadata("design:paramtypes", [dataservice_1.DataService])
-    ], AccountComponent);
-    return AccountComponent;
+    ], TransactionComponent);
+    return TransactionComponent;
 }());
-exports.AccountComponent = AccountComponent;
-//# sourceMappingURL=account.component.js.map
+exports.TransactionComponent = TransactionComponent;
+//# sourceMappingURL=transaction.component.js.map

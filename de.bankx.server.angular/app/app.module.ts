@@ -4,10 +4,11 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
 import { AccountComponent }  from './account.component';
+import { TransactionComponent }  from './transaction.component';
 
 @NgModule({
   imports: [ BrowserModule, FormsModule, HttpModule ],
-  declarations: [ AccountComponent],
-  bootstrap: [ AccountComponent ]
+  declarations: [ AccountComponent, TransactionComponent],
+  bootstrap: [ AccountComponent, TransactionComponent ]
 })
 export class AppModule { }

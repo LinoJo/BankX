@@ -1,8 +1,8 @@
 interface TransactionData {
-  id: number
-  sender: string
-  receiver: string
-  amount: number
+  id: string
+  sender: AccountData
+  receiver: AccountData
+  amount: string
   reference: string
   transactionDate: string
 }
