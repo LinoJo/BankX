@@ -87,11 +87,25 @@ public class RestResource {
 	@POST
 	@Path("/transaction")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public Response sendData(@FormParam("senderNumber") String senderNumber, @FormParam("receiverNumber") String receiverNumber, @FormParam("amount") String amount, @FormParam("reference") String reference){
+	public Response execTransact(@FormParam("senderNumber") String senderNumber, @FormParam("receiverNumber") String receiverNumber, @FormParam("amount") String amount, @FormParam("reference") String reference){
 		try{
 			log.info(senderNumber + ", " + receiverNumber + ", " +  amount + ", " + reference);
 		} catch (Exception ex){
 			log.error("Exception in @Path('transaction'): " + ex.getMessage());
+			return Response.serverError().build();
+		}
+
+		return Response.ok().build();
+	}
+
+	@POST
+	@Path("/admin/addAccount")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public Response addAccount(@FormParam("post_owner") String owner, @FormParam("post_number") String number, @FormParam("post_amount") String amount){
+		try{
+			log.info(owner + number + amount);
+		} catch (Exception ex){
+			log.error("Exception in @Path('/admin/addAccount'): " + ex.getMessage());
 			return Response.serverError().build();
 		}
 

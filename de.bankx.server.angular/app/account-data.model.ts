@@ -1,5 +1,6 @@
-interface accountData {
-  id: number
-  owner: string
+interface AccountData {
+  id: string
   number: string
+  owner: string
+  value: string
 }
