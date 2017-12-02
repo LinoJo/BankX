@@ -1,0 +1,12 @@
+<table>
+    <tr>
+      <td>Konto-Nummer</td>
+      <td>Konto-Name</td>
+      <td>Kontostand</td>
+    </tr>
+    <tr *ngFor="let acc of accountList">
+      <td>{{acc.number}}</td>
+      <td>{{acc.owner}}</td>
+      <td>{{acc.value}}</td>
+    </tr>
+</table>

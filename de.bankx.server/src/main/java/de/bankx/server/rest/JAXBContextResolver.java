@@ -11,7 +11,7 @@ import com.sun.jersey.api.json.JSONJAXBContext;
 @Provider
 public class JAXBContextResolver implements ContextResolver<JAXBContext> {
 
-	private static final Class<?>[] CLASSES = new Class[] { Account.class, Transaction.class /*
+	private static final Class<?>[] CLASSES = new Class[] { Account.class, Transaction.class, AccountWrapper.class, AccountListWrapper.class, TransactionListWrapper.class /*
 																			 * Klassen
 																			 * des
 																			 * Datenmodells

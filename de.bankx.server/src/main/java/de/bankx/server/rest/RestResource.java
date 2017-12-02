@@ -24,6 +24,36 @@ public class RestResource {
 	static Logger log = Logger.getLogger(RestResource.class);
 
 	@GET
+	@Path("/admin/getAllAccounts")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response getAccounts(){
+		try {
+			log.info("REST-API Call: 'localhost:9998/rest/admin/getAllAccounts");
+			AccountWrapper acc = new AccountWrapper();
+			AccountListWrapper accList = new AccountListWrapper(acc.getListOfAccounts());
+			return Response.ok(accList).build();
+		} catch (Exception ex){
+			log.error("Exception in @Path('/admin/getAllAccounts'): " + ex.getMessage());
+			return Response.serverError().build();
+		}
+	}
+
+	@GET
+	@Path("/admin/getAllTransactions")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response getTransactions(){
+		try {
+			log.info("REST-API Call: 'localhost:9998/rest/admin/getAllTransactions");
+			Transaction tra = new Transaction();
+			TransactionListWrapper traList = new TransactionListWrapper(tra.getListOfTransactions());
+			return Response.ok(traList).build();
+		} catch (Exception ex){
+			log.error("Exception in @Path('/admin/getAllTransactions'): " + ex.getMessage());
+			return Response.serverError().build();
+		}
+	}
+
+	@GET
 	@Path("/account/{number}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response account(@PathParam("number") String number) {
@@ -49,7 +79,7 @@ public class RestResource {
 			return Response.ok(acc).build();
 
 		} catch (Exception ex){
-			log.error("Exception in @Path('transaction'): " + ex.getMessage());
+			log.error("Exception in @Path('/account/{number}'): " + ex.getMessage());
 			return Response.serverError().build();
 		}
 	}
@@ -57,11 +87,25 @@ public class RestResource {
 	@POST
 	@Path("/transaction")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public Response sendData(@FormParam("senderNumber") String senderNumber, @FormParam("receiverNumber") String receiverNumber, @FormParam("amount") String amount, @FormParam("reference") String reference){
+	public Response execTransact(@FormParam("senderNumber") String senderNumber, @FormParam("receiverNumber") String receiverNumber, @FormParam("amount") String amount, @FormParam("reference") String reference){
 		try{
 			log.info(senderNumber + ", " + receiverNumber + ", " +  amount + ", " + reference);
 		} catch (Exception ex){
 			log.error("Exception in @Path('transaction'): " + ex.getMessage());
+			return Response.serverError().build();
+		}
+
+		return Response.ok().build();
+	}
+
+	@POST
+	@Path("/admin/addAccount")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public Response addAccount(@FormParam("post_owner") String owner, @FormParam("post_number") String number, @FormParam("post_amount") String amount){
+		try{
+			log.info(owner + number + amount);
+		} catch (Exception ex){
+			log.error("Exception in @Path('/admin/addAccount'): " + ex.getMessage());
 			return Response.serverError().build();
 		}
 
