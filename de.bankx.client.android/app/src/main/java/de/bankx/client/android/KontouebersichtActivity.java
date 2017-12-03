@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +32,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
     private TextView kontonummer;
     private TextView kontostand;
     private TextView kontoinhaber;
+    private ArrayList<HashMap<String, String>> transactionList;
     private int saldo;
 
     // JSON Node names
@@ -58,6 +62,15 @@ public class KontouebersichtActivity extends AppCompatActivity {
         kontoinhaber = (TextView) findViewById(R.id.textKontoinhaber);
 
         listeTransaktionen =(ListView)findViewById(R.id.listeTransaktionen);
+        listeTransaktionen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(KontouebersichtActivity.this, TransaktionDetailActivity.class);
+                intent.putExtra("Transaktionen", transactionList);
+                intent.putExtra("Position", position);
+                startActivity(intent);
+            }
+        });
         saldo = 0;
 
         jsonUrl = getIntent().getStringExtra("jsonUrl");
@@ -67,6 +80,8 @@ public class KontouebersichtActivity extends AppCompatActivity {
 
         new GetTransactions().execute();
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,7 +106,6 @@ public class KontouebersichtActivity extends AppCompatActivity {
 
     public class GetTransactions extends AsyncTask<Void, Void, Void> {
         // Hashmap for ListView
-        ArrayList<HashMap<String, String>> transactionList;
         ProgressDialog proDialog;
 
         @Override
@@ -133,6 +147,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
                     new String[]{TAG_TRANSACTIONDATE, TAG_REFERENCE, TAG_AMOUNT},
                     new int[]{R.id.datumData,R.id.zweckData, R.id.summeData});
             listeTransaktionen.setAdapter(adapter);
+
             String sSaldo = Integer.toString(saldo);
             kontostand.setText(sSaldo);
             kontoinhaber.setText(sKontoinhaber);
@@ -187,8 +202,10 @@ public class KontouebersichtActivity extends AppCompatActivity {
                     transaction.put(TAG_AMOUNT, amount);
                     transaction.put(TAG_REFERENCE, reference);
                     transaction.put(TAG_TRANSACTIONDATE, transactionDate);
-                    transaction.put(TAG_S_NUMBER, sNumber);
-                    transaction.put(TAG_S_OWNER, sOwner);
+                    transaction.put("sNumber", sNumber);
+                    transaction.put("sOwner", sOwner);
+                    transaction.put("rNumber", rNumber);
+                    transaction.put("rOwner", rOwner);
 
                     // Hinzufügen der Transaktion zur Transaktionsliste
                     transactionList.add(transaction);

@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".KontouebersichtActivity" />
-        <activity android:name=".UeberweisungActivity"></activity>
+        <activity android:name=".UeberweisungActivity" />
+        <activity android:name=".TransaktionDetailActivity"></activity>
     </application>
 
 </manifest>
