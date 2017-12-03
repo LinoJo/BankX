@@ -18,7 +18,7 @@ export class TransactionComponent {
     this.dataService.getTransactions().subscribe(
       (data: TransactionData[]) => this.transactionList=data,
       (error: Response) => console.log("Error: " + error.statusText),
-      () => console.log("Anzahl geladener Transaktionen: "+ JSON.stringify(this.transactionList))
+      () => console.log("Anzahl geladener Transaktionen: " + this.transactionList.length)
     )
   }
 }

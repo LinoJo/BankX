@@ -1,16 +1,27 @@
-<table>
-    <tr>
-      <td>Sender</td>
-      <td>Empfänger</td>
-      <td>Verwendungszweck</td>
-      <td>Summe</td>
-      <td>Datum</td>
-    </tr>
-    <tr *ngFor="let tra of transactionList">
-      <td>{{tra.sender.owner}}</td>
-      <td>{{tra.receiver.owner}}</td>
-      <td>{{tra.reference}}</td>
-      <td>{{tra.amount}}</td>
-      <td>{{tra.transactionDate}}</td>
-    </tr>
-</table>
+<div class="container">
+  <h2>Transaktionen</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Sender</td>
+        <td>Sender-Nummer</td>
+        <td>Empfänger</td>
+        <td>Empfänger-Nummer</td>
+        <td>Verwendungszweck</td>
+        <td>Summe</td>
+        <td>Datum</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tra of transactionList">
+        <td>{{tra.sender.owner}}</td>
+        <td>{{tra.sender.number}}</td>
+        <td>{{tra.receiver.owner}}</td>
+        <td>{{tra.receiver.number}}</td>
+        <td>{{tra.reference}}</td>
+        <td>{{tra.amount}}</td>
+        <td>{{tra.transactionDate | date:'dd/MM/yyyy - hh:mm'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

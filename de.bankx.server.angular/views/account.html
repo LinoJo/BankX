@@ -1,12 +1,26 @@
-<table>
-    <tr>
-      <td>Konto-Nummer</td>
-      <td>Konto-Name</td>
-      <td>Kontostand</td>
-    </tr>
-    <tr *ngFor="let acc of accountList">
-      <td>{{acc.number}}</td>
-      <td>{{acc.owner}}</td>
-      <td>{{acc.value}}</td>
-    </tr>
+<div class="container">
+  <form novalidate class="css-form">
+    <label>Konto-Inhaber: <input type="text" ng-model="account.owner" required /></label><br />
+    <label>Konto-Nummer: <input type="number" min="0001" max="9999" step="1" ng-model="account.number" required /></label><br />
+    <label>Startguthaben: <input type="number" min="0" step="0.01" ng-model="account.startvalue" required /></label><br />
+    <input type="submit" ng-click="insert(user)" value="Hinzufügen" />
+  </form>
+
+  <h2>Konten</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Konto-Nummer</td>
+        <td>Konto-Name</td>
+        <td>Kontostand</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let acc of accountList">
+        <td>{{acc.number}}</td>
+        <td>{{acc.owner}}</td>
+        <td>{{acc.value}}</td>
+      </tr>
+    </tbody>
 </table>
+</div>

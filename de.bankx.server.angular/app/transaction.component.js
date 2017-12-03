@@ -19,7 +19,7 @@ var TransactionComponent = (function () {
     }
     TransactionComponent.prototype.getData = function () {
         var _this = this;
-        this.dataService.getTransactions().subscribe(function (data) { return _this.transactionList = data; }, function (error) { return console.log("Error: " + error.statusText); }, function () { return console.log("Anzahl geladener Transaktionen: " + JSON.stringify(_this.transactionList)); });
+        this.dataService.getTransactions().subscribe(function (data) { return _this.transactionList = data; }, function (error) { return console.log("Error: " + error.statusText); }, function () { return console.log("Anzahl geladener Transaktionen: " + _this.transactionList.length); });
     };
     TransactionComponent = __decorate([
         core_1.Component({

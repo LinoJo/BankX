@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6893b824-11cf-4302-abce-80c8044d066a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.js" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.js" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction-data.model.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction-data.model.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/index.html" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction.component.js" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction.component.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction.component.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction.component.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/views/account.html" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/views/account.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/views/transaction.html" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/views/transaction.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -113,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+              <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -529,9 +523,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -605,7 +600,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -761,15 +755,17 @@
       <workItem from="1511349864785" duration="39434000" />
       <workItem from="1512039562803" duration="3524000" />
       <workItem from="1512226261303" duration="3197000" />
-      <workItem from="1512239029039" duration="1498000" />
+      <workItem from="1512239029039" duration="1855000" />
+      <workItem from="1512306555219" duration="615000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75476000" />
+    <option name="totallyTimeSpent" value="76448000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -781,7 +777,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42497376" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.567681" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.567681" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1338,7 +1334,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
           <folding />
         </state>
       </provider>
