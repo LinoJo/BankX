@@ -1,0 +1,34 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/datumData"
+            android:layout_column="0"
+            android:layout_weight="0.2"
+            android:padding="10dp"
+            android:text="Datum"
+            android:textStyle="bold"
+            android:background="#c0c0c0"/>
+        <TextView
+            android:id="@+id/zweckData"
+            android:layout_column="1"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Zweck"
+            android:textStyle="bold"
+            android:background="#c0c0c0"/>
+        <TextView
+            android:id="@+id/summeData"
+            android:layout_column="2"
+            android:layout_weight="0.1"
+            android:padding="10dp"
+            android:text="Summe"
+            android:textStyle="bold"
+            android:background="#c0c0c0"/>
+    </TableRow>
+
+</TableLayout>

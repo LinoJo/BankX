@@ -33,10 +33,9 @@ public class MainActivity extends AppCompatActivity {
     public void loginServer(){
         String sKontonummer = kontonummer.getText().toString();
         String sIpAdresse = ipAdresse.getText().toString();
-        String jsonUrl = "http://"+sIpAdresse+":9998/"+sKontonummer;
+        String jsonUrl = "http://"+sIpAdresse+":9998/rest/account/"+sKontonummer;
         Intent kontouebersicht = new Intent(getApplicationContext(), KontouebersichtActivity.class);
         kontouebersicht.putExtra("jsonUrl", jsonUrl);
-        kontouebersicht.putExtra("kontonummer", sKontonummer);
         startActivity(kontouebersicht);
         super.finish();
     }
