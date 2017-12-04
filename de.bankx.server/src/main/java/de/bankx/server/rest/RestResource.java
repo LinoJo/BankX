@@ -22,6 +22,7 @@ import java.util.List;
 public class RestResource {
 
 	static Logger log = Logger.getLogger(RestResource.class);
+	TransactionLock trlck = new TransactionLock();
 
 	@GET
 	@Path("/admin/getAllAccounts")
@@ -89,7 +90,21 @@ public class RestResource {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response execTransact(@FormParam("senderNumber") String senderNumber, @FormParam("receiverNumber") String receiverNumber, @FormParam("amount") String amount, @FormParam("reference") String reference){
 		try{
-			log.info(senderNumber + ", " + receiverNumber + ", " +  amount + ", " + reference);
+			if (!trlck.getLocked()){
+				trlck.setLocked(true);
+				log.info(senderNumber + ", " + receiverNumber + ", " +  amount + ", " + reference);
+				trlck.setLocked(false);
+			}
+			else{
+				while (trlck.getLocked()){
+					wait(1000);
+					log.debug("execTransact - Transaction not executed because locked!");
+				}
+				trlck.setLocked(true);
+				log.info(senderNumber + ", " + receiverNumber + ", " +  amount + ", " + reference);
+				trlck.setLocked(false);
+			}
+
 		} catch (Exception ex){
 			log.error("Exception in @Path('transaction'): " + ex.getMessage());
 			return Response.serverError().build();
