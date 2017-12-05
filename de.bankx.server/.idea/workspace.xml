@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6893b824-11cf-4302-abce-80c8044d066a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.js" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/views/account.html" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/views/account.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountWrapper.java" afterPath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountWrapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java" afterPath="$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -43,39 +37,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TransactionLock.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/TransactionLock.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="31" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RestResource.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RestResource.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="134" column="99" lean-forward="true" selection-start-line="134" selection-start-column="99" selection-end-line="134" selection-end-column="99" />
+            <state relative-caret-position="401">
+              <caret line="146" column="13" lean-forward="false" selection-start-line="146" selection-start-column="13" selection-end-line="146" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountWrapper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Transaction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/Transaction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+              <folding>
+                <element signature="method#getListOfTransactions#0;class#Transaction#0" expanded="false" />
+                <marker date="1512495904422" expanded="true" signature="815:884" ph="SELECT * FRO... Transactions" />
+                <marker date="1512495904422" expanded="true" signature="2494:2572" ph="INSERT INTO Transactions... " />
+                <marker date="1512495904422" expanded="true" signature="3433:3460" ph="SELECT ID FR... TRANSACTIONS" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountWrapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-194">
-              <caret line="32" column="43" lean-forward="true" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+            <state relative-caret-position="833">
+              <caret line="139" column="23" lean-forward="false" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
               <folding>
                 <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
-                <element signature="method#addToDb#0;class#AccountWrapper#0" expanded="false" />
-                <marker date="1512477011022" expanded="true" signature="642:716" ph="SELECT * FRO... Accounts" />
-                <marker date="1512477011022" expanded="true" signature="2363:2427" ph="SELECT AMOUN... TRANSACTIONS" />
-                <marker date="1512477011022" expanded="true" signature="2701:2763" ph="SELECT AMOUN... TRANSACTIONS" />
-                <marker date="1512477011022" expanded="true" signature="3333:3422" ph="INSERT INTO Accounts... " />
-                <marker date="1512477011022" expanded="true" signature="4263:4290" ph="SELECT NUMBE... ACCOUNTS" />
+                <element signature="e#5464#5480#0" expanded="true" />
+                <marker date="1512496163542" expanded="true" signature="642:716" ph="SELECT * FRO... Accounts" />
+                <marker date="1512496163542" expanded="true" signature="2363:2427" ph="SELECT AMOUN... TRANSACTIONS" />
+                <marker date="1512496163542" expanded="true" signature="2701:2763" ph="SELECT AMOUN... TRANSACTIONS" />
+                <marker date="1512496163542" expanded="true" signature="3379:3468" ph="INSERT INTO Accounts... " />
+                <marker date="1512496163542" expanded="true" signature="4607:4676" ph="SELECT NUMBE... ACCOUNTS" />
+                <marker date="1512496163542" expanded="true" signature="5671:5698" ph="SELECT NUMBE... ACCOUNTS" />
               </folding>
             </state>
           </provider>
@@ -94,20 +94,20 @@
       <file leaf-file-name="JettyServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/main/JettyServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="656">
-              <caret line="141" column="132" lean-forward="false" selection-start-line="141" selection-start-column="132" selection-end-line="141" selection-end-column="132" />
+            <state relative-caret-position="384">
+              <caret line="130" column="141" lean-forward="true" selection-start-line="130" selection-start-column="36" selection-end-line="130" selection-end-column="141" />
               <folding>
-                <marker date="1511986532792" expanded="true" signature="3325:3601" ph="CREATE TABLE... Accounts" />
-                <marker date="1511986532792" expanded="true" signature="3677:3737" ph="INSERT INTO Accounts... " />
-                <marker date="1511986532792" expanded="true" signature="3837:3907" ph="INSERT INTO Accounts... " />
-                <marker date="1511986532792" expanded="true" signature="4017:4089" ph="INSERT INTO Accounts... " />
-                <marker date="1511986532792" expanded="true" signature="4287:4835" ph="CREATE TABLE... Transactions" />
-                <marker date="1511986532792" expanded="true" signature="4951:5056" ph="INSERT INTO Transactions... " />
-                <marker date="1511986532792" expanded="true" signature="5227:5344" ph="INSERT INTO Transactions... " />
-                <marker date="1511986532792" expanded="true" signature="5515:5622" ph="INSERT INTO Transactions... " />
-                <marker date="1511986532792" expanded="true" signature="5771:5878" ph="INSERT INTO Transactions... " />
-                <marker date="1511986532792" expanded="true" signature="6027:6132" ph="INSERT INTO Transactions... " />
-                <marker date="1511986532792" expanded="true" signature="6279:6386" ph="INSERT INTO Transactions... " />
+                <marker date="1512480300533" expanded="true" signature="3325:3601" ph="CREATE TABLE... Accounts" />
+                <marker date="1512480300533" expanded="true" signature="3677:3737" ph="INSERT INTO Accounts... " />
+                <marker date="1512480300533" expanded="true" signature="3837:3907" ph="INSERT INTO Accounts... " />
+                <marker date="1512480300533" expanded="true" signature="4017:4089" ph="INSERT INTO Accounts... " />
+                <marker date="1512480300533" expanded="true" signature="4287:4835" ph="CREATE TABLE... Transactions" />
+                <marker date="1512480300533" expanded="true" signature="4951:5056" ph="INSERT INTO Transactions... " />
+                <marker date="1512480300533" expanded="true" signature="5227:5344" ph="INSERT INTO Transactions... " />
+                <marker date="1512480300533" expanded="true" signature="5515:5622" ph="INSERT INTO Transactions... " />
+                <marker date="1512480300533" expanded="true" signature="5771:5878" ph="INSERT INTO Transactions... " />
+                <marker date="1512480300533" expanded="true" signature="6027:6132" ph="INSERT INTO Transactions... " />
+                <marker date="1512480300533" expanded="true" signature="6279:6386" ph="INSERT INTO Transactions... " />
               </folding>
             </state>
           </provider>
@@ -184,9 +184,18 @@
                 <option name="name" value="buildDependents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="cleanEclipseClasspath" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Displays the sub-projects of root project 'de.bankx.server'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="projects" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Cleans all Eclipse files." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="cleanEclipse" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles main classes." />
@@ -204,6 +213,10 @@
                 <option name="name" value="buildEnvironment" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="cleanEclipseProject" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Generates Gradle wrapper files." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="wrapper" />
@@ -217,6 +230,11 @@
                 <option name="description" value="Generates Javadoc API documentation for the main source code." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="javadoc" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates the Eclipse classpath file." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="eclipseClasspath" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles a jar archive containing the main classes." />
@@ -237,6 +255,10 @@
                 <option name="description" value="Displays the tasks runnable from root project 'de.bankx.server'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="tasks" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="cleanEclipseJdt" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Initializes a new Gradle build." />
@@ -284,6 +306,11 @@
                 <option name="name" value="dependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Generates all Eclipse files." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="eclipse" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Processes test resources." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="processTestResources" />
@@ -294,6 +321,11 @@
                 <option name="name" value="help" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Generates the Eclipse JDT settings file." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="eclipseJdt" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Assembles and tests this project." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="build" />
@@ -302,6 +334,11 @@
                 <option name="description" value="Assembles and tests this project and all projects it depends on." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="buildNeeded" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates the Eclipse project file." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="eclipseProject" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the properties of root project 'de.bankx.server'." />
@@ -315,8 +352,9 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4533929244700" />
+        <entry key="$PROJECT_DIR$" value="4535065283423" />
         <entry key="$PROJECT_DIR$/build.gradle" value="3185158893" />
+        <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="1061797022" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -428,12 +466,12 @@
         <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/services/LogService.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/services/DatabaseService.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/core/Account.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/main/JettyServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/core/TransactionListWrapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountListWrapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/core/Transaction.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/rest/JAXBContextResolver.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/core/TransactionLock.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/main/JettyServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/core/Transaction.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountWrapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java" />
       </list>
@@ -446,10 +484,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="216" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1934" />
-    <option name="height" value="1058" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -495,42 +533,16 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="de.bankx.server" type="b2602c69:ProjectViewProjectNode" />
               <item name="de.bankx.server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="de.bankx.server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="de.bankx.server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="de.bankx.server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="de.bankx.server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-              <item name="de" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="de.bankx.server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="de.bankx.server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-              <item name="de" type="462c0819:PsiDirectoryNode" />
-              <item name="bankx" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="de.bankx.server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="de.bankx.server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-              <item name="de" type="462c0819:PsiDirectoryNode" />
-              <item name="bankx" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="de.bankx.server" type="b2602c69:ProjectViewProjectNode" />
@@ -542,6 +554,48 @@
               <item name="de.bankx.server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="de.bankx.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="de.bankx.server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="de.bankx.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="de.bankx.server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="de.bankx.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="de.bankx.server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="de.bankx.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="de.bankx.server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="de.bankx.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="de.bankx.server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -705,12 +759,13 @@
       <workItem from="1512239029039" duration="1855000" />
       <workItem from="1512306555219" duration="615000" />
       <workItem from="1512391813792" duration="5212000" />
-      <workItem from="1512476122548" duration="3204000" />
+      <workItem from="1512476122548" duration="6099000" />
+      <workItem from="1512494923017" duration="4416000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84864000" />
+    <option name="totallyTimeSpent" value="93498000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -730,15 +785,14 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26197916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39870968" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3976915" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -746,6 +800,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -756,7 +811,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="40" />
+      <option name="time" value="43" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -831,12 +886,13 @@
           <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="24" />
           <folding>
             <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
-            <element signature="method#addToDb#0;class#AccountWrapper#0" expanded="false" />
-            <marker date="1512477011022" expanded="true" signature="642:716" ph="SELECT * FRO... Accounts" />
-            <marker date="1512477011022" expanded="true" signature="2363:2427" ph="SELECT AMOUN... TRANSACTIONS" />
-            <marker date="1512477011022" expanded="true" signature="2701:2763" ph="SELECT AMOUN... TRANSACTIONS" />
-            <marker date="1512477011022" expanded="true" signature="3333:3422" ph="INSERT INTO Accounts... " />
-            <marker date="1512477011022" expanded="true" signature="4263:4290" ph="SELECT NUMBE... ACCOUNTS" />
+            <element signature="e#5464#5480#0" expanded="true" />
+            <marker date="1512496163542" expanded="true" signature="642:716" ph="SELECT * FRO... Accounts" />
+            <marker date="1512496163542" expanded="true" signature="2363:2427" ph="SELECT AMOUN... TRANSACTIONS" />
+            <marker date="1512496163542" expanded="true" signature="2701:2763" ph="SELECT AMOUN... TRANSACTIONS" />
+            <marker date="1512496163542" expanded="true" signature="3379:3468" ph="INSERT INTO Accounts... " />
+            <marker date="1512496163542" expanded="true" signature="4607:4676" ph="SELECT NUMBE... ACCOUNTS" />
+            <marker date="1512496163542" expanded="true" signature="5671:5698" ph="SELECT NUMBE... ACCOUNTS" />
           </folding>
         </state>
       </provider>
@@ -845,7 +901,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="38" column="75" lean-forward="false" selection-start-line="38" selection-start-column="75" selection-end-line="38" selection-end-column="75" />
-          <folding />
+          <folding>
+            <element signature="method#getListOfTransactions#0;class#Transaction#0" expanded="false" />
+            <marker date="1512495904422" expanded="true" signature="815:884" ph="SELECT * FRO... Transactions" />
+            <marker date="1512495904422" expanded="true" signature="2494:2572" ph="INSERT INTO Transactions... " />
+            <marker date="1512495904422" expanded="true" signature="3433:3460" ph="SELECT ID FR... TRANSACTIONS" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -877,7 +938,17 @@
         <state relative-caret-position="17">
           <caret line="80" column="26" lean-forward="false" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1512480300533" expanded="true" signature="3325:3601" ph="CREATE TABLE... Accounts" />
+            <marker date="1512480300533" expanded="true" signature="3677:3737" ph="INSERT INTO Accounts... " />
+            <marker date="1512480300533" expanded="true" signature="3837:3907" ph="INSERT INTO Accounts... " />
+            <marker date="1512480300533" expanded="true" signature="4017:4089" ph="INSERT INTO Accounts... " />
+            <marker date="1512480300533" expanded="true" signature="4287:4835" ph="CREATE TABLE... Transactions" />
+            <marker date="1512480300533" expanded="true" signature="4951:5056" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="5227:5344" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="5515:5622" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="5771:5878" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="6027:6132" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="6279:6386" ph="INSERT INTO Transactions... " />
           </folding>
         </state>
       </provider>
@@ -894,7 +965,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="method#getListOfTransactions#0;class#Transaction#0" expanded="false" />
+            <marker date="1512495904422" expanded="true" signature="815:884" ph="SELECT * FRO... Transactions" />
+            <marker date="1512495904422" expanded="true" signature="2494:2572" ph="INSERT INTO Transactions... " />
+            <marker date="1512495904422" expanded="true" signature="3433:3460" ph="SELECT ID FR... TRANSACTIONS" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -903,7 +979,17 @@
         <state relative-caret-position="34">
           <caret line="13" column="61" lean-forward="false" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1512480300533" expanded="true" signature="3325:3601" ph="CREATE TABLE... Accounts" />
+            <marker date="1512480300533" expanded="true" signature="3677:3737" ph="INSERT INTO Accounts... " />
+            <marker date="1512480300533" expanded="true" signature="3837:3907" ph="INSERT INTO Accounts... " />
+            <marker date="1512480300533" expanded="true" signature="4017:4089" ph="INSERT INTO Accounts... " />
+            <marker date="1512480300533" expanded="true" signature="4287:4835" ph="CREATE TABLE... Transactions" />
+            <marker date="1512480300533" expanded="true" signature="4951:5056" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="5227:5344" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="5515:5622" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="5771:5878" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="6027:6132" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="6279:6386" ph="INSERT INTO Transactions... " />
           </folding>
         </state>
       </provider>
@@ -914,12 +1000,13 @@
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
-            <element signature="method#addToDb#0;class#AccountWrapper#0" expanded="false" />
-            <marker date="1512477011022" expanded="true" signature="642:716" ph="SELECT * FRO... Accounts" />
-            <marker date="1512477011022" expanded="true" signature="2363:2427" ph="SELECT AMOUN... TRANSACTIONS" />
-            <marker date="1512477011022" expanded="true" signature="2701:2763" ph="SELECT AMOUN... TRANSACTIONS" />
-            <marker date="1512477011022" expanded="true" signature="3333:3422" ph="INSERT INTO Accounts... " />
-            <marker date="1512477011022" expanded="true" signature="4263:4290" ph="SELECT NUMBE... ACCOUNTS" />
+            <element signature="e#5464#5480#0" expanded="true" />
+            <marker date="1512496163542" expanded="true" signature="642:716" ph="SELECT * FRO... Accounts" />
+            <marker date="1512496163542" expanded="true" signature="2363:2427" ph="SELECT AMOUN... TRANSACTIONS" />
+            <marker date="1512496163542" expanded="true" signature="2701:2763" ph="SELECT AMOUN... TRANSACTIONS" />
+            <marker date="1512496163542" expanded="true" signature="3379:3468" ph="INSERT INTO Accounts... " />
+            <marker date="1512496163542" expanded="true" signature="4607:4676" ph="SELECT NUMBE... ACCOUNTS" />
+            <marker date="1512496163542" expanded="true" signature="5671:5698" ph="SELECT NUMBE... ACCOUNTS" />
           </folding>
         </state>
       </provider>
@@ -952,7 +1039,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="method#getListOfTransactions#0;class#Transaction#0" expanded="false" />
+            <marker date="1512495904422" expanded="true" signature="815:884" ph="SELECT * FRO... Transactions" />
+            <marker date="1512495904422" expanded="true" signature="2494:2572" ph="INSERT INTO Transactions... " />
+            <marker date="1512495904422" expanded="true" signature="3433:3460" ph="SELECT ID FR... TRANSACTIONS" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -962,12 +1054,13 @@
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
-            <element signature="method#addToDb#0;class#AccountWrapper#0" expanded="false" />
-            <marker date="1512477011022" expanded="true" signature="642:716" ph="SELECT * FRO... Accounts" />
-            <marker date="1512477011022" expanded="true" signature="2363:2427" ph="SELECT AMOUN... TRANSACTIONS" />
-            <marker date="1512477011022" expanded="true" signature="2701:2763" ph="SELECT AMOUN... TRANSACTIONS" />
-            <marker date="1512477011022" expanded="true" signature="3333:3422" ph="INSERT INTO Accounts... " />
-            <marker date="1512477011022" expanded="true" signature="4263:4290" ph="SELECT NUMBE... ACCOUNTS" />
+            <element signature="e#5464#5480#0" expanded="true" />
+            <marker date="1512496163542" expanded="true" signature="642:716" ph="SELECT * FRO... Accounts" />
+            <marker date="1512496163542" expanded="true" signature="2363:2427" ph="SELECT AMOUN... TRANSACTIONS" />
+            <marker date="1512496163542" expanded="true" signature="2701:2763" ph="SELECT AMOUN... TRANSACTIONS" />
+            <marker date="1512496163542" expanded="true" signature="3379:3468" ph="INSERT INTO Accounts... " />
+            <marker date="1512496163542" expanded="true" signature="4607:4676" ph="SELECT NUMBE... ACCOUNTS" />
+            <marker date="1512496163542" expanded="true" signature="5671:5698" ph="SELECT NUMBE... ACCOUNTS" />
           </folding>
         </state>
       </provider>
@@ -1057,11 +1150,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#486#487#0" expanded="false" />
-            <element signature="e#520#521#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1080,34 +1168,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="111" column="50" lean-forward="false" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/main/JettyServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="141" column="132" lean-forward="false" selection-start-line="141" selection-start-column="132" selection-end-line="141" selection-end-column="132" />
-          <folding>
-            <marker date="1511986532792" expanded="true" signature="3325:3601" ph="CREATE TABLE... Accounts" />
-            <marker date="1511986532792" expanded="true" signature="3677:3737" ph="INSERT INTO Accounts... " />
-            <marker date="1511986532792" expanded="true" signature="3837:3907" ph="INSERT INTO Accounts... " />
-            <marker date="1511986532792" expanded="true" signature="4017:4089" ph="INSERT INTO Accounts... " />
-            <marker date="1511986532792" expanded="true" signature="4287:4835" ph="CREATE TABLE... Transactions" />
-            <marker date="1511986532792" expanded="true" signature="4951:5056" ph="INSERT INTO Transactions... " />
-            <marker date="1511986532792" expanded="true" signature="5227:5344" ph="INSERT INTO Transactions... " />
-            <marker date="1511986532792" expanded="true" signature="5515:5622" ph="INSERT INTO Transactions... " />
-            <marker date="1511986532792" expanded="true" signature="5771:5878" ph="INSERT INTO Transactions... " />
-            <marker date="1511986532792" expanded="true" signature="6027:6132" ph="INSERT INTO Transactions... " />
-            <marker date="1511986532792" expanded="true" signature="6279:6386" ph="INSERT INTO Transactions... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/Account.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -1119,8 +1179,27 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/TransactionLock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="31" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-          <folding />
+          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/main/JettyServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="130" column="141" lean-forward="true" selection-start-line="130" selection-start-column="36" selection-end-line="130" selection-end-column="141" />
+          <folding>
+            <marker date="1512480300533" expanded="true" signature="3325:3601" ph="CREATE TABLE... Accounts" />
+            <marker date="1512480300533" expanded="true" signature="3677:3737" ph="INSERT INTO Accounts... " />
+            <marker date="1512480300533" expanded="true" signature="3837:3907" ph="INSERT INTO Accounts... " />
+            <marker date="1512480300533" expanded="true" signature="4017:4089" ph="INSERT INTO Accounts... " />
+            <marker date="1512480300533" expanded="true" signature="4287:4835" ph="CREATE TABLE... Transactions" />
+            <marker date="1512480300533" expanded="true" signature="4951:5056" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="5227:5344" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="5515:5622" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="5771:5878" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="6027:6132" ph="INSERT INTO Transactions... " />
+            <marker date="1512480300533" expanded="true" signature="6279:6386" ph="INSERT INTO Transactions... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1132,27 +1211,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="134" column="99" lean-forward="true" selection-start-line="134" selection-start-column="99" selection-end-line="134" selection-end-column="99" />
-          <folding />
+        <state relative-caret-position="833">
+          <caret line="139" column="23" lean-forward="false" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+          <folding>
+            <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
+            <element signature="e#5464#5480#0" expanded="true" />
+            <marker date="1512496163542" expanded="true" signature="642:716" ph="SELECT * FRO... Accounts" />
+            <marker date="1512496163542" expanded="true" signature="2363:2427" ph="SELECT AMOUN... TRANSACTIONS" />
+            <marker date="1512496163542" expanded="true" signature="2701:2763" ph="SELECT AMOUN... TRANSACTIONS" />
+            <marker date="1512496163542" expanded="true" signature="3379:3468" ph="INSERT INTO Accounts... " />
+            <marker date="1512496163542" expanded="true" signature="4607:4676" ph="SELECT NUMBE... ACCOUNTS" />
+            <marker date="1512496163542" expanded="true" signature="5671:5698" ph="SELECT NUMBE... ACCOUNTS" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountWrapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/Transaction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-194">
-          <caret line="32" column="43" lean-forward="true" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+        <state relative-caret-position="306">
+          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding>
-            <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
-            <element signature="method#addToDb#0;class#AccountWrapper#0" expanded="false" />
-            <marker date="1512477011022" expanded="true" signature="642:716" ph="SELECT * FRO... Accounts" />
-            <marker date="1512477011022" expanded="true" signature="2363:2427" ph="SELECT AMOUN... TRANSACTIONS" />
-            <marker date="1512477011022" expanded="true" signature="2701:2763" ph="SELECT AMOUN... TRANSACTIONS" />
-            <marker date="1512477011022" expanded="true" signature="3333:3422" ph="INSERT INTO Accounts... " />
-            <marker date="1512477011022" expanded="true" signature="4263:4290" ph="SELECT NUMBE... ACCOUNTS" />
+            <element signature="method#getListOfTransactions#0;class#Transaction#0" expanded="false" />
+            <marker date="1512495904422" expanded="true" signature="815:884" ph="SELECT * FRO... Transactions" />
+            <marker date="1512495904422" expanded="true" signature="2494:2572" ph="INSERT INTO Transactions... " />
+            <marker date="1512495904422" expanded="true" signature="3433:3460" ph="SELECT ID FR... TRANSACTIONS" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="146" column="13" lean-forward="false" selection-start-line="146" selection-start-column="13" selection-end-line="146" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
