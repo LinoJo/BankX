@@ -97,7 +97,9 @@ public class KontouebersichtActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 return true;
             case R.id.menuUeberweisung:
-                startActivity(new Intent(getApplicationContext(), UeberweisungActivity.class));
+                Intent ueberweisung = new Intent(getApplicationContext(), UeberweisungActivity.class);
+                ueberweisung.putExtra("Kontonummer", sKontonummer);
+                startActivity(ueberweisung);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
