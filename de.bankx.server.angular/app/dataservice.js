@@ -19,10 +19,11 @@ var DataService = (function () {
     DataService.prototype.getAccounts = function () {
         return this.http.get('http://localhost:9998/rest/admin/getAllAccounts').map(function (response) { return response.json().items; });
     };
-    DataService.prototype.postAccount = function (data) {
+    DataService.prototype.postAccount = function (data, start) {
         var headers = new http_1.Headers();
+        console.log("posting...");
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        this.http.post('http://localhost:9998/rest/admin/addAccount', "info=$(data.info)", { headers: headers });
+        return this.http.post('http://localhost:9998/rest/admin/addAccount', "post_owner=" + data.owner + "&post_amount=" + start, { headers: headers }).map(function (response) { return response; });
     };
     DataService.prototype.getTransactions = function () {
         return this.http.get('http://localhost:9998/rest/admin/getAllTransactions').map(function (response) { return response.json().items; });

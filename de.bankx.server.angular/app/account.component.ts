@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {DataService} from "./dataservice";
+import {AccountData} from "./account-data.model"
 
 @Component({
     templateUrl: 'views/account.html',
@@ -20,5 +21,8 @@ export class AccountComponent {
       (error: Response) => console.log("Error: " + error.statusText),
       () => console.log("Anzahl geladener Accounts: "+ this.accountList.length)
     )
+  }
+  onSelect(acc: AccountData){
+    console.log(JSON.stringify(acc));
   }
 }

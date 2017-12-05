@@ -21,6 +21,9 @@ var AccountComponent = (function () {
         var _this = this;
         this.dataService.getAccounts().subscribe(function (data) { return _this.accountList = data; }, function (error) { return console.log("Error: " + error.statusText); }, function () { return console.log("Anzahl geladener Accounts: " + _this.accountList.length); });
     };
+    AccountComponent.prototype.onSelect = function (acc) {
+        console.log(JSON.stringify(acc));
+    };
     AccountComponent = __decorate([
         core_1.Component({
             templateUrl: 'views/account.html',

@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Http, Headers, Response} from "@angular/http";
 import "rxjs/add/operator/map";
+import {AccountData} from "./account-data.model";
 
 @Injectable()
 export class DataService {
@@ -12,11 +13,13 @@ export class DataService {
     )
   }
 
-  postAccount(data: AccountData) {
+  postAccount(data: AccountData, start: number) {
+
       let headers = new Headers();
+      console.log("posting...");
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      this.http.post('http://localhost:9998/rest/admin/addAccount', `info=$(data.info)`,
-      {headers : headers});
+      return this.http.post('http://localhost:9998/rest/admin/addAccount', `post_owner=${data.owner}&post_amount=${start}`,
+      {headers : headers}).map(response => response);
   }
 
   getTransactions(){

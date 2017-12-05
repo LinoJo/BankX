@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6893b824-11cf-4302-abce-80c8044d066a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/TransactionLock.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.js" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account-data.model.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.js" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/account.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.js" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/app.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/index.html" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/views/account.html" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/views/account.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.test/TestSettings.properties" afterPath="$PROJECT_DIR$/../de.bankx.server.test/TestSettings.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.test/bin/.gitignore" afterPath="$PROJECT_DIR$/../de.bankx.server.test/bin/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java" afterPath="$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java" />
     </list>
@@ -58,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/Account.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="107">
-              <caret line="94" column="17" lean-forward="true" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="17" />
+              <caret line="94" column="17" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -67,9 +82,27 @@
       <file leaf-file-name="RestResource.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="104" column="39" lean-forward="false" selection-start-line="104" selection-start-column="39" selection-end-line="104" selection-end-column="39" />
+            <state relative-caret-position="249">
+              <caret line="124" column="9" lean-forward="true" selection-start-line="124" selection-start-column="9" selection-end-line="124" selection-end-column="9" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountWrapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountWrapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding>
+                <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
+                <element signature="method#addToDb#0;class#AccountWrapper#0" expanded="false" />
+                <marker date="1512391690735" expanded="true" signature="668:742" ph="SELECT * FRO... Accounts" />
+                <marker date="1512391690735" expanded="true" signature="2566:2630" ph="SELECT AMOUN... TRANSACTIONS" />
+                <marker date="1512391690735" expanded="true" signature="2904:2966" ph="SELECT AMOUN... TRANSACTIONS" />
+                <marker date="1512391690735" expanded="true" signature="3536:3625" ph="INSERT INTO Accounts... " />
+                <marker date="1512391690735" expanded="true" signature="4466:4493" ph="SELECT NUMBE... ACCOUNTS" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -690,12 +723,12 @@
       <workItem from="1512226261303" duration="3197000" />
       <workItem from="1512239029039" duration="1855000" />
       <workItem from="1512306555219" duration="615000" />
-      <workItem from="1512391813792" duration="1268000" />
+      <workItem from="1512391813792" duration="5212000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77716000" />
+    <option name="totallyTimeSpent" value="81660000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
@@ -711,7 +744,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42497376" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18580645" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -723,7 +756,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39979014" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39870968" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -741,7 +774,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="37" />
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -815,10 +848,10 @@
         <state relative-caret-position="493">
           <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
             <element signature="method#addToDb#0;class#AccountWrapper#0" expanded="false" />
-            <element signature="e#4259#4275#0" expanded="true" />
+            <element signature="e#4259#4275#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -895,10 +928,10 @@
         <state relative-caret-position="153">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
             <element signature="method#addToDb#0;class#AccountWrapper#0" expanded="false" />
-            <element signature="e#4259#4275#0" expanded="true" />
+            <element signature="e#4259#4275#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -940,10 +973,10 @@
         <state relative-caret-position="153">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
             <element signature="method#addToDb#0;class#AccountWrapper#0" expanded="false" />
-            <element signature="e#4259#4275#0" expanded="true" />
+            <element signature="e#4259#4275#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1044,7 +1077,7 @@
         <state relative-caret-position="204">
           <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="e#486#487#0" expanded="false" />
             <element signature="e#520#521#0" expanded="false" />
           </folding>
@@ -1082,19 +1115,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="144" column="71" lean-forward="false" selection-start-line="144" selection-start-column="71" selection-end-line="144" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
-            <element signature="method#addToDb#0;class#AccountWrapper#0" expanded="false" />
-            <element signature="e#4259#4275#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/TransactionLock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1111,15 +1131,31 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/Account.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
-          <caret line="94" column="17" lean-forward="true" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="17" />
+          <caret line="94" column="17" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/core/AccountWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="method#getActualValue#0;class#AccountWrapper#0" expanded="false" />
+            <element signature="method#addToDb#0;class#AccountWrapper#0" expanded="false" />
+            <marker date="1512391690735" expanded="true" signature="668:742" ph="SELECT * FRO... Accounts" />
+            <marker date="1512391690735" expanded="true" signature="2566:2630" ph="SELECT AMOUN... TRANSACTIONS" />
+            <marker date="1512391690735" expanded="true" signature="2904:2966" ph="SELECT AMOUN... TRANSACTIONS" />
+            <marker date="1512391690735" expanded="true" signature="3536:3625" ph="INSERT INTO Accounts... " />
+            <marker date="1512391690735" expanded="true" signature="4466:4493" ph="SELECT NUMBE... ACCOUNTS" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="104" column="39" lean-forward="false" selection-start-line="104" selection-start-column="39" selection-end-line="104" selection-end-column="39" />
+        <state relative-caret-position="249">
+          <caret line="124" column="9" lean-forward="true" selection-start-line="124" selection-start-column="9" selection-end-line="124" selection-end-column="9" />
           <folding />
         </state>
       </provider>
