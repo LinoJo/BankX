@@ -4,10 +4,7 @@ import de.bankx.server.services.DatabaseService;
 import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -102,6 +99,30 @@ public class Transaction {
 		this.transactionDate = transactionDate;
 	}
 
+	public void addToDB(){
+		Connection con = null;
+		PreparedStatement prep = null;
+		String sql = "INSERT INTO Transactions(sender , receiver, amount, reference) values(?,?,?,?)";
+
+		try {
+			con = DatabaseService.getInstance().getConnection();
+			prep = con.prepareStatement(sql);
+
+			prep.setString(1, this.sender.getNumber());
+			prep.setString(2, this.receiver.getNumber());
+			prep.setBigDecimal(3, this.amount);
+			prep.setString(4, this.reference);
+
+			prep.executeUpdate();
+
+			log.info("transaction '" + this.sender.getNumber() + "' to '" + this.receiver.getNumber() + "' with amount '" + this.amount + "' added to db");
+
+			prep.close();
+			con.close();
+		} catch (SQLException e) {
+			log.error("SQLException Transaction.addToDb(): " + e.getMessage());
+		}
+	}
 
 	public List<Transaction> getListOfTransactions(){
 

@@ -110,6 +110,8 @@ public class AccountWrapper {
     public void addToDb(String startamount){
         Connection con = null;
         PreparedStatement prep = null;
+        Transaction tra = new Transaction();
+
         String sql = "INSERT INTO Accounts"
                 + "(owner, number) VALUES"
                 + "(?,?)";
@@ -129,10 +131,16 @@ public class AccountWrapper {
 
             prep.close();
             con.close();
+
+            tra.setReceiver(new AccountWrapper(this.number));
+            tra.setSender(new AccountWrapper("0000"));
+            tra.setAmount(new BigDecimal(startamount));
+            tra.setReference("Darlehen");
+            tra.addToDB();
+            tra = null;
         } catch (SQLException e) {
             log.error("SQLException AccountWrapper.addToDb(): " + e.getMessage());
         }
-
     }
 
     private String getNextFreeAccountNumber(){
