@@ -5,14 +5,14 @@
       <tr>
         <td>Konto-Nummer</td>
         <td>Konto-Name</td>
-        <td>Kontostand</td>
+        <td></td>
       </tr>
     </thead>
     <tbody>
       <tr (click)="onSelect(acc)" *ngFor="let acc of accountList">
         <td>{{acc.number}}</td>
         <td>{{acc.owner}}</td>
-        <td>{{acc.value}}</td>
+        <td></td>
       </tr>
     </tbody>
 </table>

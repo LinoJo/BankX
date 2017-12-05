@@ -85,6 +85,37 @@ public class RestResource {
 		}
 	}
 
+	@GET
+	@Path("/account/{number}/value")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response accountValue(@PathParam("number") String number) {
+
+		try{
+			// Eingabeüberprüfung
+			if (!number.matches("[0-9]+") || (number.length() != 4)){
+				log.info("REST-API Call: 'localhost:9998/rest/account/" + number + "' - 400 - FEHLERHAFTE EINGABE!");
+				return Response.status(Response.Status.BAD_REQUEST).entity("account '" + number + "' invalid").type(MediaType.APPLICATION_JSON).build();
+			}
+
+			// Objekt Account erstellen und Daten aus der DB zum Objekt laden
+			AccountWrapper acc = new AccountWrapper(number);
+			String value = acc.getActualValue(number);
+
+			// Objekt nicht in DB vorhanden
+			if (acc.getId() == 0){
+				log.info("REST-API Call: 'localhost:9998/rest/account/value" + number + "' - 404 - ACCOUNT NICHT GEFUNDEN!");
+				return Response.status(Response.Status.NOT_FOUND).entity("account '" + number + "' not found").type(MediaType.APPLICATION_JSON).build();
+			}
+
+			log.info("REST-API Call: 'localhost:9998/rest/account/" + number + "/value'");
+			return Response.ok(value).build();
+
+		} catch (Exception ex){
+			log.error("Exception in @Path('/account/{number}/value'): " + ex.getMessage());
+			return Response.serverError().build();
+		}
+	}
+
 	@POST
 	@Path("/transaction")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)

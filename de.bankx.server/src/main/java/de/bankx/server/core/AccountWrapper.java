@@ -13,7 +13,6 @@ public class AccountWrapper {
     private int id;
     private String owner;
     private String number;
-    private String value;
 
     static Logger log = Logger.getLogger(AccountWrapper.class);
 
@@ -34,7 +33,6 @@ public class AccountWrapper {
                 this.id = res.getInt("id");
                 this.number = res.getString( "number");
                 this.owner = res.getString("owner").replaceAll("\\s+$", "");
-                this.value = this.getActualValue(this.number);
                 log.debug("Objekt erzeugt: AccountWrapper(number: " + number + ")");
                 res.close();
             }
@@ -77,12 +75,7 @@ public class AccountWrapper {
         this.id = id;
     }
 
-    public String getValue() { return value; }
-
-    public void setValue(String value) { this.value = value; }
-
-
-    private String getActualValue(String number){
+    public String getActualValue(String number){
         try{
             Float gesamount = new Float(0);
             Float curamount = new Float(0);
