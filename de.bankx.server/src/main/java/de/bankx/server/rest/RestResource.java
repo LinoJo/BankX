@@ -121,19 +121,29 @@ public class RestResource {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response execTransact(@FormParam("senderNumber") String senderNumber, @FormParam("receiverNumber") String receiverNumber, @FormParam("amount") String amount, @FormParam("reference") String reference){
 		try{
-			if (!trlck.getLocked()){
-				trlck.setLocked(true);
-				log.info(senderNumber + ", " + receiverNumber + ", " +  amount + ", " + reference);
+			while (trlck.getLocked()){
+				wait(1000);
+				log.debug("execTransact - Transaction not executed because locked!");
+			}
+			trlck.setLocked(true);
+
+			AccountWrapper acc = new AccountWrapper();
+			if (new Float(acc.getActualValue(senderNumber)) - new Float(amount) < 0){
+				log.info("Transaction not executed (not sufficient) "+ senderNumber + " an " + receiverNumber + " - " +  amount + "€ with reference '" + reference + "'");
 				trlck.setLocked(false);
+				return Response.status(Response.Status.NOT_ACCEPTABLE).entity("account value of '" + acc.getActualValue(senderNumber) + "'€ not sufficient for transaction'").type(MediaType.APPLICATION_JSON).build();
 			}
 			else{
-				while (trlck.getLocked()){
-					wait(1000);
-					log.debug("execTransact - Transaction not executed because locked!");
-				}
-				trlck.setLocked(true);
-				log.info(senderNumber + ", " + receiverNumber + ", " +  amount + ", " + reference);
+				Transaction transaction = new Transaction();
+				transaction.setSender(new AccountWrapper(senderNumber));
+				transaction.setReceiver(new AccountWrapper(receiverNumber));
+				transaction.setAmount(new BigDecimal(amount));
+				transaction.setReference(reference);
+				transaction.addToDB();
+				transaction = null;
+				log.info("Transaction executed: "+ senderNumber + " an " + receiverNumber + " - " +  amount + "€ with reference '" + reference + "'");
 				trlck.setLocked(false);
+				return Response.ok().build();
 			}
 
 		} catch (Exception ex){
@@ -141,7 +151,6 @@ public class RestResource {
 			return Response.serverError().build();
 		}
 
-		return Response.ok().build();
 	}
 
 	@POST
