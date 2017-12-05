@@ -11,6 +11,7 @@ tools:context="de.bankx.client.android.KontouebersichtActivity">
         android:layout_height="350dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:headerDividersEnabled="false"
         android:scrollbars="vertical" />
 
     <TextView
