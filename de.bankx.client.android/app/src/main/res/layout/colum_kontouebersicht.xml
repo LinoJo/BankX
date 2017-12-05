@@ -16,7 +16,7 @@
         <TextView
             android:id="@+id/zweckData"
             android:layout_column="1"
-            android:layout_weight="0.7"
+            android:layout_weight="1"
             android:padding="10dp"
             android:text="TextView"
             android:textAlignment="viewStart" />

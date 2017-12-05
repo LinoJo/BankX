@@ -1,7 +1,5 @@
 package de.bankx.client.android;
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -79,11 +77,10 @@ public class WebRequest {
                     response += line;
                 }
             } else {
-                System.out.print(reqresponseCode);
+                response = "0";
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println ("Fehler bei der Verbindung zum Server" + e.getMessage());
         }
         return response;
     }

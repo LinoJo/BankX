@@ -1,9 +1,8 @@
 group 'de.bankx.server'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'eclipse'
-apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
