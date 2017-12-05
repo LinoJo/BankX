@@ -21,7 +21,7 @@ var DataService = (function () {
     };
     DataService.prototype.postAccount = function (data, start) {
         var headers = new http_1.Headers();
-        console.log("posting...");
+        console.log("Posting AccountData");
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this.http.post('http://localhost:9998/rest/admin/addAccount', "post_owner=" + data.owner + "&post_amount=" + start, { headers: headers }).map(function (response) { return response; });
     };

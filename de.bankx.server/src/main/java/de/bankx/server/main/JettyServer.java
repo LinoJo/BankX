@@ -111,10 +111,10 @@ public class JettyServer {
 				log.info("Tabelle Accounts angelegt");
 				stmt.executeUpdate("INSERT INTO Accounts(owner , number) values('Bank' , '0000')");
 				log.info("owner 'Bank' mit number '0000' zu Accounts hinzugefügt");
-				stmt.executeUpdate("INSERT INTO Accounts(owner , number) values('Caspari, Timon' , '1000')");
-				log.info("owner 'Caspari, Timon' mit number '1000' zu Accounts hinzugefügt");
-				stmt.executeUpdate("INSERT INTO Accounts(owner , number) values('Nuessing, Dennis' , '2000')");
-				log.info("owner 'Nuessing, Dennis' mit number '2000' zu Accounts hinzugefügt");
+				stmt.executeUpdate("INSERT INTO Accounts(owner , number) values('Caspari, Timon' , '0001')");
+				log.info("owner 'Caspari, Timon' mit number '0001' zu Accounts hinzugefügt");
+				stmt.executeUpdate("INSERT INTO Accounts(owner , number) values('Nuessing, Dennis' , '0002')");
+				log.info("owner 'Nuessing, Dennis' mit number '0002' zu Accounts hinzugefügt");
 
                 // Tabelle Transaction anlegen und mit Standard-Daten befüllen
                 stmt.execute("CREATE TABLE Transactions(" +
@@ -128,18 +128,18 @@ public class JettyServer {
                         ")"
                 );
                 log.info("Tabelle Transactions angelegt");
-                stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '1000', 250.00, 'Darlehen')");
-                log.info("transaction '0000' an '1000' mit amount '250.00' und reference 'Darlehen' zu Transactions hinzugefügt");
-                stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('1000', '0000', 250.00, 'Rückzahlung Darlehen')");
-                log.info("transaction '1000' an '0000' mit amount '250.00' und reference 'Rückzahlung Darlehen' zu Transactions hinzugefügt");
-				stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '1000', 280.00, 'Darlehen 2')");
-				log.info("transaction '0000' an '1000' mit amount '280.00' und reference 'Darlehen 2' zu Transactions hinzugefügt");
-				stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '1000', 210.00, 'Darlehen 3')");
-				log.info("transaction '0000' an '1000' mit amount '280.00' und reference 'Darlehen 2' zu Transactions hinzugefügt");
-				stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '2000', 350.00, 'Darlehen')");
-				log.info("transaction '0000' an '2000' mit amount '350.00' und reference 'Darlehen' zu Transactions hinzugefügt");
-				stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '2000', 400.00, 'Darlehen 1')");
-				log.info("transaction '0000' an '2000' mit amount '400.00' und reference 'Darlehen 1' zu Transactions hinzugefügt");
+                stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '0001', 250.00, 'Darlehen')");
+                log.info("transaction '0000' an '0001' mit amount '250.00' und reference 'Darlehen' zu Transactions hinzugefügt");
+                stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0001', '0000', 250.00, 'Rückzahlung Darlehen')");
+                log.info("transaction '0001' an '0000' mit amount '250.00' und reference 'Rückzahlung Darlehen' zu Transactions hinzugefügt");
+				stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '0001', 280.00, 'Darlehen 2')");
+				log.info("transaction '0000' an '0001' mit amount '280.00' und reference 'Darlehen 2' zu Transactions hinzugefügt");
+				stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '0001', 210.00, 'Darlehen 3')");
+				log.info("transaction '0000' an '0001' mit amount '280.00' und reference 'Darlehen 2' zu Transactions hinzugefügt");
+				stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '0002', 350.00, 'Darlehen')");
+				log.info("transaction '0000' an '0002' mit amount '350.00' und reference 'Darlehen' zu Transactions hinzugefügt");
+				stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '0002', 400.00, 'Darlehen 1')");
+				log.info("transaction '0000' an '0002' mit amount '400.00' und reference 'Darlehen 1' zu Transactions hinzugefügt");
 
                 stmt.close();
 			}

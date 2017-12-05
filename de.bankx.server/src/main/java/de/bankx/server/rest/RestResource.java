@@ -149,7 +149,9 @@ public class RestResource {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response addAccount(@FormParam("post_owner") String owner, @FormParam("post_amount") String amount){
 		try{
-			log.info(owner + amount);
+			AccountWrapper acc = new AccountWrapper();
+			acc.setOwner(owner);
+			acc.addToDb(amount);
 		} catch (Exception ex){
 			log.error("Exception in @Path('/admin/addAccount'): " + ex.getMessage());
 			return Response.serverError().build();
