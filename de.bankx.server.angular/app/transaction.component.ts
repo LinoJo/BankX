@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {DataService} from "./dataservice";
+import {TransactionData} from "./transaction-data.model"
 
 @Component({
     templateUrl: 'views/transaction.html',
