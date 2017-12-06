@@ -1,6 +1,8 @@
 package de.bankx.client.android;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -69,6 +71,9 @@ public class UeberweisungActivity extends AppCompatActivity {
     public class SendTransaction extends AsyncTask<Void, Void, Void> {
         // Hashmap for ListView
         ProgressDialog proDialog;
+        AlertDialog.Builder errorMessage;
+
+        String result;
 
         @Override
         protected void onPreExecute() {
@@ -87,7 +92,7 @@ public class UeberweisungActivity extends AppCompatActivity {
 
             HashMap <String, String> jsonStr = makeJson();
 
-            webreq.makeWebServiceCall(jsonUrl,WebRequest.POSTRequest, jsonStr);
+            result = webreq.makeWebServiceCall(jsonUrl,WebRequest.POSTRequest, jsonStr);
 
             return null;
         }
@@ -95,13 +100,23 @@ public class UeberweisungActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void requestresult) {
             super.onPostExecute(requestresult);
-
             // Dismiss the progress dialog
             if (proDialog.isShowing())
                 proDialog.dismiss();
 
-            Intent intent = new Intent(getApplicationContext(), KontouebersichtActivity.class);
-            startActivity(intent);
+            if (result != null){
+                Intent intent = new Intent(getApplicationContext(), KontouebersichtActivity.class);
+                startActivity(intent);
+            } else {
+                errorMessage = new AlertDialog.Builder (UeberweisungActivity.this);
+                errorMessage.setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(getApplicationContext(), KontouebersichtActivity.class));
+                            }
+                        });
+                errorMessage.setMessage("Fehler!\n"+WebRequest.errorMessage);
+            }
         }
     }
 }

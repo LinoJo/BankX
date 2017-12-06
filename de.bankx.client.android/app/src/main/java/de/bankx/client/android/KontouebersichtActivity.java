@@ -1,6 +1,8 @@
 package de.bankx.client.android;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -109,6 +111,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
     public class GetTransactions extends AsyncTask<Void, Void, Void> {
         // Hashmap for ListView
         ProgressDialog proDialog;
+        AlertDialog.Builder errorMessage;
 
         @Override
         protected void onPreExecute() {
@@ -124,12 +127,9 @@ public class KontouebersichtActivity extends AppCompatActivity {
         protected Void doInBackground(Void... arg0) {
             // Creating service handler class instance
             WebRequest webreq = new WebRequest();
-
             // Making a request to url and getting response
             String jsonStr = webreq.makeWebServiceCall(jsonUrl, WebRequest.GETRequest);
-
             Log.d("Response: ", "> " + jsonStr);
-
             transactionList = ParseJSON(jsonStr);
 
             return null;
@@ -138,6 +138,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void requestresult) {
             super.onPostExecute(requestresult);
+
             // Dismiss the progress dialog
             if (proDialog.isShowing())
                 proDialog.dismiss();
@@ -145,15 +146,28 @@ public class KontouebersichtActivity extends AppCompatActivity {
              * Updating received data from JSON into ListView
              * */
 
-            ListAdapter adapter = new SimpleAdapter(KontouebersichtActivity.this, transactionList, R.layout.colum_kontouebersicht,
-                    new String[]{TAG_TRANSACTIONDATE, TAG_REFERENCE, TAG_AMOUNT},
-                    new int[]{R.id.datumData,R.id.zweckData, R.id.summeData});
-            listeTransaktionen.setAdapter(adapter);
+            if (transactionList != null) {
 
-            String sSaldo = Integer.toString(saldo);
-            kontostand.setText(sSaldo);
-            kontoinhaber.setText(sKontoinhaber);
-            kontonummer.setText(sKontonummer);
+                ListAdapter adapter = new SimpleAdapter(KontouebersichtActivity.this, transactionList, R.layout.colum_kontouebersicht,
+                        new String[]{TAG_TRANSACTIONDATE, TAG_REFERENCE, TAG_AMOUNT},
+                        new int[]{R.id.datumData, R.id.zweckData, R.id.summeData});
+                listeTransaktionen.setAdapter(adapter);
+
+                String sSaldo = Integer.toString(saldo);
+                kontostand.setText(sSaldo);
+                kontoinhaber.setText(sKontoinhaber);
+                kontonummer.setText(sKontonummer);
+            } else{
+                errorMessage = new AlertDialog.Builder (KontouebersichtActivity.this);
+                errorMessage.setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
+                        });
+                errorMessage.setMessage("Fehler!\n"+WebRequest.errorMessage);
+                errorMessage.show();
+            }
         }
     }
 

@@ -9,10 +9,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr (click)="onSelect(acc)" *ngFor="let acc of accountList">
+      <tr *ngFor="let acc of accountList">
         <td>{{acc.number}}</td>
         <td>{{acc.owner}}</td>
-        <td></td>
+        <td><button class="btn btn-sm btn-basic pull-right" (click)="onSelect(acc)">Bearbeiten</button></td>
       </tr>
     </tbody>
 </table>
