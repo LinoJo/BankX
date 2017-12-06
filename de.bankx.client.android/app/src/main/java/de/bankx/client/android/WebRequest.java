@@ -72,6 +72,7 @@ public class WebRequest {
                 writer.flush();
                 writer.close();
                 ostream.close();
+                response= "OK";
             }
             int reqresponseCode = conn.getResponseCode();
 
@@ -97,6 +98,7 @@ public class WebRequest {
         } catch (Exception e) {
             e.printStackTrace();
             errorMessage = "Verbindung zum Server konnte nicht hergestellt werden\n" + e;
+            return null;
         }
         return response;
     }

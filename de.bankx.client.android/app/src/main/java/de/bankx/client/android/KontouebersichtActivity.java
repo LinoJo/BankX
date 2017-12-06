@@ -162,12 +162,11 @@ public class KontouebersichtActivity extends AppCompatActivity {
                 errorMessage.setPositiveButton("Ok",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                //dismiss the dialog
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             }
                         });
                 errorMessage.setMessage("Fehler!\n"+WebRequest.errorMessage);
                 errorMessage.show();
-                setContentView(R.layout.activity_main);
             }
         }
     }
