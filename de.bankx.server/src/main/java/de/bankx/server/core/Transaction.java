@@ -131,7 +131,7 @@ public class Transaction {
 		try{
 			Connection con = DatabaseService.getInstance().getConnection();
 			Statement sta = con.createStatement();
-			ResultSet res = sta.executeQuery("SELECT ID FROM TRANSACTIONS");
+			ResultSet res = sta.executeQuery("SELECT ID FROM TRANSACTIONS ORDER BY ID DESC");
 			while(res.next()){
 				Transaction acc = new Transaction( res.getInt( 1));
 				accList.add(acc);
