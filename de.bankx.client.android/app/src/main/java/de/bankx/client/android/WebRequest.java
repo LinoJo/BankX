@@ -97,7 +97,7 @@ public class WebRequest {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            errorMessage = "Verbindung zum Server konnte nicht hergestellt werden\n" + e;
+            errorMessage = "Verbindung zum Server konnte nicht hergestellt werden\n" + e + "\n";
             return null;
         }
         return response;

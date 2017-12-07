@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,9 +29,13 @@ public class UeberweisungActivity extends AppCompatActivity {
     private String sBetrag;
     private String sEkontonummer;
     private String sKontonmuer;
+
+    private String sSaldo;
+
     private EditText zweck;
     private EditText betrag;
     private EditText kontonummer;
+    private TextView guthaben;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,11 @@ public class UeberweisungActivity extends AppCompatActivity {
         betrag = (EditText) findViewById(R.id.eingabeBetrag);
         kontonummer = (EditText) findViewById(R.id.eingabeEmpfaenger);
         sKontonmuer = getIntent().getStringExtra("Kontonummer");
+        sSaldo = getIntent().getStringExtra("Guthaben");
+
+        guthaben = (TextView) findViewById(R.id.textGuthaben);
+        guthaben.setText(sSaldo);
+
         jsonUrl = "http://"+MainActivity.sIpAdresse+":9998/rest/transaction";
 
 
@@ -105,8 +115,7 @@ public class UeberweisungActivity extends AppCompatActivity {
                 proDialog.dismiss();
 
             if (result != null){
-                Intent intent = new Intent(getApplicationContext(), KontouebersichtActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(), KontouebersichtActivity.class));
             } else {
                 errorMessage = new AlertDialog.Builder (UeberweisungActivity.this);
                 errorMessage.setPositiveButton("Ok",
@@ -116,6 +125,7 @@ public class UeberweisungActivity extends AppCompatActivity {
                             }
                         });
                 errorMessage.setMessage("Fehler!\n"+WebRequest.errorMessage);
+                errorMessage.show();
             }
         }
     }

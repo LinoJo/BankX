@@ -16,7 +16,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +34,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
     private TextView kontostand;
     private TextView kontoinhaber;
     private ArrayList<HashMap<String, String>> transactionList;
-    private int saldo;
+    private int iSaldo;
 
     // JSON Node names
     private static final String TAG_NUMBER = "number";
@@ -73,11 +72,11 @@ public class KontouebersichtActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        saldo = 0;
+        iSaldo = 0;
 
-        jsonUrl = getIntent().getStringExtra("jsonUrl");
+        jsonUrl = MainActivity.jsonUrl;
 
-        String sSaldo = Integer.toString(saldo);
+        String sSaldo = Integer.toString(iSaldo);
         kontostand.setText(sSaldo);
 
         new GetTransactions().execute();
@@ -101,6 +100,8 @@ public class KontouebersichtActivity extends AppCompatActivity {
             case R.id.menuUeberweisung:
                 Intent ueberweisung = new Intent(getApplicationContext(), UeberweisungActivity.class);
                 ueberweisung.putExtra("Kontonummer", sKontonummer);
+                String sSaldo = Integer.toString(iSaldo);
+                ueberweisung.putExtra("Guthaben", sSaldo);
                 startActivity(ueberweisung);
                 return true;
             default:
@@ -153,7 +154,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
                         new int[]{R.id.datumData, R.id.zweckData, R.id.summeData});
                 listeTransaktionen.setAdapter(adapter);
 
-                String sSaldo = Integer.toString(saldo);
+                String sSaldo = Integer.toString(iSaldo);
                 kontostand.setText(sSaldo);
                 kontoinhaber.setText(sKontoinhaber);
                 kontonummer.setText(sKontonummer);
@@ -203,11 +204,11 @@ public class KontouebersichtActivity extends AppCompatActivity {
                     String rOwner = receiver.getString(TAG_R_OWNER);
 
                     if (rOwner.equals (sKontoinhaber)){
-                        saldo += Integer.parseInt(amount);
+                        iSaldo += Integer.parseInt(amount);
                         amount = "+" +amount;
                     }
                     if (sOwner.equals(sKontoinhaber)){
-                        saldo -= Integer.parseInt(amount);
+                        iSaldo -= Integer.parseInt(amount);
                         amount = "-" +amount;
                     }
 
