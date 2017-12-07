@@ -28,6 +28,9 @@ var DataService = (function () {
     DataService.prototype.getTransactions = function () {
         return this.http.get('http://localhost:9998/rest/admin/getAllTransactions').map(function (response) { return response.json().items; });
     };
+    DataService.prototype.getValue = function (number) {
+        return this.http.get('http://localhost:9998/rest/account/' + number + '/value').map(function (response) { return response.json().items; });
+    };
     DataService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.Http])

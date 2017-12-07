@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6893b824-11cf-4302-abce-80c8044d066a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/dataservice.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/Account.java" afterPath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/Account.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/Transaction.java" afterPath="$PROJECT_DIR$/src/main/java/de/bankx/server/core/Transaction.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -697,16 +698,15 @@
       <workItem from="1512476122548" duration="6099000" />
       <workItem from="1512494923017" duration="6236000" />
       <workItem from="1512599776474" duration="58000" />
-      <workItem from="1512638413217" duration="5235000" />
+      <workItem from="1512638413217" duration="5757000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100611000" />
+    <option name="totallyTimeSpent" value="101133000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -718,7 +718,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42497376" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42451614" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42451614" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
