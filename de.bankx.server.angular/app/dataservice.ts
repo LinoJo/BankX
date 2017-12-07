@@ -27,4 +27,10 @@ export class DataService {
       (response: Response) => response.json().items
     )
   }
+
+  getValue(number: string) {
+    return this.http.get('http://localhost:9998/rest/account/' + number + '/value').map(
+      (response: Response) => response.json().items
+    )
+  }
 }
