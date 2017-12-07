@@ -16,13 +16,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Path("/")
 @Singleton
 public class RestResource {
 
 	static Logger log = Logger.getLogger(RestResource.class);
-	private TransactionLock trlck = new TransactionLock(false);
+	private final ReentrantLock lock = new ReentrantLock();
 
 	@GET
 	@Path("/admin/getAllAccounts")
@@ -139,38 +140,34 @@ public class RestResource {
 				return Response.status(Response.Status.BAD_REQUEST).entity("transaction empty or invalid").type(MediaType.APPLICATION_JSON).build();
 			}
 
-			// Lock-Überprüfung
-			while (trlck.getLocked()){
-				wait(1000);
-				log.debug("execTransact - Transaction not executed because locked!");
-			}
-			trlck.setLocked(true);
+			lock.lock();
 
-			// Überprüfung des Guthabens
-			AccountWrapper acc = new AccountWrapper();
-			if (new Float(acc.getActualValue(senderNumber)) - new Float(amount) < 0){
-				log.info("Transaction not executed (not sufficient) "+ senderNumber + " an " + receiverNumber + " - " +  amount + "€ with reference '" + reference + "'");
-				trlck.setLocked(false);
-				return Response.status(Response.Status.NOT_ACCEPTABLE).entity("account value of '" + acc.getActualValue(senderNumber) + "'€ not sufficient for transaction'").type(MediaType.APPLICATION_JSON).build();
-			}
-			else{
-				Transaction transaction = new Transaction();
-				transaction.setSender(new AccountWrapper(senderNumber));
-				transaction.setReceiver(new AccountWrapper(receiverNumber));
-				transaction.setAmount(new BigDecimal(amount));
-				transaction.setReference(reference);
-				transaction.addToDB();
-				transaction = null;
-				log.info("Transaction executed: "+ senderNumber + " an " + receiverNumber + " - " +  amount + "€ with reference '" + reference + "'");
-				trlck.setLocked(false);
-				return Response.ok().build();
+			try {
+				// Überprüfung des Guthabens
+				AccountWrapper acc = new AccountWrapper();
+				if (new Float(acc.getActualValue(senderNumber)) - new Float(amount) < 0){
+					log.info("Transaction not executed (not sufficient) "+ senderNumber + " an " + receiverNumber + " - " +  amount + "€ with reference '" + reference + "'");
+					return Response.status(Response.Status.NOT_ACCEPTABLE).entity("account value of '" + acc.getActualValue(senderNumber) + "'€ not sufficient for transaction'").type(MediaType.APPLICATION_JSON).build();
+				}
+				else{
+					Transaction transaction = new Transaction();
+					transaction.setSender(new AccountWrapper(senderNumber));
+					transaction.setReceiver(new AccountWrapper(receiverNumber));
+					transaction.setAmount(new BigDecimal(amount));
+					transaction.setReference(reference);
+					transaction.addToDB();
+					transaction = null;
+					log.info("Transaction executed: "+ senderNumber + " an " + receiverNumber + " - " +  amount + "€ with reference '" + reference + "'");
+					return Response.ok().build();
+				}
+			} finally {
+				lock.unlock();
 			}
 
 		} catch (Exception ex){
 			log.error("Exception in @Path('transaction'): " + ex.getMessage());
 			return Response.serverError().build();
 		}
-
 	}
 
 	@POST
