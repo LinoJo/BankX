@@ -22,7 +22,7 @@ import java.util.List;
 public class RestResource {
 
 	static Logger log = Logger.getLogger(RestResource.class);
-	TransactionLock trlck = new TransactionLock();
+	private TransactionLock trlck = new TransactionLock(false);
 
 	@GET
 	@Path("/admin/getAllAccounts")
@@ -121,12 +121,32 @@ public class RestResource {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response execTransact(@FormParam("senderNumber") String senderNumber, @FormParam("receiverNumber") String receiverNumber, @FormParam("amount") String amount, @FormParam("reference") String reference){
 		try{
+			// Eingabeüberprüfung
+			if (!senderNumber.matches("[0-9]+") || (senderNumber.length() != 4)){
+				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - FEHLERHAFTE EINGABE!");
+				return Response.status(Response.Status.BAD_REQUEST).entity("senderNumber '" + senderNumber + "' invalid").type(MediaType.APPLICATION_JSON).build();
+			}
+
+			// Eingabeüberprüfung
+			if (!receiverNumber.matches("[0-9]+") || (receiverNumber.length() != 4)){
+				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - FEHLERHAFTE EINGABE!");
+				return Response.status(Response.Status.BAD_REQUEST).entity("receiverNumber '" + receiverNumber + "' invalid").type(MediaType.APPLICATION_JSON).build();
+			}
+
+			// Eingabeüberprüfung
+			if (reference.length() == 0){
+				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - FEHLERHAFTE EINGABE!");
+				return Response.status(Response.Status.BAD_REQUEST).entity("transaction empty or invalid").type(MediaType.APPLICATION_JSON).build();
+			}
+
+			// Lock-Überprüfung
 			while (trlck.getLocked()){
 				wait(1000);
 				log.debug("execTransact - Transaction not executed because locked!");
 			}
 			trlck.setLocked(true);
 
+			// Überprüfung des Guthabens
 			AccountWrapper acc = new AccountWrapper();
 			if (new Float(acc.getActualValue(senderNumber)) - new Float(amount) < 0){
 				log.info("Transaction not executed (not sufficient) "+ senderNumber + " an " + receiverNumber + " - " +  amount + "€ with reference '" + reference + "'");
