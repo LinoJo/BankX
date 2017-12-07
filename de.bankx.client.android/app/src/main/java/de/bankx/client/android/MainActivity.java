@@ -13,6 +13,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText kontonummer;
     private Button loginBtn;
 
+    public static String sIpAdresse;
+    public static String jsonUrl;
+    private String sKontonummer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         ipAdresse = (EditText) findViewById(R.id.eingabeIP);
         kontonummer = (EditText) findViewById(R.id.eingabeKontonummer);
         loginBtn = (Button) findViewById(R.id.buttonLogin);
+
+        ipAdresse.setText(sIpAdresse);
+        kontonummer.setText(sKontonummer);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,11 +38,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginServer(){
-        String sKontonummer = kontonummer.getText().toString();
-        String sIpAdresse = ipAdresse.getText().toString();
-        String jsonUrl = "http://"+sIpAdresse+":9998/rest/account/"+sKontonummer;
+        sKontonummer = kontonummer.getText().toString();
+        sIpAdresse = ipAdresse.getText().toString();
+        jsonUrl = "http://"+sIpAdresse+":9998/rest/account/"+sKontonummer;
         Intent kontouebersicht = new Intent(getApplicationContext(), KontouebersichtActivity.class);
-        kontouebersicht.putExtra("jsonUrl", jsonUrl);
         startActivity(kontouebersicht);
         super.finish();
     }

@@ -1,7 +1,11 @@
 package de.bankx.client.android;
 
+import android.os.HandlerThread;
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -19,6 +23,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class WebRequest {
     static String response = null;
+    static String errorMessage = null;
     public final static int GETRequest = 1;
     public final static int POSTRequest = 2;
 
@@ -67,6 +72,7 @@ public class WebRequest {
                 writer.flush();
                 writer.close();
                 ostream.close();
+                response= "OK";
             }
             int reqresponseCode = conn.getResponseCode();
 
@@ -76,11 +82,23 @@ public class WebRequest {
                 while ((line = br.readLine()) != null) {
                     response += line;
                 }
+            } else if (reqresponseCode == HttpURLConnection.HTTP_BAD_REQUEST) {
+                errorMessage = "fehlerhafte Eingabe, Bitte Account überprüfen";
+                return null;
+            } else if (reqresponseCode == HttpURLConnection.HTTP_NOT_FOUND){
+                errorMessage = "Account konnte nicht in der Datenbank gefunden werden";
+                return null;
+            } else if (reqresponseCode == HttpURLConnection.HTTP_NOT_ACCEPTABLE){
+                errorMessage = "Betrag konnte nicht überwiesen werden, kein ausreichender Saldo";
+                return null;
             } else {
-                response = "0";
+                errorMessage = "Unbekannter Fehler" +conn.getResponseMessage();
+                return null;
             }
         } catch (Exception e) {
             e.printStackTrace();
+            errorMessage = "Verbindung zum Server konnte nicht hergestellt werden\n" + e + "\n";
+            return null;
         }
         return response;
     }

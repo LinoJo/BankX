@@ -75,7 +75,7 @@ public class Account {
 				con.close();
 
 				// Transaktionen sortieren und Objekt Account als Attribut hinzufügen
-				Collections.sort(transactionIDs);
+				Collections.sort(transactionIDs, Collections.reverseOrder());
 				List<Transaction> transactionList = new ArrayList<>();
 				for (Integer i : transactionIDs){
 					Transaction ta = new Transaction(i);

@@ -16,7 +16,7 @@ export class DataService {
   postAccount(data: AccountData, start: number) {
 
       let headers = new Headers();
-      console.log("posting...");
+      console.log("Posting AccountData");
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       return this.http.post('http://localhost:9998/rest/admin/addAccount', `post_owner=${data.owner}&post_amount=${start}`,
       {headers : headers}).map(response => response);
@@ -24,6 +24,12 @@ export class DataService {
 
   getTransactions(){
     return this.http.get('http://localhost:9998/rest/admin/getAllTransactions').map(
+      (response: Response) => response.json().items
+    )
+  }
+
+  getValue(number: string) {
+    return this.http.get('http://localhost:9998/rest/account/' + number + '/value').map(
       (response: Response) => response.json().items
     )
   }
