@@ -49,7 +49,7 @@
                                     <Insets top="50.0" />
                                  </GridPane.margin>
                               </TextField>
-                              <TextField fx:id="txtServerip" maxWidth="200.0" prefHeight="35.0" promptText="Server-IP..." style="-fx-background-color: #eee;" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtServerip" maxWidth="200.0" prefHeight="35.0" promptText="Server-IP..." style="-fx-background-color: #eee;" text="192.168.178.64" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                               <Label fx:id="lblWarnungLogin" alignment="CENTER" maxWidth="200.0" textFill="RED" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.rowSpan="2" />
                               <Label alignment="CENTER" maxWidth="400.0" prefHeight="200.0" text="BankX" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                                  <font>
@@ -61,7 +61,7 @@
                         </GridPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="tabIndex" closable="false" text="Index">
+                  <Tab fx:id="tabIndex" closable="false" disable="true" text="Index">
                      <content>
                         <GridPane BorderPane.alignment="CENTER">
                            <columnConstraints>
@@ -82,41 +82,6 @@
                                     <Font name="Centaur" size="200.0" />
                                  </font>
                               </Label>
-                              <GridPane style="-fx-background-color: #2196f3;" GridPane.columnSpan="2">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <GridPane.margin>
-                                    <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-                                 </GridPane.margin>
-                                 <children>
-                                    <Label fx:id="lblKontoinhaber" text="&lt;lblKontoinhaber&gt;">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label fx:id="lblKontonummer" text="&lt;lblKontonummer&gt;" GridPane.rowIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label text="Kontostand" GridPane.columnIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label fx:id="lblKontostand" text="&lt;lblKontostand&gt;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                 </children>
-                              </GridPane>
                               <Button fx:id="btnPageTransaktionshistorie" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="100.0" prefWidth="200.0" text="Transanktionshistorie" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="50.0" left="50.0" />
@@ -131,7 +96,7 @@
                         </GridPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="tabUeberweisung" closable="false" text="Überweisung">
+                  <Tab fx:id="tabUeberweisung" closable="false" disable="true" text="Überweisung">
                      <content>
                         <GridPane BorderPane.alignment="CENTER">
                            <columnConstraints>
@@ -152,43 +117,9 @@
                                     <Font name="Centaur" size="200.0" />
                                  </font>
                               </Label>
-                              <GridPane style="-fx-background-color: #2196f3;" GridPane.columnSpan="2">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <GridPane.margin>
-                                    <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-                                 </GridPane.margin>
-                                 <children>
-                                    <Label fx:id="lblKontoinhaber" text="&lt;lblKontoinhaber&gt;">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label fx:id="lblKontonummer" text="&lt;lblKontonummer&gt;" GridPane.rowIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label text="Kontostand" GridPane.columnIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label fx:id="lblKontostand" text="&lt;lblKontostand&gt;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                 </children>
-                              </GridPane>
                               <GridPane style="-fx-background-color: #2196f3;" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                  <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                  </columnConstraints>
@@ -205,13 +136,19 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField fx:id="txtBetrag" maxWidth="200.0" prefHeight="35.0" promptText="Betrag" style="-fx-border-color: #fff; -fx-border-width: 2;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                    <TextField fx:id="txtBetrag" maxWidth="200.0" prefHeight="35.0" promptText="Betrag" style="-fx-border-color: #fff; -fx-border-width: 2;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Label text="Kontonummer des Empfänger" GridPane.halignment="CENTER" />
-                                    <Label text="Betrag" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                    <TextField fx:id="txtVerwendungszweg" maxWidth="200.0" prefHeight="35.0" promptText="Verwendungszweg" style="-fx-border-color: #fff; -fx-border-width: 2;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Label text="KontoNr. des Empfängers" GridPane.halignment="CENTER" />
+                                    <Label text="Betrag" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                                    <Label text="Verwendungszweg" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                                  </children>
                               </GridPane>
                               <Button fx:id="btnSenden" mnemonicParsing="false" onAction="#handleButtonEvent" text="Senden" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
@@ -219,11 +156,16 @@
                                     <Insets top="100.0" />
                                  </GridPane.margin>
                               </Button>
+                              <Label fx:id="lblWarnungUeberweiung" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets top="25.0" />
+                                 </GridPane.margin>
+                              </Label>
                            </children>
                         </GridPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="tabTransaktionshistorie" closable="false" text="Transaktionshistorie">
+                  <Tab fx:id="tabTransaktionshistorie" closable="false" disable="true" text="Transaktionshistorie">
                      <content>
                         <GridPane BorderPane.alignment="CENTER">
                            <columnConstraints>
@@ -236,46 +178,11 @@
                               <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <GridPane style="-fx-background-color: #2196f3;" GridPane.columnSpan="2">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <GridPane.margin>
-                                    <Insets left="50.0" right="50.0" top="50.0" />
-                                 </GridPane.margin>
-                                 <children>
-                                    <Label fx:id="lblKontoinhaber" text="&lt;lblKontoinhaber&gt;">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label fx:id="lblKontonummer" text="&lt;lblKontonummer&gt;" GridPane.rowIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label text="Kontostand" GridPane.columnIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label fx:id="lblKontostand" text="&lt;lblKontostand&gt;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                 </children>
-                              </GridPane>
-                              <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                              <TableView fx:id="table_transaktionshistorie" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                 <columns>
-                                  <TableColumn maxWidth="166.0" minWidth="100.0" prefWidth="166.0" text="Sender" />
-                                  <TableColumn maxWidth="166.0" minWidth="100.0" prefWidth="166.0" text="Empfänger" />
-                                    <TableColumn maxWidth="166.0" minWidth="100.0" prefWidth="166.0" text="Betrag" />
+                                  <TableColumn fx:id="col_sender" maxWidth="166.0" minWidth="100.0" prefWidth="166.0" text="Sender" />
+                                  <TableColumn fx:id="col_empfaenger" maxWidth="166.0" minWidth="100.0" prefWidth="166.0" text="Empfänger" />
+                                    <TableColumn fx:id="col_Betrag" maxWidth="166.0" minWidth="100.0" prefWidth="166.0" text="Betrag" />
                                 </columns>
                                  <GridPane.margin>
                                     <Insets bottom="20.0" left="50.0" right="50.0" top="10.0" />
@@ -287,7 +194,42 @@
                   </Tab>
                </tabs>
             </TabPane>
-            <Button fx:id="btnAbmelden" mnemonicParsing="false" onAction="#handleButtonEvent" text="Abmelden" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+            <Button fx:id="btnAbmelden" mnemonicParsing="false" onAction="#handleButtonEvent" text="Abmelden" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+            <GridPane fx:id="grid_info" opacity="0.0" style="-fx-background-color: #2196f3;" GridPane.columnSpan="2">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <GridPane.margin>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </GridPane.margin>
+               <children>
+                  <Label fx:id="lblKontoinhaber" text="&lt;lblKontoinhaber&gt;">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lblKontonummer" text="&lt;lblKontonummer&gt;" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lblStatus" text="&lt;lblStatus&gt;" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lblKontostand" text="&lt;lblKontostand&gt;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+               </children>
+            </GridPane>
          </children>
       </GridPane>
    </center>
