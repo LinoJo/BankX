@@ -2,56 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6893b824-11cf-4302-abce-80c8044d066a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/css/font-awesome.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/css/font-awesome.min.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/fonts/FontAwesome.otf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/fonts/fontawesome-webfont.eot" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/fonts/fontawesome-webfont.svg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/fonts/fontawesome-webfont.ttf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/fonts/fontawesome-webfont.woff" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/fonts/fontawesome-webfont.woff2" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/animated.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/bordered-pulled.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/core.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/fixed-width.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/font-awesome.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/icons.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/larger.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/list.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/mixins.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/path.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/rotated-flipped.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/screen-reader.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/stacked.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/less/variables.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_animated.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_bordered-pulled.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_core.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_fixed-width.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_icons.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_larger.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_list.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_mixins.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_path.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_rotated-flipped.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_screen-reader.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_stacked.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/_variables.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/font-awesome/scss/font-awesome.scss" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/js/bootstrap.min.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/js/jquery-2.1.1.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/js/jquery-3.1.1.min.js" />
-      <change beforePath="$PROJECT_DIR$/../de.bankx.client.android/app/src/main/java/de/bankx/client/android/KontouebersichtActivity.java" afterPath="$PROJECT_DIR$/../de.bankx.client.android/app/src/main/java/de/bankx/client/android/KontouebersichtActivity.java" />
-      <change beforePath="$PROJECT_DIR$/../de.bankx.client.android/app/src/main/java/de/bankx/client/android/UeberweisungActivity.java" afterPath="$PROJECT_DIR$/../de.bankx.client.android/app/src/main/java/de/bankx/client/android/UeberweisungActivity.java" />
-      <change beforePath="$PROJECT_DIR$/../de.bankx.client.android/app/src/main/java/de/bankx/client/android/WebRequest.java" afterPath="$PROJECT_DIR$/../de.bankx.client.android/app/src/main/java/de/bankx/client/android/WebRequest.java" />
-      <change beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/newaccount.component.js" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/newaccount.component.js" />
-      <change beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/newaccount.component.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/newaccount.component.js.map" />
-      <change beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/newaccount.component.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/newaccount.component.ts" />
-      <change beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction.component.js.map" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction.component.js.map" />
-      <change beforePath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction.component.ts" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/app/transaction.component.ts" />
-      <change beforePath="$PROJECT_DIR$/../de.bankx.server.angular/index.html" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/index.html" />
-      <change beforePath="$PROJECT_DIR$/../de.bankx.server.angular/views/account.html" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/views/account.html" />
-      <change beforePath="$PROJECT_DIR$/../de.bankx.server.angular/views/newaccount.html" afterPath="$PROJECT_DIR$/../de.bankx.server.angular/views/newaccount.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -90,8 +40,8 @@
       <file leaf-file-name="RestResource.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="133" column="69" lean-forward="false" selection-start-line="133" selection-start-column="55" selection-end-line="133" selection-end-column="69" />
+            <state relative-caret-position="544">
+              <caret line="146" column="13" lean-forward="false" selection-start-line="146" selection-start-column="13" selection-end-line="146" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -930,12 +880,12 @@
       <workItem from="1512391813792" duration="5212000" />
       <workItem from="1512476122548" duration="6099000" />
       <workItem from="1512494923017" duration="6236000" />
-      <workItem from="1512599776474" duration="58000" />
+      <workItem from="1512599776474" duration="4253000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95376000" />
+    <option name="totallyTimeSpent" value="99571000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -943,6 +893,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -950,7 +901,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42497376" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12361331" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33755943" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -968,7 +919,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1360,8 +1310,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/bankx/server/rest/RestResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="133" column="69" lean-forward="false" selection-start-line="133" selection-start-column="55" selection-end-line="133" selection-end-column="69" />
+        <state relative-caret-position="544">
+          <caret line="146" column="13" lean-forward="false" selection-start-line="146" selection-start-column="13" selection-end-line="146" selection-end-column="13" />
           <folding />
         </state>
       </provider>
