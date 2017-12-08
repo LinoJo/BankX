@@ -11,7 +11,7 @@ import {AccountData} from "./account-data.model"
 export class NewAccountComponent {
   //account: any = {};
 
-  account = new AccountData("","","")
+  account = new AccountData("","")
   submitted = false;
   startguthaben: number
 
@@ -24,7 +24,7 @@ export class NewAccountComponent {
   }
 
   newAccount() {
-  this.account = new AccountData("","","");
+  this.account = new AccountData("","");
 }
 
   constructor(private dataService:DataService){}
