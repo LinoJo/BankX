@@ -16,7 +16,7 @@ var NewAccountComponent = (function () {
     function NewAccountComponent(dataService) {
         this.dataService = dataService;
         //account: any = {};
-        this.account = new account_data_model_1.AccountData("", "", "");
+        this.account = new account_data_model_1.AccountData("", "");
         this.submitted = false;
     }
     NewAccountComponent.prototype.onSubmit = function () {
@@ -26,7 +26,7 @@ var NewAccountComponent = (function () {
         this.newAccount();
     };
     NewAccountComponent.prototype.newAccount = function () {
-        this.account = new account_data_model_1.AccountData("", "", "");
+        this.account = new account_data_model_1.AccountData("", "");
     };
     Object.defineProperty(NewAccountComponent.prototype, "diagnostic", {
         get: function () { return JSON.stringify(this.account); },
