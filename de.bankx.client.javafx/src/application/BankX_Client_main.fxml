@@ -180,9 +180,10 @@
                            <children>
                               <TableView fx:id="table_transaktionshistorie" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                 <columns>
-                                  <TableColumn fx:id="col_sender" maxWidth="166.0" minWidth="100.0" prefWidth="166.0" text="Sender" />
-                                  <TableColumn fx:id="col_empfaenger" maxWidth="166.0" minWidth="100.0" prefWidth="166.0" text="Empfänger" />
-                                    <TableColumn fx:id="col_Betrag" maxWidth="166.0" minWidth="100.0" prefWidth="166.0" text="Betrag" />
+                                  <TableColumn fx:id="col_sender" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" text="Sender" />
+                                  <TableColumn fx:id="col_empfaenger" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" text="Empfänger" />
+                                  <TableColumn fx:id="col_Betrag" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" style="-fx-alignment: center-right;" text="Betrag" />
+                                    <TableColumn fx:id="col_Verwendungszweg" maxWidth="230.0" minWidth="150.0" prefWidth="230.0" text="Verwendungszweg" />
                                 </columns>
                                  <GridPane.margin>
                                     <Insets bottom="20.0" left="50.0" right="50.0" top="10.0" />

@@ -1,13 +1,16 @@
 package application;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
+import application.Table;
 
-import application.Main;
+//import java.io.IOException;
+import java.text.DecimalFormat;
+//import java.util.ArrayList;
+//import java.util.Arrays;
+import java.util.HashMap;
+//import java.util.Timer;
+//import java.util.TimerTask;
+
+//import application.Main;
 
 import org.json.*;
 
@@ -17,8 +20,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+//import javafx.fxml.FXMLLoader;
+//import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -26,8 +29,9 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+//import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -97,21 +101,27 @@ public class BankX_Client_Controller {
     private Tab tabTransaktionshistorie;
 
     @FXML
-    private TableView<?> table_transaktionshistorie;
+    private TableView<Table> table_transaktionshistorie;
 
     @FXML
-    private TableColumn<?, ?> col_sender;
+    private TableColumn<Table, String> col_sender;
 
     @FXML
-    private TableColumn<?, ?> col_empfaenger;
+    private TableColumn<Table, String> col_empfaenger;
 
     @FXML
-    private TableColumn<?, ?> col_Betrag;
+    private TableColumn<Table, String> col_Betrag;
+
+    @FXML
+    private TableColumn<Table, String> col_Verwendungszweg;
 
     @FXML
     private Button btnAbmelden;
 
+    final ObservableList<Table> allTransactions = FXCollections.observableArrayList();
+
     boolean login = false;
+    boolean first = true;
 	int loginindex = -1;
 	String _kontonummer = "";
 	String _kontoinhaber = "";
@@ -148,7 +158,8 @@ public class BankX_Client_Controller {
 						lblKontostand.setText("Kontostand:\n"+_kontostand);
 						grid_info.setOpacity(1);
 
-						switchLogin();
+						initialTable();
+						switchLoginModus();
 					}
 					else{
 						lblWarnungLogin.setText("Fehlerhafte Kontonummer");
@@ -168,7 +179,7 @@ public class BankX_Client_Controller {
     		System.out.println(login);
     		if(login){
     			login = false;
-    			switchLogin();
+    			switchLoginModus();
     			lblWarnungLogin.setTextFill(Color.GREEN);
     			lblWarnungLogin.setText("Erfolgreich Abgemeldet");
     			clearAll();
@@ -177,38 +188,8 @@ public class BankX_Client_Controller {
 
 
     	else if(event.getSource().equals(btnPageTransaktionshistorie))
-    	{//TODO: Translist
-    		/*String res = NetClientGet.getRequest(_serverip, "admin/getAllTransactions");
-			try {
-				JSONObject jObj = new JSONObject(res);
-				JSONArray jary = jObj.getJSONArray("items");
-				ArrayList<JSONObject> transaktions = new ArrayList<JSONObject>();
-				for(int i = 0; i < jary.length(); i++){
-					JSONObject tempobj = new JSONObject(jary.get(i).toString().replace("[", ""));
-					System.out.println("NR:"+i+"   "+new JSONObject(tempobj.get("sender")).keys()+"\n\n");
-					if(new JSONObject(tempobj.get("sender")).get("number").toString().equals(_kontonummer) || new JSONObject(tempobj.get("receiver")).get("number").toString().equals(_kontonummer))
-					{
-						transaktions.add(tempobj);
-					}
-				}
-
-				ObservableList<ObservableList> list = FXCollections.observableArrayList();
-				ObservableList<String> row = FXCollections.observableArrayList();
-				for(int i = 0; i < transaktions.size(); i++)
-				{
-					row.add(new JSONObject(transaktions.get(i).getString("sender")).getString("owener").toString());
-					row.add( new JSONObject(transaktions.get(i).getString("receiver")).getString("owener").toString());
-					row.add(transaktions.get(i).getString("amount").toString());
-					System.out.println("Add:" + row.toString());
-					list.add(row);
-				}
-
-				//table_transaktionshistorie.setItems(list);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println(res);
-			}*/
+    	{
+    		reloadTransakionshistorie();
     		tabPane.getSelectionModel().select(tabTransaktionshistorie);
     	}
     	else if(event.getSource().equals(btnPageUeberweisung))
@@ -237,6 +218,11 @@ public class BankX_Client_Controller {
     	}
     }
 
+    /**
+     * HashMap..map a HashMap, make a JSON, do Some Magic Stuff
+     *
+     * @return	jsonParam {<kontonummer>,<Empfänger>,<Betrag>,<Verwendungszweg>}
+     */
     private HashMap <String,String> makeJsonUeberweisung() {
     	HashMap<String,String> jsonParam = new HashMap<>();
     	jsonParam.put("senderNumber", _kontonummer.toString());
@@ -247,7 +233,21 @@ public class BankX_Client_Controller {
     	return jsonParam;
 	}
 
-    private void switchLogin(){
+    /**
+     * initialTable .. MAGIC: its initial the Table
+     */
+
+    private void initialTable(){
+		col_sender.setCellValueFactory(new PropertyValueFactory<>("sender"));
+		col_empfaenger.setCellValueFactory(new PropertyValueFactory<>("receiver"));
+		col_Betrag.setCellValueFactory(new PropertyValueFactory<>("amount"));
+		col_Verwendungszweg.setCellValueFactory(new PropertyValueFactory<>("reference"));
+    }
+
+    /**
+     * SwitchLoginModus change the selected TabPane and setDisable
+     */
+    private void switchLoginModus(){
     	if(login)
     		tabPane.getSelectionModel().select(tabIndex);
     	else{
@@ -260,6 +260,9 @@ public class BankX_Client_Controller {
 		tabLogin.setDisable(login);
     }
 
+    /**
+     * ClearAll dynamic TextFields and Label from the GUI
+     */
     private void clearAll(){
     	txtKontonummer.setText("");
     	//txtServerip.setText("");
@@ -274,9 +277,19 @@ public class BankX_Client_Controller {
 		clearElementAfter(lblWarnungLogin,5000);
     }
 
-    //Wird in der Regel nicht aufgerufen!!
+
+    /**
+     * SetText() of the Object after "millis" -> to EmteyString ("")
+     * Object must be a TextField or Lable
+     * <p>
+     * no Return
+     *
+     * @param	element	type of Object - TextField or Object
+     * @param	millis	the Milliseconds of Timespan to *.setText("")
+     * @see		setText
+     */
     private void clearElementAfter(Object element, int millis){
-    	/* NOTE: Nur um missverstandnisse zu Umgehen und Error-Handling für nicht Funktionale DatenTypen*/
+    	//NOTE: Nur um missverstandnisse zu Umgehen und Error-Handling für nicht Funktionale DatenTypen
     	if(element.getClass().equals(new TextField().getClass()))
     		clearElementAfter(new TextField().getClass().cast(element),millis);
     	else if(element.getClass().equals(new Label().getClass()))
@@ -297,5 +310,53 @@ public class BankX_Client_Controller {
     	        Duration.millis(millis),
     	        ae -> element.setText("")));
     	timeline.play();
+    }
+
+    /**
+     * reloadTransakionshistorie reload TransactionsHistory
+     * in the Transaktionshistory Tab.
+     * Every Call to the Tap call this Methode
+     * <p>
+     * no Return, only catch Exceptions
+     */
+    private void reloadTransakionshistorie(){
+    	allTransactions.clear();
+    	String res = NetClientGet.getRequest(_serverip, "admin/getAllTransactions");
+		try {
+			JSONObject jObj = new JSONObject(res);
+			JSONArray jary = jObj.getJSONArray("items");
+			//System.out.println("First: "+jary.get(0).toString());
+			for(int i=0;i < jary.length(); i++)
+			{
+				Table tb = new Table();
+				JSONObject trans_obj = new JSONObject(jary.get(i).toString().replace("[", ""));
+				//System.out.println("obj:"+trans_obj.get("reference").toString()+" : " + trans_obj.toString());
+				//System.out.println(new JSONObject(trans_obj.get("sender").toString()).get("number"));
+
+				String sender = new JSONObject(trans_obj.get("sender").toString()).get("number").toString();
+				String receiver = new JSONObject(trans_obj.get("receiver").toString()).get("number").toString();
+				String amount = new DecimalFormat("##,###.00").format(trans_obj.get("amount")) + "\u20ac";
+				String reference = trans_obj.get("reference").toString();
+				if(_kontonummer.equals(sender)){
+					tb.setSender(sender);
+					tb.setReceiver(receiver);
+					tb.setAmount("- "+amount);
+					tb.setReference(reference);
+					allTransactions.add(tb);
+				}
+				else if (_kontonummer.equals(receiver)){
+					tb.setSender(sender);
+					tb.setReceiver(receiver);
+					tb.setAmount(amount);
+					tb.setReference(reference);
+					allTransactions.add(tb);
+				}
+			}
+			table_transaktionshistorie.setItems(allTransactions);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(res);
+		}
     }
 }
