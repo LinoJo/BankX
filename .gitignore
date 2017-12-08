@@ -2,6 +2,9 @@
 de.bankx.server/DerbyDB/
 de.bankx.server/derby.log
 de.bankx.server/out/
-de.bankx.client.android/.idea/vcs.xml
-de.bankx.client.android/.idea/copyright/profiles_settings.xml
-de.bankx.client.android/.idea/compiler.xml
+de.bankx.client.android/.idea/
+/.idea/
+*.iml
+de.bankx.server/build/
+de.bankx.server/.gradle/
+de.bankx.server/de.bankx.server.iws

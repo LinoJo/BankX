@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var AccountData = (function () {
-    function AccountData(id, number, owner) {
-        this.id = id;
+    function AccountData(number, owner) {
         this.number = number;
         this.owner = owner;
     }

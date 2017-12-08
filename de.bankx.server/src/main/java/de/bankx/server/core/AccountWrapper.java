@@ -4,6 +4,7 @@ package de.bankx.server.core;
 import de.bankx.server.services.DatabaseService;
 import org.apache.log4j.Logger;
 
+import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -67,6 +68,7 @@ public class AccountWrapper {
         this.owner = owner;
     }
 
+    @XmlTransient
     public int getId() {
         return id;
     }
