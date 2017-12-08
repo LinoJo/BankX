@@ -24,9 +24,9 @@ public class NetClientGet {
 			throw new RuntimeException("Failed : HTTP error code : "
 					+ conn.getResponseCode());
 		}
-		if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+		/*if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
 			//System.out.println("http Connetion is OK: "+conn.getResponseCode());
-		}
+		}*/
 
 		BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 		String output;

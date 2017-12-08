@@ -136,12 +136,12 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField fx:id="txtBetrag" maxWidth="200.0" prefHeight="35.0" promptText="Betrag" style="-fx-border-color: #fff; -fx-border-width: 2;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                    <TextField fx:id="txtVerwendungszweg" maxWidth="200.0" prefHeight="35.0" promptText="Verwendungszweg" style="-fx-border-color: #fff; -fx-border-width: 2;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField fx:id="txtVerwendungszweg" maxWidth="200.0" prefHeight="35.0" promptText="Verwendungszweg" style="-fx-border-color: #fff; -fx-border-width: 2;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                    <TextField fx:id="txtBetrag" maxWidth="200.0" prefHeight="35.0" promptText="Betrag" style="-fx-border-color: #fff; -fx-border-width: 2;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </GridPane.margin>

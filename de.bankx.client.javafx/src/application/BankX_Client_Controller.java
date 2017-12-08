@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import application.Main;
 
 import org.json.*;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +29,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 public class BankX_Client_Controller {
 
@@ -143,11 +148,7 @@ public class BankX_Client_Controller {
 						lblKontostand.setText("Kontostand:\n"+_kontostand);
 						grid_info.setOpacity(1);
 
-						tabIndex.setDisable(false);
-	    				tabTransaktionshistorie.setDisable(false);
-	    				tabUeberweisung.setDisable(false);
-	    				tabPane.getSelectionModel().select(tabIndex);
-						tabLogin.setDisable(true);
+						switchLogin();
 					}
 					else{
 						lblWarnungLogin.setText("Fehlerhafte Kontonummer");
@@ -162,33 +163,21 @@ public class BankX_Client_Controller {
     		}
     	}
 
-
     	else if(event.getSource().equals(btnAbmelden))
     	{
     		System.out.println(login);
     		if(login){
     			login = false;
-    			txtKontonummer.setText("");
-    			lblStatus.setText("");
-    			lblKontonummer.setText("");
-    			lblKontoinhaber.setText("");
-    			lblKontostand.setText("");
-    			txtEmpfaenger.setText("");
-    			txtBetrag.setText("");
-    			grid_info.setOpacity(0);
-    			tabLogin.setDisable(false);
-    			tabIndex.setDisable(true);
-    			tabTransaktionshistorie.setDisable(true);
-    			tabUeberweisung.setDisable(true);
+    			switchLogin();
     			lblWarnungLogin.setTextFill(Color.GREEN);
     			lblWarnungLogin.setText("Erfolgreich Abgemeldet");
-    			tabPane.getSelectionModel().select(tabLogin);
+    			clearAll();
     		}
     	}
 
 
     	else if(event.getSource().equals(btnPageTransaktionshistorie))
-    	{
+    	{//TODO: Translist
     		/*String res = NetClientGet.getRequest(_serverip, "admin/getAllTransactions");
 			try {
 				JSONObject jObj = new JSONObject(res);
@@ -230,20 +219,25 @@ public class BankX_Client_Controller {
     	else if(event.getSource().equals(btnSenden))
     	{
     		if(txtEmpfaenger.getText().isEmpty() || txtBetrag.getText().isEmpty() || txtVerwendungszweg.getText().isEmpty())
+    		{
     			lblWarnungUeberweiung.setText("Ungültige Eingabe");
-    		else{
-    			String res = NetClientPost.postRequest(_serverip,makeJson());
+    			clearElementAfter(lblWarnungUeberweiung,5000);
+    		}
+    		else
+    		{
+    			String res = NetClientPost.postRequest(_serverip,makeJsonUeberweisung());
     			lblWarnungUeberweiung.setText(res);
     			if(res.startsWith("ERFOLGREICH")){
-    				txtEmpfaenger.setText("");
-    				txtBetrag.setText("");
-    				txtVerwendungszweg.setText("");
+    				clearElementAfter(txtBetrag,0);
+    				clearElementAfter(txtEmpfaenger,0);
+    				clearElementAfter(txtVerwendungszweg,0);
+    				clearElementAfter(lblWarnungUeberweiung,5000);
     			}
     		}
     	}
     }
 
-    private HashMap <String,String> makeJson() {
+    private HashMap <String,String> makeJsonUeberweisung() {
     	HashMap<String,String> jsonParam = new HashMap<>();
     	jsonParam.put("senderNumber", _kontonummer.toString());
     	jsonParam.put("receiverNumber", txtEmpfaenger.getText());
@@ -252,4 +246,56 @@ public class BankX_Client_Controller {
 
     	return jsonParam;
 	}
+
+    private void switchLogin(){
+    	if(login)
+    		tabPane.getSelectionModel().select(tabIndex);
+    	else{
+    		grid_info.setOpacity(0);
+    		tabPane.getSelectionModel().select(tabLogin);
+    	}
+    	tabIndex.setDisable(!login);
+		tabTransaktionshistorie.setDisable(!login);
+		tabUeberweisung.setDisable(!login);
+		tabLogin.setDisable(login);
+    }
+
+    private void clearAll(){
+    	txtKontonummer.setText("");
+    	//txtServerip.setText("");
+		//lblStatus.setText("");
+		lblKontonummer.setText("");
+		lblKontoinhaber.setText("");
+		lblKontostand.setText("");
+		txtEmpfaenger.setText("");
+		txtBetrag.setText("");
+		txtVerwendungszweg.setText("");
+		lblWarnungUeberweiung.setText("");
+		clearElementAfter(lblWarnungLogin,5000);
+    }
+
+    //Wird in der Regel nicht aufgerufen!!
+    private void clearElementAfter(Object element, int millis){
+    	/* NOTE: Nur um missverstandnisse zu Umgehen und Error-Handling für nicht Funktionale DatenTypen*/
+    	if(element.getClass().equals(new TextField().getClass()))
+    		clearElementAfter(new TextField().getClass().cast(element),millis);
+    	else if(element.getClass().equals(new Label().getClass()))
+    		clearElementAfter(new Label().getClass().cast(element),millis);
+    	else
+    		System.out.println("VarType {"+ element.getClass().toString() +"} not support in clearElementAfter(Object element, int millis)!");
+    }
+
+    private void clearElementAfter(Label element ,int millis){
+    	Timeline timeline = new Timeline(new KeyFrame(
+    	        Duration.millis(millis),
+    	        ae -> element.setText("")));
+    	timeline.play();
+    }
+
+    private void clearElementAfter(TextField element ,int millis){
+    	Timeline timeline = new Timeline(new KeyFrame(
+    	        Duration.millis(millis),
+    	        ae -> element.setText("")));
+    	timeline.play();
+    }
 }
