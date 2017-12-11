@@ -159,7 +159,7 @@ public class AccountWrapper {
             else{
                 Integer maxnum = res.getInt( "number");
                 maxnum += 1;
-                returnValue = ("0000" + maxnum.toString()).substring(maxnum.toString().length());
+                returnValue = ("1000" + maxnum.toString()).substring(maxnum.toString().length());
                 res.close();
             }
             sta.close();

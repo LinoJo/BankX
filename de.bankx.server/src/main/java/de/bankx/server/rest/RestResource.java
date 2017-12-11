@@ -147,16 +147,15 @@ public class RestResource {
 				return Response.status(Response.Status.NOT_FOUND).entity("404 (NOT FOUND - Account nicht gefunden)").type(MediaType.APPLICATION_JSON).build();
 			}
 
+			recAcc = null;
+
 			lock.lock();
 
 			try {
 				// Überprüfung des Guthabens
-				AccountWrapper acc = new AccountWrapper();
-				if (new Float(acc.getActualValue(senderNumber)) - new Float(amount) < 0){
-					log.info("Transaction not executed (not sufficient) "+ senderNumber + " an " + receiverNumber + " - " +  amount + "€ with reference '" + reference + "'");
-					return Response.status(Response.Status.PRECONDITION_FAILED).entity("account value of '" + acc.getActualValue(senderNumber) + "'€ not sufficient for transaction'").type(MediaType.APPLICATION_JSON).build();
-				}
-				else{
+				AccountWrapper sendAcc = new AccountWrapper();
+
+				if (senderNumber.equals("0000") || new Float(sendAcc.getActualValue(senderNumber)) - new Float(amount) > 0){
 					Transaction transaction = new Transaction();
 					transaction.setSender(new AccountWrapper(senderNumber));
 					transaction.setReceiver(new AccountWrapper(receiverNumber));
@@ -166,6 +165,10 @@ public class RestResource {
 					transaction = null;
 					log.info("Transaction executed: "+ senderNumber + " an " + receiverNumber + " - " +  amount + "€ with reference '" + reference + "'");
 					return Response.ok().build();
+				}
+				else{
+					log.info("Transaction not executed (not sufficient) "+ senderNumber + " an " + receiverNumber + " - " +  amount + "€ with reference '" + reference + "'");
+					return Response.status(Response.Status.PRECONDITION_FAILED).entity("account value of '" + sendAcc.getActualValue(senderNumber) + "'€ not sufficient for transaction'").type(MediaType.APPLICATION_JSON).build();
 				}
 			} finally {
 				lock.unlock();
