@@ -124,20 +124,27 @@ public class RestResource {
 		try{
 			// Eingabeüberprüfung
 			if (!senderNumber.matches("[0-9]+") || (senderNumber.length() != 4)){
-				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - FEHLERHAFTE EINGABE!");
+				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
 				return Response.status(Response.Status.BAD_REQUEST).entity("senderNumber '" + senderNumber + "' invalid").type(MediaType.APPLICATION_JSON).build();
 			}
 
 			// Eingabeüberprüfung
 			if (!receiverNumber.matches("[0-9]+") || (receiverNumber.length() != 4)){
-				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - FEHLERHAFTE EINGABE!");
+				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
 				return Response.status(Response.Status.BAD_REQUEST).entity("receiverNumber '" + receiverNumber + "' invalid").type(MediaType.APPLICATION_JSON).build();
 			}
 
 			// Eingabeüberprüfung
-			if (reference.length() == 0){
-				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - FEHLERHAFTE EINGABE!");
-				return Response.status(Response.Status.BAD_REQUEST).entity("transaction empty or invalid").type(MediaType.APPLICATION_JSON).build();
+			if (reference.length() == 0 || !receiverNumber.matches("^[A-Za-z0-9 ]+$")){
+				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
+				return Response.status(Response.Status.BAD_REQUEST).entity("reference empty or invalid").type(MediaType.APPLICATION_JSON).build();
+			}
+
+			AccountWrapper recAcc = new AccountWrapper(receiverNumber);
+
+			if (recAcc.getId() == 0){
+				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - NOT FOUND - Account '" + receiverNumber + "' nicht gefunden");
+				return Response.status(Response.Status.NOT_FOUND).entity("404 (NOT FOUND - Account nicht gefunden)").type(MediaType.APPLICATION_JSON).build();
 			}
 
 			lock.lock();
@@ -147,7 +154,7 @@ public class RestResource {
 				AccountWrapper acc = new AccountWrapper();
 				if (new Float(acc.getActualValue(senderNumber)) - new Float(amount) < 0){
 					log.info("Transaction not executed (not sufficient) "+ senderNumber + " an " + receiverNumber + " - " +  amount + "€ with reference '" + reference + "'");
-					return Response.status(Response.Status.NOT_ACCEPTABLE).entity("account value of '" + acc.getActualValue(senderNumber) + "'€ not sufficient for transaction'").type(MediaType.APPLICATION_JSON).build();
+					return Response.status(Response.Status.PRECONDITION_FAILED).entity("account value of '" + acc.getActualValue(senderNumber) + "'€ not sufficient for transaction'").type(MediaType.APPLICATION_JSON).build();
 				}
 				else{
 					Transaction transaction = new Transaction();
