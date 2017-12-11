@@ -123,7 +123,7 @@ public class RestResource {
 	public Response execTransact(@FormParam("senderNumber") String senderNumber, @FormParam("receiverNumber") String receiverNumber, @FormParam("amount") String amount, @FormParam("reference") String reference){
 		try{
 			// Eingabeüberprüfung
-			if (!senderNumber.matches("[0-9]+") || (senderNumber.length() != 4)){
+			if (!senderNumber.matches("[0-9]+") || (senderNumber.length() != 4 || senderNumber.equals(receiverNumber) || receiverNumber.equals(senderNumber))){
 				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
 				return Response.status(Response.Status.BAD_REQUEST).entity("senderNumber '" + senderNumber + "' invalid").type(MediaType.APPLICATION_JSON).build();
 			}
@@ -155,7 +155,7 @@ public class RestResource {
 				// Überprüfung des Guthabens
 				AccountWrapper sendAcc = new AccountWrapper();
 
-				if (senderNumber.equals("0000") || new Float(sendAcc.getActualValue(senderNumber)) - new Float(amount) > 0){
+				if (senderNumber.equals("0000") || new Float(sendAcc.getActualValue(senderNumber)) - new Float(amount) >= 0){
 					Transaction transaction = new Transaction();
 					transaction.setSender(new AccountWrapper(senderNumber));
 					transaction.setReceiver(new AccountWrapper(receiverNumber));
