@@ -11,29 +11,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var dataservice_1 = require("./dataservice");
-var AccountComponent = (function () {
-    function AccountComponent(dataService) {
+var account_data_model_1 = require("./account-data.model");
+var AccountDataDetailComponent = (function () {
+    function AccountDataDetailComponent(dataService) {
         this.dataService = dataService;
-        this.accountList = [];
-        this.getData();
     }
-    AccountComponent.prototype.getData = function () {
-        var _this = this;
-        this.dataService.getAccounts().subscribe(function (data) { return _this.accountList = data; }, function (error) { return console.log("Error: " + error.statusText); }, function () { return console.log("Anzahl geladener Accounts: " + _this.accountList.length); });
+    AccountDataDetailComponent.prototype.sendData = function () {
+        console.log("Test");
     };
-    AccountComponent.prototype.onSelect = function (acc) {
-        this.selectedAccount = acc;
-        console.log(JSON.stringify(acc));
-    };
-    AccountComponent = __decorate([
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", account_data_model_1.AccountData)
+    ], AccountDataDetailComponent.prototype, "acc", void 0);
+    AccountDataDetailComponent = __decorate([
         core_1.Component({
-            templateUrl: 'views/account.html',
-            selector: 'account-list',
-            providers: [dataservice_1.DataService]
+            selector: 'account-detail',
+            templateUrl: 'views/accountdetail.html'
         }),
         __metadata("design:paramtypes", [dataservice_1.DataService])
-    ], AccountComponent);
-    return AccountComponent;
+    ], AccountDataDetailComponent);
+    return AccountDataDetailComponent;
 }());
-exports.AccountComponent = AccountComponent;
-//# sourceMappingURL=account.component.js.map
+exports.AccountDataDetailComponent = AccountDataDetailComponent;
+//# sourceMappingURL=account-data-detail.component.js.map

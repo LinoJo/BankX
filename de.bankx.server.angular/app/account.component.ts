@@ -10,6 +10,7 @@ import {AccountData} from "./account-data.model"
 
 export class AccountComponent {
   accountList: AccountData[] = [];
+  selectedAccount: AccountData;
 
   constructor(private dataService : DataService){
     this.getData()
@@ -23,6 +24,7 @@ export class AccountComponent {
     )
   }
   onSelect(acc: AccountData){
+    this.selectedAccount = acc;
     console.log(JSON.stringify(acc));
   }
 }
