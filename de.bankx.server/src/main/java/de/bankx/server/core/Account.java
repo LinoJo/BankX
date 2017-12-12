@@ -14,6 +14,10 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ * Account Klasse
+ * @author Timon Caspari
+ */
 @XmlRootElement
 public class Account {
 	private int id;
@@ -23,7 +27,15 @@ public class Account {
 
 	static Logger log = Logger.getLogger(Account.class);
 
+	/**
+	 * Leerer Kosntruktor Accounts
+	 */
 	public Account(){}
+
+	/**
+	 * Konstruktor für Accounts
+	 * @param number Account-Nummer
+	 */
 	public Account(String number){
 		try{
 			Connection con = DatabaseService.getInstance().getConnection();
@@ -125,6 +137,11 @@ public class Account {
 		this.transactions = transactions;
 	}
 
+	/**
+	 * Account per ID Zurückgeben
+	 * @param id Account ID
+	 * @return Account
+	 */
 	public Account getById(Integer id){
 		Account acc = new Account();
 		return acc;

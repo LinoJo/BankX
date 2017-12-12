@@ -12,6 +12,10 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ * Transaktionsklasse
+ * @author Timon Caspari
+ */
 @XmlRootElement
 public class Transaction {
 	private int id;
@@ -23,6 +27,9 @@ public class Transaction {
 
 	static Logger log = Logger.getLogger(Transaction.class);
 
+	/**
+	 * Leerer Konstruktor Transaction
+	 */
 	public Transaction(){}
 	public Transaction(Integer id){
 		try{
@@ -99,6 +106,9 @@ public class Transaction {
 		this.transactionDate = transactionDate;
 	}
 
+	/**
+	 * Zur Datenbank hinzufügen
+	 */
 	public void addToDB(){
 		Connection con = null;
 		PreparedStatement prep = null;
@@ -124,6 +134,11 @@ public class Transaction {
 		}
 	}
 
+
+	/**
+	 * Liste von Transaktionen abrufen
+	 * @return Liste von Transaktionen
+	 */
 	public List<Transaction> getListOfTransactions(){
 
 		List<Transaction> accList = new ArrayList<Transaction>();

@@ -16,10 +16,21 @@ import com.sun.jersey.spi.container.servlet.ServletContainer;
 
 import java.sql.*;
 
+/**
+ * Main-Klasse zum Start des Jetty-Server
+ * Logging-Einstellungen (z.B. Log-Level / File-Path)
+ * @author Timon Caspari
+ */
 public class JettyServer {
 
 	final static Logger log = Logger.getLogger(JettyServer.class);
 
+
+	/**
+	 * Main-Function
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 
 		// LOG4J Einstellungen
@@ -82,6 +93,9 @@ public class JettyServer {
 		}
 	}
 
+	/**
+	 *  Datenbank erstellen, wenn nicht vorhanden
+	 */
 	private static void dbDefaults(){
 		// Datenbank-Defaults-Setzen
 		try {

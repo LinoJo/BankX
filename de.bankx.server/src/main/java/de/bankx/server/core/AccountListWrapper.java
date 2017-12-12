@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Wrapper-Klasse für Accounts
+ */
 @XmlRootElement
 public class AccountListWrapper implements Serializable {
     private static final long serialVersionUID = 1L;

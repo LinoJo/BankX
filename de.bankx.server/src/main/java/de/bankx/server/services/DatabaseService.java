@@ -6,12 +6,20 @@ import org.apache.log4j.Logger;
 import java.beans.PropertyVetoException;
 import java.sql.*;
 
+/**
+ * Datenbank Service Klasse
+ * @author Timon Caspari
+ */
 public class DatabaseService {
 
     static Logger log = Logger.getLogger(DatabaseService.class);
     private ComboPooledDataSource connectionPool;
     private static DatabaseService instance;
 
+    /**
+     * Datenbank Service Instanzieren
+     * @return Datenbank Service
+     */
     public static DatabaseService getInstance()
     {
         if (instance == null)
@@ -20,10 +28,18 @@ public class DatabaseService {
         return instance;
     }
 
+    /**
+     * Verbindung zurückgeben
+     * @return Verbindung aus Connection-Pool
+     * @throws SQLException
+     */
     public Connection getConnection() throws SQLException {
         return connectionPool.getConnection();
     }
 
+    /**
+     * Derby Datenbank-Service
+     */
     private DatabaseService() {
         String dbPath = "jdbc:derby:;databaseName=DerbyDB;create=true";
         log.info("Initialisiere Datenbank-Service");
