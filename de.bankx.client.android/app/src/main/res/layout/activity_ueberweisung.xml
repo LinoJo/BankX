@@ -103,9 +103,8 @@
         android:id="@+id/textGuthaben"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/eingabeBetrag"
-        android:layout_alignBottom="@+id/eingabeBetrag"
-        android:layout_alignEnd="@+id/eingabeEmpfaenger"
+        android:layout_alignStart="@+id/textView14"
+        android:layout_alignTop="@+id/textView16"
         android:text="TextView"
         android:textSize="18sp" />
 
@@ -115,5 +114,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textGuthaben"
         android:layout_toEndOf="@+id/textGuthaben"
-        android:text="€" />
+        android:text="€"
+        android:textSize="18sp" />
 </RelativeLayout>

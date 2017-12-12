@@ -237,12 +237,10 @@ public class KontouebersichtActivity extends AppCompatActivity {
                     transactionDate = transactionDate.substring(0,10);
 
                     JSONObject sender = c.getJSONObject(TAG_SENDER);
-                    String sId = sender.getString(TAG_S_ID);
                     String sNumber = sender.getString(TAG_S_NUMBER);
                     String sOwner = sender.getString(TAG_S_OWNER);
 
                     JSONObject receiver = c.getJSONObject(TAG_RECEIVER);
-                    String rId = receiver.getString(TAG_R_ID);
                     String rNumber = receiver.getString(TAG_R_NUMBER);
                     String rOwner = receiver.getString(TAG_R_OWNER);
 
