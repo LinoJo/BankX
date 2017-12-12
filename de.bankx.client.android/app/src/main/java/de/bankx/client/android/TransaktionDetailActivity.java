@@ -7,8 +7,17 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Klasse für die Detailansicht der Transaktionen
+ */
+
 public class TransaktionDetailActivity extends AppCompatActivity {
 
+    /**
+     * wird bei Start der Aktivität ausgeführt
+     * (mapped Textfelder und setzt die entsprechenden Einträge)
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

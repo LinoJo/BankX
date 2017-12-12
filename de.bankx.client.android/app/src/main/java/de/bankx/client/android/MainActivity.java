@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Haupt Aktivität, hier beginnt die App
+ * @Author Dennis Nüßing
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText ipAdresse;
@@ -17,6 +22,12 @@ public class MainActivity extends AppCompatActivity {
     public static String jsonUrl;
     private String sKontonummer;
 
+
+    /**
+     * Mehtode die beim Start der Aktivität aufgerufen wird
+     * (mapped Textfelder/Buttons)
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +48,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Methode zum Server Login
+     * (erstellt die jsonUrl | erstellt einen neuen Intent für Kontoübersicht und startet diesen)
+     */
     public void loginServer(){
+        //Erstellen der JSON URL mithilfe von IP und Kontonummer aus Textfeldern
         sKontonummer = kontonummer.getText().toString();
         sIpAdresse = ipAdresse.getText().toString();
         jsonUrl = "http://"+sIpAdresse+":9998/rest/account/"+sKontonummer;
-        Intent kontouebersicht = new Intent(getApplicationContext(), KontouebersichtActivity.class);
-        startActivity(kontouebersicht);
+
+        //Starten der Kontoübersicht Activity
+        startActivity(new Intent(getApplicationContext(), KontouebersichtActivity.class));
         super.finish();
     }
 }
