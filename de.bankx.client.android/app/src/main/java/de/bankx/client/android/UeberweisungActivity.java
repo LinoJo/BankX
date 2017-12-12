@@ -22,6 +22,11 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+/**
+ * Überweisungs Aktivität, überweisungen an andere Konten tätigen
+ * @Author Dennis Nüßing
+ */
+
 public class UeberweisungActivity extends AppCompatActivity {
 
     private String jsonUrl;
@@ -37,6 +42,12 @@ public class UeberweisungActivity extends AppCompatActivity {
     private EditText kontonummer;
     private TextView guthaben;
 
+
+    /**
+     * Mehtode die beim Start der Aktivität aufgerufen wird
+     * (mapped Textfelder/Buttons | holt sich die jsonURL von der Main Activity | Intialisiert das Saldo | startet das Senden der Daten an den Server)
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +75,11 @@ public class UeberweisungActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Erstellt eine Json String aus einer HashMap
+     * @return gibt json String zurück
+     */
+
     private HashMap <String, String> makeJson () {
         HashMap <String, String> jsonParam = new HashMap<>();
         sZweck = zweck.getText().toString();
@@ -78,12 +94,20 @@ public class UeberweisungActivity extends AppCompatActivity {
         return  jsonParam;
     }
 
+    /**
+     * Klasse wird im Hintergrund ausgeführt, sendet Daten an Server
+     */
     public class SendTransaction extends AsyncTask<Void, Void, Void> {
         // Hashmap for ListView
         ProgressDialog proDialog;
         AlertDialog.Builder errorMessage;
 
         String result;
+
+        /**
+         * Gibt an was vor dem Ausführen gemacht werden soll
+         * (hier, erstellen eines Fortschritt Dialogs)
+         */
 
         @Override
         protected void onPreExecute() {
@@ -95,6 +119,12 @@ public class UeberweisungActivity extends AppCompatActivity {
             proDialog.show();
         }
 
+        /**
+         * Führt Aufgabe im Hintergrund aus
+         * (in diesem Fall, WebRequest und Parsen des Json Strings)
+         * @param arg0 Argumente
+         * @return liefert null
+         */
         @Override
         protected Void doInBackground(Void... arg0) {
             // Creating service handler class instance
@@ -107,6 +137,11 @@ public class UeberweisungActivity extends AppCompatActivity {
             return null;
         }
 
+        /**
+         * Gibt an was nach dem Ausführen gemacht werden soll
+         * (in diesem Fall wird der Fortschritts Dialog geschlossen und die zurück zu Kontoübersicht gewechselt, bei Fehler wird ein Error Dialog angezeigt)
+         * @param requestresult
+         */
         @Override
         protected void onPostExecute(Void requestresult) {
             super.onPostExecute(requestresult);

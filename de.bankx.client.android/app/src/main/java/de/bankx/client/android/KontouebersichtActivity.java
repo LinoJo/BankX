@@ -24,6 +24,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Kontoübersicht Aktivität, zeigt eine Übersicht über das Konto
+ * @Author Dennis Nüßing
+ */
+
 public class KontouebersichtActivity extends AppCompatActivity {
 
     private String jsonUrl;
@@ -52,7 +57,11 @@ public class KontouebersichtActivity extends AppCompatActivity {
     private static final String TAG_REFERENCE = "reference";
     private static final String TAG_TRANSACTIONDATE = "transactionDate";
 
-
+    /**
+     * Mehtode die beim Start der Aktivität aufgerufen wird
+     * (mapped Textfelder/Buttons | holt sich die jsonURL von der Main Activity | Intialisiert das Saldo | startet das Abrufen der Daten vom Server)
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +71,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
         kontostand = (TextView) findViewById(R.id.textKontostand);
         kontoinhaber = (TextView) findViewById(R.id.textKontoinhaber);
 
+        // Ruft bei Klick auf ein Element in der Liste die Detailansicht auf
         listeTransaktionen =(ListView)findViewById(R.id.listeTransaktionen);
         listeTransaktionen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -83,12 +93,22 @@ public class KontouebersichtActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Methode für Options Menü
+     * @param menu gibt Menü an das eingebunden werden soll
+     * @return gibt true zurück, wenn Menü erzeugt
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
+
+    /**
+     * Methode, die bei Menüklick entsprechende Operation ausführt
+     * @param item angeklicktes Menüitem
+     * @return gibt true zurück wenn Operation ausgeführt
+     */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -109,26 +129,39 @@ public class KontouebersichtActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Klasse, die im Hintergrund ausgeführt wird, um Daten vom Server zu bekommen
+     */
     public class GetTransactions extends AsyncTask<Void, Void, Void> {
-        // Hashmap for ListView
         ProgressDialog proDialog;
         AlertDialog.Builder errorMessage;
 
+        /**
+         * Gibt an was vor dem Ausführen gemacht werden soll
+         * (hier, erstellen eines Fortschritt Dialogs)
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            // Showing progress loading dialog
+            // zeigt einen Fortschrittsdialog an
             proDialog = new ProgressDialog(KontouebersichtActivity.this);
             proDialog.setMessage("Please wait...");
             proDialog.setCancelable(false);
             proDialog.show();
         }
 
+        /**
+         * Führt Aufgabe im Hintergrund aus
+         * (in diesem Fall, WebRequest und Parsen des Json Strings)
+         * @param arg0 Argumente
+         * @return liefert null
+         */
         @Override
         protected Void doInBackground(Void... arg0) {
-            // Creating service handler class instance
+            // erstellt eine Instanz von WebRequest
             WebRequest webreq = new WebRequest();
-            // Making a request to url and getting response
+
+            // führt einen Request aus und empfängt String
             String jsonStr = webreq.makeWebServiceCall(jsonUrl, WebRequest.GETRequest);
             Log.d("Response: ", "> " + jsonStr);
             transactionList = ParseJSON(jsonStr);
@@ -136,17 +169,20 @@ public class KontouebersichtActivity extends AppCompatActivity {
             return null;
         }
 
+        /**
+         * Gibt an was nach dem Ausführen gemacht werden soll
+         * (in diesem Fall wird der Fortschritts Dialog geschlossen und die JSON Ergebnisse mittels Adapter auf eine Liste gemappt, bei Fehler wird ein Error Dialog angezeigt)
+         * @param requestresult
+         */
         @Override
         protected void onPostExecute(Void requestresult) {
             super.onPostExecute(requestresult);
 
-            // Dismiss the progress dialog
+            // schließt den Fortschritts Dialog
             if (proDialog.isShowing())
                 proDialog.dismiss();
-            /**
-             * Updating received data from JSON into ListView
-             * */
 
+            // mapped die JSON Daten mit der angezeigten Liste, sofern welche vorhanden sind
             if (transactionList != null) {
 
                 ListAdapter adapter = new SimpleAdapter(KontouebersichtActivity.this, transactionList, R.layout.colum_kontouebersicht,
@@ -159,6 +195,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
                 kontoinhaber.setText(sKontoinhaber);
                 kontonummer.setText(sKontonummer);
             } else{
+                //Bei Fehler wird ein Error Dialog angezeigt
                 errorMessage = new AlertDialog.Builder (KontouebersichtActivity.this);
                 errorMessage.setPositiveButton("Ok",
                         new DialogInterface.OnClickListener() {
@@ -171,6 +208,12 @@ public class KontouebersichtActivity extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * Methode zum Parsen des empfangen JSON Strings
+     * @param json JSON String der geparst werden soll
+     * @return liefert eine Hashmap der JSON Dateien
+     */
 
     private ArrayList<HashMap<String, String>> ParseJSON(String json) {
         if (json != null) {

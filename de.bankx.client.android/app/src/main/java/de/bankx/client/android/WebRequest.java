@@ -18,7 +18,8 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * Created by denni on 01.12.2017.
+ * WebRequest Klasse, baut Verbindung zum Server auf und sendet bzw. empfängt Daten
+ * @Author Dennis Nüßing
  */
 
 public class WebRequest {
@@ -27,13 +28,29 @@ public class WebRequest {
     public final static int GETRequest = 1;
     public final static int POSTRequest = 2;
 
-    //Constructor with no parameter
+    /**
+     * leerer Konstruktor
+     */
     public WebRequest() {
     }
 
+    /**
+     * Konstruktor
+     * @param url gibt die URL des Servers an
+     * @param requestmethod gibt an, ob ein POST oder GET ausgeführt werden soll
+     * @return gibt das Ergebniss von makeWebServiceCall zurück
+     */
     public String makeWebServiceCall(String url, int requestmethod) {
         return this.makeWebServiceCall(url, requestmethod, null);
     }
+
+    /**
+     * Mehtode für den WebServiceCall
+     * @param jsonUrl gibt die URL des Servers an
+     * @param requestmethod gibt an, ob ein POST oder GET ausgeführt werden soll
+     * @param params Daten die per POST gesendet werden sollen
+     * @return gibt bei erfolgreichem GET den vom Server empfangenen String, oder bei erfolgreichem POST "OK", oder bei Fehler NULL zurück
+     */
 
     public String makeWebServiceCall(String jsonUrl, int requestmethod, HashMap<String, String> params) {
         URL url;
@@ -44,20 +61,24 @@ public class WebRequest {
             conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(15001);
             conn.setConnectTimeout(15001);
-            //conn.setDoInput(true);
-            //conn.setDoOutput(true);
+
+            //überprüft ob GET oder POST gemacht werden soll
             if (requestmethod == POSTRequest) {
                 conn.setRequestMethod("POST");
             } else if (requestmethod == GETRequest) {
                 conn.setRequestMethod("GET");
             }
 
+            //überprüft ob Parameter mitgegeben wurden
             if (params != null) {
+                //öffnet einen Output Stream
                 OutputStream ostream = conn.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(
                         new OutputStreamWriter(ostream, "UTF-8"));
                 StringBuilder requestresult = new StringBuilder();
                 boolean first = true;
+
+                //Wandelt die Hashmap in einen String um und sendet diese
                 for (Map.Entry<String, String> entry : params.entrySet()) {
                     if (first)
                         first = false;
@@ -69,13 +90,17 @@ public class WebRequest {
                 }
                 writer.write(requestresult.toString());
 
+                //schließt Verbindungen
                 writer.flush();
                 writer.close();
                 ostream.close();
                 response= "OK";
             }
+
+            //empfängt Response Code vom Server
             int reqresponseCode = conn.getResponseCode();
 
+            //Abarbeiten des Response Codes, bei OK Daten Empfangen
             if (reqresponseCode == HttpsURLConnection.HTTP_OK) {
                 String line;
                 BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -95,6 +120,8 @@ public class WebRequest {
                 errorMessage = "Unbekannter Fehler" +conn.getResponseMessage();
                 return null;
             }
+
+            // Abfangen sonstiger Fehler beim Verbindungsaufbau
         } catch (Exception e) {
             e.printStackTrace();
             errorMessage = "Verbindung zum Server konnte nicht hergestellt werden\n" + e + "\n";
