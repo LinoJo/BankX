@@ -1,11 +1,8 @@
 package de.bankx.client.android;
 
-import android.os.HandlerThread;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -23,7 +20,6 @@ import javax.net.ssl.HttpsURLConnection;
  */
 
 public class WebRequest {
-    static String response = null;
     static String errorMessage = null;
     public final static int GETRequest = 1;
     public final static int POSTRequest = 2;
@@ -124,7 +120,7 @@ public class WebRequest {
             // Abfangen sonstiger Fehler beim Verbindungsaufbau
         } catch (Exception e) {
             e.printStackTrace();
-            errorMessage = "Verbindung zum Server konnte nicht hergestellt werden\n" + e + "\n";
+            errorMessage = "Verbindung zum Server konnte nicht hergestellt werden\n\n" + e + "\n";
             return null;
         }
         return response;

@@ -38,7 +38,11 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="44dp"
         android:layout_toEndOf="@+id/textView"
+        android:background="#5cb85c"
         android:text="Überweisen"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="88dp"
         tools:layout_editor_absoluteY="465dp" />
 
@@ -103,8 +107,9 @@
         android:id="@+id/textGuthaben"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/eingabeBetrag"
+        android:layout_alignBottom="@+id/eingabeBetrag"
         android:layout_alignStart="@+id/textView14"
-        android:layout_alignTop="@+id/textView16"
         android:text="TextView"
         android:textSize="18sp" />
 

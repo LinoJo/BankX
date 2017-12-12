@@ -47,11 +47,9 @@ public class KontouebersichtActivity extends AppCompatActivity {
     private static final String TAG_TRANSACTIONS = "transactions";
     private static final String TAG_AMOUNT = "amount";
     private static final String TAG_RECEIVER = "receiver";
-    private static final String TAG_R_ID = "id";
     private static final String TAG_R_NUMBER = "number";
     private static final String TAG_R_OWNER = "owner";
     private static final String TAG_SENDER = "sender";
-    private static final String TAG_S_ID = "id";
     private static final String TAG_S_NUMBER = "number";
     private static final String TAG_S_OWNER = "owner";
     private static final String TAG_REFERENCE = "reference";
@@ -116,6 +114,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menuLogout:
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
                 return true;
             case R.id.menuUeberweisung:
                 Intent ueberweisung = new Intent(getApplicationContext(), UeberweisungActivity.class);
@@ -184,10 +183,12 @@ public class KontouebersichtActivity extends AppCompatActivity {
 
             // mapped die JSON Daten mit der angezeigten Liste, sofern welche vorhanden sind
             if (transactionList != null) {
+                View header = getLayoutInflater().inflate(R.layout.colum_header, null);
 
                 ListAdapter adapter = new SimpleAdapter(KontouebersichtActivity.this, transactionList, R.layout.colum_kontouebersicht,
                         new String[]{TAG_TRANSACTIONDATE, TAG_REFERENCE, TAG_AMOUNT},
                         new int[]{R.id.datumData, R.id.zweckData, R.id.summeData});
+                listeTransaktionen.addHeaderView(header);
                 listeTransaktionen.setAdapter(adapter);
 
                 String sSaldo = Integer.toString(iSaldo);
@@ -201,9 +202,10 @@ public class KontouebersichtActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                finish();
                             }
                         });
-                errorMessage.setMessage("Fehler!\n"+WebRequest.errorMessage);
+                errorMessage.setMessage("Fehler!\n\n"+WebRequest.errorMessage);
                 errorMessage.show();
             }
         }
