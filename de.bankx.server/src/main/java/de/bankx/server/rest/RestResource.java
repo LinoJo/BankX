@@ -152,20 +152,26 @@ public class RestResource {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response execTransact(@FormParam("senderNumber") String senderNumber, @FormParam("receiverNumber") String receiverNumber, @FormParam("amount") String amount, @FormParam("reference") String reference){
 		try{
-			// Eingabeüberprüfung
-			if (!senderNumber.matches("[0-9]+") || (senderNumber.length() != 4 || senderNumber.equals(receiverNumber) || receiverNumber.equals(senderNumber))){
+			// Eingabeüberprüfung senderNumber
+			if (!senderNumber.matches("[0-9]+") || senderNumber.length() != 4 || senderNumber.equals(receiverNumber) || receiverNumber.equals(senderNumber)){
 				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
 				return Response.status(Response.Status.BAD_REQUEST).entity("senderNumber '" + senderNumber + "' invalid").type(MediaType.APPLICATION_JSON).build();
 			}
 
-			// Eingabeüberprüfung
+			// Eingabeüberprüfung receiverNumber
 			if (!receiverNumber.matches("[0-9]+") || (receiverNumber.length() != 4)){
 				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
 				return Response.status(Response.Status.BAD_REQUEST).entity("receiverNumber '" + receiverNumber + "' invalid").type(MediaType.APPLICATION_JSON).build();
 			}
 
+			// Eingabeüberprüfung amount
+			if (!amount.matches("[0-9]+")){
+				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
+				return Response.status(Response.Status.BAD_REQUEST).entity("amount '" + amount + "' invalid").type(MediaType.APPLICATION_JSON).build();
+			}
+
 			// Eingabeüberprüfung
-			if (reference.length() == 0 || !receiverNumber.matches("^[A-Za-z0-9 ]+$")){
+			if (reference.length() == 0 || !reference.matches("^[A-Za-z0-9 ]+$")){
 				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
 				return Response.status(Response.Status.BAD_REQUEST).entity("reference empty or invalid").type(MediaType.APPLICATION_JSON).build();
 			}
