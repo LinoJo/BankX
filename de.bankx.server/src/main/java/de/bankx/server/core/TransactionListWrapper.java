@@ -5,6 +5,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Wrapper-Klasse für Transaktion
+ * @author Timon Caspari
+ */
 @XmlRootElement
 public class TransactionListWrapper implements Serializable {
     private static final long serialVersionUID = 1L;

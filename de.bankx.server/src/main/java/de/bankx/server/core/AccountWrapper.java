@@ -17,8 +17,15 @@ public class AccountWrapper {
 
     static Logger log = Logger.getLogger(AccountWrapper.class);
 
+    /**
+     * Leerer Konstruktor AccountWrapper
+     */
     public AccountWrapper(){}
 
+    /**
+     * Konstruktor AccountWrapper
+     * @param number Account-Nummer
+     */
     public AccountWrapper(String number){
         try{
             Connection con = DatabaseService.getInstance().getConnection();
@@ -77,6 +84,11 @@ public class AccountWrapper {
         this.id = id;
     }
 
+    /**
+     * Aktuellen Kontostand ermitteln
+     * @param number Konto-Nummer
+     * @return Kontostand
+     */
     public String getActualValue(String number){
         try{
             Float gesamount = new Float(0);
@@ -109,6 +121,10 @@ public class AccountWrapper {
         }
     }
 
+    /**
+     * Account zur Datenbank hinzufügen
+     * @param startamount Startguthaben
+     */
     public void addToDb(String startamount){
         Connection con = null;
         PreparedStatement prep = null;
@@ -145,6 +161,10 @@ public class AccountWrapper {
         }
     }
 
+    /**
+     * Nächste Freie Account-Nummer erhalten
+     * @return Account-Nummer
+     */
     private String getNextFreeAccountNumber(){
         try{
             String returnValue = "0000";
@@ -171,6 +191,10 @@ public class AccountWrapper {
         }
     }
 
+    /**
+     * Liste mit allen Accounts zurückgeben
+     * @return alle Accounts
+     */
     public List<AccountWrapper> getListOfAccounts(){
 
         List<AccountWrapper> accList = new ArrayList<AccountWrapper>();

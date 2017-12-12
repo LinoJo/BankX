@@ -18,6 +18,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Klasse der Rest-Ressourcen von BankX
+ * @author Timon Caspari
+ */
 @Path("/")
 @Singleton
 public class RestResource {
@@ -25,6 +29,10 @@ public class RestResource {
 	static Logger log = Logger.getLogger(RestResource.class);
 	private final ReentrantLock lock = new ReentrantLock();
 
+	/**
+	 * Gibt alle Accounts für das Admin-Interface aus
+	 * @return allAccounts as json
+	 */
 	@GET
 	@Path("/admin/getAllAccounts")
 	@Produces({ MediaType.APPLICATION_JSON })
@@ -40,6 +48,10 @@ public class RestResource {
 		}
 	}
 
+	/**
+	 * Gibt alle Transaktionen für das Admin-Interface aus
+	 * @return allTransactions as json
+	 */
 	@GET
 	@Path("/admin/getAllTransactions")
 	@Produces({ MediaType.APPLICATION_JSON })
@@ -55,6 +67,11 @@ public class RestResource {
 		}
 	}
 
+	/**
+	 *
+	 * @param number Nummer des Accounts
+	 * @return Account-Details mit Transaktionen
+	 */
 	@GET
 	@Path("/account/{number}")
 	@Produces({ MediaType.APPLICATION_JSON })
@@ -86,6 +103,11 @@ public class RestResource {
 		}
 	}
 
+	/**
+	 *
+	 * @param number Nummer des Accounts
+	 * @return Guthaben des Accounts
+	 */
 	@GET
 	@Path("/account/{number}/value")
 	@Produces({ MediaType.APPLICATION_JSON })
@@ -117,25 +139,39 @@ public class RestResource {
 		}
 	}
 
+	/**
+	 *
+	 * @param senderNumber Sender der Transaktion
+	 * @param receiverNumber Empfänger der Transaktion
+	 * @param amount Summe der Transaktion
+	 * @param reference Verwendungszweck der Transaktion
+	 * @return ResponseCode
+	 */
 	@POST
 	@Path("/transaction")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response execTransact(@FormParam("senderNumber") String senderNumber, @FormParam("receiverNumber") String receiverNumber, @FormParam("amount") String amount, @FormParam("reference") String reference){
 		try{
-			// Eingabeüberprüfung
-			if (!senderNumber.matches("[0-9]+") || (senderNumber.length() != 4 || senderNumber.equals(receiverNumber) || receiverNumber.equals(senderNumber))){
+			// Eingabeüberprüfung senderNumber
+			if (!senderNumber.matches("[0-9]+") || senderNumber.length() != 4 || senderNumber.equals(receiverNumber) || receiverNumber.equals(senderNumber)){
 				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
 				return Response.status(Response.Status.BAD_REQUEST).entity("senderNumber '" + senderNumber + "' invalid").type(MediaType.APPLICATION_JSON).build();
 			}
 
-			// Eingabeüberprüfung
+			// Eingabeüberprüfung receiverNumber
 			if (!receiverNumber.matches("[0-9]+") || (receiverNumber.length() != 4)){
 				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
 				return Response.status(Response.Status.BAD_REQUEST).entity("receiverNumber '" + receiverNumber + "' invalid").type(MediaType.APPLICATION_JSON).build();
 			}
 
+			// Eingabeüberprüfung amount
+			if (!amount.matches("[0-9]+")){
+				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
+				return Response.status(Response.Status.BAD_REQUEST).entity("amount '" + amount + "' invalid").type(MediaType.APPLICATION_JSON).build();
+			}
+
 			// Eingabeüberprüfung
-			if (reference.length() == 0 || !receiverNumber.matches("^[A-Za-z0-9 ]+$")){
+			if (reference.length() == 0 || !reference.matches("^[A-Za-z0-9 ]+$")){
 				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
 				return Response.status(Response.Status.BAD_REQUEST).entity("reference empty or invalid").type(MediaType.APPLICATION_JSON).build();
 			}
@@ -180,6 +216,12 @@ public class RestResource {
 		}
 	}
 
+	/**
+	 *
+	 * @param owner Account-Name
+	 * @param amount Account-Startguthaben
+	 * @return
+	 */
 	@POST
 	@Path("/admin/addAccount")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
