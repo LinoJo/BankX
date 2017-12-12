@@ -21,6 +21,7 @@ export class NewAccountComponent {
     console.log(JSON.stringify(this.account))
     this.dataService.postAccount(this.account, this.startguthaben).subscribe(() => console.log("finished"));
     this.newAccount();
+    window.location.reload();
   }
 
   newAccount() {

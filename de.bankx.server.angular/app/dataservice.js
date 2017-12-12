@@ -28,6 +28,12 @@ var DataService = (function () {
     DataService.prototype.getTransactions = function () {
         return this.http.get('http://localhost:9998/rest/admin/getAllTransactions').map(function (response) { return response.json().items; });
     };
+    DataService.prototype.postEditAccount = function (data) {
+        var headers = new http_1.Headers();
+        console.log("Posting AccountData");
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this.http.post('http://localhost:9998/rest/admin/editAccount', "post_number=" + data.number + "&post_owner=" + data.owner, { headers: headers }).map(function (response) { return response; });
+    };
     DataService.prototype.getValue = function (number) {
         return this.http.get('http://localhost:9998/rest/account/' + number + '/value').map(function (response) { return response.json().items; });
     };

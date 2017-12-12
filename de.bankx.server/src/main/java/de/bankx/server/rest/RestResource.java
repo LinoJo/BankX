@@ -237,5 +237,26 @@ public class RestResource {
 
 		return Response.ok().build();
 	}
+
+	/**
+	 * Funktion zum Bearbeiten von Accounts über Angular
+	 * @param number Account-Nummer
+	 * @param owner Account-Owner
+	 * @return
+	 */
+	@POST
+	@Path("/admin/editAccount")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public Response editAccount(@FormParam("post_number") String number, @FormParam("post_owner") String owner){
+		try{
+			AccountWrapper acc = new AccountWrapper();
+			acc.updateAccount(number, owner);
+		} catch (Exception ex){
+			log.error("Exception in @Path('/admin/editAccount'): " + ex.getMessage());
+			return Response.serverError().build();
+		}
+
+		return Response.ok().build();
+	}
 }
 

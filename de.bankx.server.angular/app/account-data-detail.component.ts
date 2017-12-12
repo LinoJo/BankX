@@ -8,10 +8,14 @@ import {AccountData} from "./account-data.model"
 })
 export class AccountDataDetailComponent{
   @Input() acc: AccountData;
+  submitted = false;
 
   constructor(private dataService:DataService){}
 
-  sendData(){
-    console.log("Test");
+  onSubmit(){
+    this.submitted = true;
+    console.log(JSON.stringify(this.acc))
+    this.dataService.postEditAccount(this.acc).subscribe(() => console.log("edited"));
+    window.location.reload();
   }
 }

@@ -15,9 +15,13 @@ var account_data_model_1 = require("./account-data.model");
 var AccountDataDetailComponent = (function () {
     function AccountDataDetailComponent(dataService) {
         this.dataService = dataService;
+        this.submitted = false;
     }
-    AccountDataDetailComponent.prototype.sendData = function () {
-        console.log("Test");
+    AccountDataDetailComponent.prototype.onSubmit = function () {
+        this.submitted = true;
+        console.log(JSON.stringify(this.acc));
+        this.dataService.postEditAccount(this.acc).subscribe(function () { return console.log("edited"); });
+        window.location.reload();
     };
     __decorate([
         core_1.Input(),

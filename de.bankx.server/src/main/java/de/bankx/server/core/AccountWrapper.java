@@ -161,6 +161,31 @@ public class AccountWrapper {
         }
     }
 
+    public void updateAccount(String numb, String own){
+        Connection con = null;
+        PreparedStatement prep = null;
+        Transaction tra = new Transaction();
+
+        String sql = "UPDATE Accounts SET owner = ? WHERE number = ?";
+
+        try {
+            con = DatabaseService.getInstance().getConnection();
+            prep = con.prepareStatement(sql);
+
+            prep.setString(1, own);
+            prep.setString(2, numb);
+
+            prep.executeUpdate();
+
+            log.info("owner updated to '" + own + "' with number '" + numb + "'");
+
+            prep.close();
+            con.close();
+        } catch (SQLException e) {
+            log.error("SQLException AccountWrapper.updateAccount(): " + e.getMessage());
+        }
+    }
+
     /**
      * Nächste Freie Account-Nummer erhalten
      * @return Account-Nummer

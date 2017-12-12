@@ -24,6 +24,7 @@ var NewAccountComponent = (function () {
         console.log(JSON.stringify(this.account));
         this.dataService.postAccount(this.account, this.startguthaben).subscribe(function () { return console.log("finished"); });
         this.newAccount();
+        window.location.reload();
     };
     NewAccountComponent.prototype.newAccount = function () {
         this.account = new account_data_model_1.AccountData("", "");
