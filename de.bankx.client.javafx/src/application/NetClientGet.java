@@ -66,11 +66,12 @@ public class NetClientGet {
 			//System.out.println("http Connetion is OK: "+conn.getResponseCode());
 		}
 
-		BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+		BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream()),"UTF-8"));
 		String output;
 		while ((output = br.readLine()) != null) {
 			_return += output;
 		}
+
 		conn.disconnect();
 
 	  }catch (final java.net.SocketTimeoutException e) {

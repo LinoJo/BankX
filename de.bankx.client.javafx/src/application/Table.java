@@ -12,6 +12,7 @@ public class Table {
     private String receiver;
     private String reference;
     private String amount;
+    private String date;
 
     public Table (){
 
@@ -47,6 +48,14 @@ public class Table {
 
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
 }
