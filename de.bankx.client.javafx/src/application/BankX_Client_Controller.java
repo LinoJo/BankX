@@ -4,6 +4,8 @@ import application.Table;
 
 //import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 //import java.util.ArrayList;
 //import java.util.Arrays;
 import java.util.HashMap;
@@ -116,6 +118,9 @@ public class BankX_Client_Controller {
     private TableColumn<Table, String> col_Betrag;
 
     @FXML
+    private TableColumn<Table, String> col_Datum;
+
+    @FXML
     private TableColumn<Table, String> col_Verwendungszweg;
 
     @FXML
@@ -185,7 +190,7 @@ public class BankX_Client_Controller {
 
     	else if(event.getSource().equals(btnAbmelden))
     	{
-    		System.out.println(login);
+    		//System.out.println(login);
     		if(login){
     			login = false;
     			switchLoginModus();
@@ -241,7 +246,7 @@ public class BankX_Client_Controller {
     	}
     	if(event.getSource().equals(tabTransaktionshistorie)){
     		reloadTransakionshistorie();
-    		System.out.println("bool:	"+event.getSource().equals(tabTransaktionshistorie));
+    		//System.out.println("bool:	"+event.getSource().equals(tabTransaktionshistorie));
     	}
     	reloadKontostand();
     }
@@ -362,6 +367,7 @@ public class BankX_Client_Controller {
 		col_sender.setCellValueFactory(new PropertyValueFactory<>("sender"));
 		col_empfaenger.setCellValueFactory(new PropertyValueFactory<>("receiver"));
 		col_Betrag.setCellValueFactory(new PropertyValueFactory<>("amount"));
+		col_Datum.setCellValueFactory(new PropertyValueFactory<>("date"));
 		col_Verwendungszweg.setCellValueFactory(new PropertyValueFactory<>("reference"));
     }
 
@@ -462,26 +468,25 @@ public class BankX_Client_Controller {
 				String receiver = new JSONObject(trans_obj.get("receiver").toString()).get("number").toString();
 				String amount = new DecimalFormat("##,###.00").format(trans_obj.get("amount")) + "\u20ac";
 				String reference = trans_obj.get("reference").toString();
-				if(_kontonummer.equals(sender)){
-					tb.setSender(sender);
-					tb.setReceiver(receiver);
+
+				Date date = new SimpleDateFormat("yyyy-MM-dd").parse(trans_obj.get("transactionDate").toString().substring(0, 10));
+				String formattedDate = new SimpleDateFormat("dd.MM.yyyy").format(date);
+
+				tb.setSender(sender);
+				tb.setReceiver(receiver);
+				tb.setReference(reference);
+				tb.setDate(formattedDate);
+				if(_kontonummer.equals(sender))
 					tb.setAmount("- "+amount);
-					tb.setReference(reference);
-					allTransactions.add(tb);
-				}
-				else if (_kontonummer.equals(receiver)){
-					tb.setSender(sender);
-					tb.setReceiver(receiver);
+				else if (_kontonummer.equals(receiver))
 					tb.setAmount(amount);
-					tb.setReference(reference);
-					allTransactions.add(tb);
-				}
+				allTransactions.add(tb);
 			}
 			table_transaktionshistorie.setItems(allTransactions);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(res);
+			//System.out.println(res);
 		}
     }
     public void showImage() {
