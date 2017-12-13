@@ -76,7 +76,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(KontouebersichtActivity.this, TransaktionDetailActivity.class);
                 intent.putExtra("Transaktionen", transactionList);
-                intent.putExtra("Position", position);
+                intent.putExtra("Position", position-=1);
                 startActivity(intent);
             }
         });

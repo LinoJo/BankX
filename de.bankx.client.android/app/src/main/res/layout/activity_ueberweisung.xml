@@ -63,7 +63,7 @@
         android:layout_alignTop="@+id/textView"
         android:layout_marginTop="33dp"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/textView15"
