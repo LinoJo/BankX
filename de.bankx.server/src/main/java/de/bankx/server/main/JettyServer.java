@@ -144,7 +144,7 @@ public class JettyServer {
                 log.info("Tabelle Transactions angelegt");
                 stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '1001', 2500.00, 'Darlehen')");
                 log.info("transaction '0000' an '1001' mit amount '2500.00' und reference 'Darlehen' zu Transactions hinzugefügt");
-                stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('1001', '0000', 2500.00, 'Rückzahlung Darlehen')");
+                stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('1001', '0000', 2500.00, 'Rueckzahlung Darlehen')");
                 log.info("transaction '1001' an '0000' mit amount '2500.00' und reference 'Rückzahlung Darlehen' zu Transactions hinzugefügt");
 				stmt.executeUpdate("INSERT INTO Transactions(sender , receiver, amount, reference) values('0000', '1001', 2800.00, 'Darlehen 2')");
 				log.info("transaction '0000' an '1001' mit amount '2800.00' und reference 'Darlehen 2' zu Transactions hinzugefügt");

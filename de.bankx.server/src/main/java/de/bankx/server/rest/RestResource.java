@@ -165,7 +165,7 @@ public class RestResource {
 			}
 
 			// Eingabeüberprüfung amount
-			if (!amount.matches("[0-9]+")){
+			if (!amount.matches("\\d+(\\.\\d{1,2})?")){
 				log.info("REST-API Call: 'localhost:9998/rest/transaction/" + " - 400 - BAD REQUEST - Daten mit falschem Format etc., sonstige Client-seitige Fehler");
 				return Response.status(Response.Status.BAD_REQUEST).entity("amount '" + amount + "' invalid").type(MediaType.APPLICATION_JSON).build();
 			}
