@@ -84,7 +84,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
 
         jsonUrl = MainActivity.jsonUrl;
 
-        String sSaldo = Integer.toString(iSaldo);
+        String sSaldo = Double.toString(iSaldo);
         kontostand.setText(sSaldo);
 
         new GetTransactions().execute();
@@ -119,7 +119,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
             case R.id.menuUeberweisung:
                 Intent ueberweisung = new Intent(getApplicationContext(), UeberweisungActivity.class);
                 ueberweisung.putExtra("Kontonummer", sKontonummer);
-                String sSaldo = Integer.toString(iSaldo);
+                String sSaldo = Double.toString(iSaldo);
                 ueberweisung.putExtra("Guthaben", sSaldo);
                 startActivity(ueberweisung);
                 return true;
@@ -191,7 +191,7 @@ public class KontouebersichtActivity extends AppCompatActivity {
                 listeTransaktionen.addHeaderView(header);
                 listeTransaktionen.setAdapter(adapter);
 
-                String sSaldo = Integer.toString(iSaldo);
+                String sSaldo = Double.toString(iSaldo);
                 kontostand.setText(sSaldo);
                 kontoinhaber.setText(sKontoinhaber);
                 kontonummer.setText(sKontonummer);
@@ -247,11 +247,11 @@ public class KontouebersichtActivity extends AppCompatActivity {
                     String rOwner = receiver.getString(TAG_R_OWNER);
 
                     if (rOwner.equals (sKontoinhaber)){
-                        iSaldo += Integer.parseInt(amount);
+                        iSaldo += Double.parseDouble(amount);
                         amount = "+" +amount;
                     }
                     if (sOwner.equals(sKontoinhaber)){
-                        iSaldo -= Integer.parseInt(amount);
+                        iSaldo -= Double.parseDouble(amount);
                         amount = "-" +amount;
                     }
 

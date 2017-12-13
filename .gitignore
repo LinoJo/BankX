@@ -8,3 +8,5 @@ de.bankx.client.android/.idea/
 de.bankx.server/build/
 de.bankx.server/.gradle/
 de.bankx.server/de.bankx.server.iws
+de.bankx.client.android/app/release/output.json
+de.bankx.client.android/app/release/app-release.apk
