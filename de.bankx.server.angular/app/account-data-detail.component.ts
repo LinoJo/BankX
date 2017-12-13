@@ -8,9 +8,11 @@ import {AccountData} from "./account-data.model"
 })
 export class AccountDataDetailComponent{
   @Input() acc: AccountData;
+  transactionList: TransactionData[] = [];
   submitted = false;
 
-  constructor(private dataService:DataService){}
+  constructor(private dataService:DataService){
+  }
 
   onSubmit(){
     this.submitted = true;

@@ -23,6 +23,30 @@
           <button type="button" class="btn btn-white" data-dismiss="modal">Schließen</button>
           <button type="submit" class="btn btn-success">Speichern</button>
         </form>
+
+        <hr>
+
+        <h3>Transaktionen</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <td>Sender</td>
+              <td>Empfänger</td>
+              <td>Verwendungszweck</td>
+              <td>Summe</td>
+              <td>Datum</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tra of transactionList">
+              <td>{{tra.sender.owner}}</td>
+              <td>{{tra.receiver.owner}}</td>
+              <td>{{tra.reference}}</td>
+              <td>{{tra.amount}}</td>
+              <td>{{tra.transactionDate | date:'dd/MM/yyyy - hh:mm'}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

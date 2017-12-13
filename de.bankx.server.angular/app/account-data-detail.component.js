@@ -15,6 +15,7 @@ var account_data_model_1 = require("./account-data.model");
 var AccountDataDetailComponent = (function () {
     function AccountDataDetailComponent(dataService) {
         this.dataService = dataService;
+        this.transactionList = [];
         this.submitted = false;
     }
     AccountDataDetailComponent.prototype.onSubmit = function () {
