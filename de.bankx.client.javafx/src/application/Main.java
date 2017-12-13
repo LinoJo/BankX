@@ -15,6 +15,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			primaryStage.setTitle("BankX - Client");
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("BankX_Client_Main.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -38,10 +39,10 @@ public class Main extends Application {
 		return "";
 	}*/
 
-	public static String logoutServer(){
+	/*public static String logoutServer(){
 		serverip = "";
 		kontonummer = "";
 		//String JsonURL = "";
 		return "Logout erfolgreich!";
-	}
+	}*/
 }

@@ -7,11 +7,18 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+
 public class NetClientGet {
 
+	public static String getRequest(String _serverip, String _url,Label _lblWarnung) {
+		return getRequest(_serverip, _url,_lblWarnung,null);
+	}
+
 	// http://	+	IP	+	:9998/rest/	+	URL
-	public static String getRequest(String _serverip, String _url) {
-		String response ="";
+	public static String getRequest(String _serverip, String _url,Label _lblWarnung,Label _lblLoginWarning) {
+		String _return ="";
 	  try {
 
 		URL url = new URL("http://"+_serverip+":9998/rest/"+_url);
@@ -20,32 +27,70 @@ public class NetClientGet {
 		conn.setReadTimeout(15001);
 		conn.setConnectTimeout(15001);
 
-		if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
-			throw new RuntimeException("Failed : HTTP error code : "
-					+ conn.getResponseCode());
+		if (conn.getResponseCode() != HttpURLConnection.HTTP_OK ) {
+			String Failed = "";
+			switch(conn.getResponseCode()){
+				case 301:
+					Failed = "Fehler: "+conn.getResponseCode()+":\nServerIP nicht mehr gültig";
+					break;
+				case 400:
+					Failed="Fehler: "+conn.getResponseCode()+":\nFehlerhaftes Request";
+					break;
+				case 404:
+					Failed="Fehler: "+conn.getResponseCode()+":\nServer wurde nicht gefunden";
+					break;
+				case 500:
+					Failed="Fehler: "+conn.getResponseCode()+":\nSammel-Statuscode für unerwartete Serverfehler";
+					break;
+				/*case 504:
+					Failed="Fehler: "+conn.getResponseCode()+":\nTimeout...";
+					break;*/
+				default:
+					Failed="Fehler: "+conn.getResponseCode()+"Unbekannter Fehler";
+					break;
+
+			}
+			if(_lblLoginWarning != null){
+				_lblLoginWarning.setTextFill(Color.RED);
+				_lblLoginWarning.setText(Failed);
+			}
+			_lblWarnung.setTextFill(Color.RED);
+			_lblWarnung.setText("Offline");
+			return "";
+			//throw new RuntimeException(Failed);
 		}
-		/*if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+
+		if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+			_lblWarnung.setTextFill(Color.GREEN);
+			_lblWarnung.setText("Online");
 			//System.out.println("http Connetion is OK: "+conn.getResponseCode());
-		}*/
+		}
 
 		BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 		String output;
 		while ((output = br.readLine()) != null) {
-			response += output;
+			_return += output;
 		}
-
 		conn.disconnect();
 
-	  } catch (MalformedURLException e) {
+	  }catch (final java.net.SocketTimeoutException e) {
+		  if(_lblLoginWarning != null){
+				_lblLoginWarning.setTextFill(Color.RED);
+				_lblLoginWarning.setText("TIMEOUT");
+			}
+			_lblWarnung.setTextFill(Color.RED);
+			_lblWarnung.setText("TIMEOUT");
+			return "";
 
-		e.printStackTrace();
+	  }catch (MalformedURLException e) {
+		  e.printStackTrace();
 
-	  } catch (IOException e) {
+	  }catch (IOException e) {
 
 		e.printStackTrace();
 
 	  }
-	  return response;
+	  return _return;
 	}
 
 }
