@@ -18,10 +18,12 @@ public class NetClientGet {
 
 	// http://	+	IP	+	:9998/rest/	+	URL
 	public static String getRequest(String _serverip, String _url,Label _lblWarnung,Label _lblLoginWarning) {
+
 		String _return ="";
 	  try {
 
 		URL url = new URL("http://"+_serverip+":9998/rest/"+_url);
+		System.out.println(url);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setReadTimeout(15001);
@@ -31,20 +33,20 @@ public class NetClientGet {
 			String Failed = "";
 			switch(conn.getResponseCode()){
 				case 301:
-					Failed = "Fehler: "+conn.getResponseCode()+":\nServerIP nicht mehr gültig";
+					Failed = "Fehler: "+conn.getResponseCode()+":\nZugang nicht mehr gültig";
 					break;
 				case 400:
 					Failed="Fehler: "+conn.getResponseCode()+":\nFehlerhaftes Request";
 					break;
 				case 404:
-					Failed="Fehler: "+conn.getResponseCode()+":\nServer wurde nicht gefunden";
+					Failed="Fehler: "+conn.getResponseCode()+":\nZugang wurde nicht gefunden";
 					break;
 				case 500:
 					Failed="Fehler: "+conn.getResponseCode()+":\nSammel-Statuscode für unerwartete Serverfehler";
 					break;
-				/*case 504:
+				case 504:
 					Failed="Fehler: "+conn.getResponseCode()+":\nTimeout...";
-					break;*/
+					break;
 				default:
 					Failed="Fehler: "+conn.getResponseCode()+"Unbekannter Fehler";
 					break;
@@ -56,7 +58,7 @@ public class NetClientGet {
 			}
 			_lblWarnung.setTextFill(Color.RED);
 			_lblWarnung.setText("Offline");
-			return "";
+			return "conn.getResponseCode()";
 			//throw new RuntimeException(Failed);
 		}
 

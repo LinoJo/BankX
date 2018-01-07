@@ -144,30 +144,24 @@ public class BankX_Client_Controller {
 	String _serverip = "";
 	String _oldTab ="";
 
+	JSONObject _$Session = new JSONObject();
+
     @FXML
     void handleButtonEvent(ActionEvent event) {
+    	reloadSession();
     	if(event.getSource().equals(btnVerbindung))
     	{
     		lblWarnungLogin.setTextFill(Color.RED);
     		if(CheckLoginData()){
-    			String allAccounts = NetClientGet.getRequest(txtServerip.getText(), "admin/getAllAccounts",lblWarnungStatus,lblWarnungLogin);
     			try {
-					JSONObject jObj = new JSONObject(allAccounts);
-					JSONArray jary = jObj.getJSONArray("items");
-
-					for(int i = 0; i < jary.length(); i++){
-						//System.out.println(jary.get(i).toString());
-						if(jary.getJSONObject(i).get("number").equals(txtKontonummer.getText())){
-							login=true;
-							loginindex=i;
-						}
-					}
+    				reloadSession();
+					login=true;
 					if(login){
 						showImage();
 						_serverip = txtServerip.getText();
 						_kontonummer = txtKontonummer.getText();
-						_kontoinhaber= jary.getJSONObject(loginindex).get("owner").toString();
-						reloadKontostand();
+						_kontoinhaber= _$Session.get("owner").toString();
+						reloadKontostand(0);
 						//_kontostand = NetClientGet.getRequest(txtServerip.getText(), ("account/"+_kontonummer+"/value"));
 						//lblKontostand.setText(_kontostand);
 						lblServerip.setText(_serverip);
@@ -203,13 +197,13 @@ public class BankX_Client_Controller {
 
     	else if(event.getSource().equals(btnPageTransaktionshistorie))
     	{
-    		reloadKontostand();
+    		reloadKontostand(1);
     		reloadTransakionshistorie();
     		tabPane.getSelectionModel().select(tabTransaktionshistorie);
     	}
     	else if(event.getSource().equals(btnPageUeberweisung))
     	{
-    		reloadKontostand();
+    		reloadKontostand(2);
     		tabPane.getSelectionModel().select(tabUeberweisung);
     	}
 
@@ -229,7 +223,7 @@ public class BankX_Client_Controller {
     				clearElementAfter(lblWarnungUeberweiung,5000);
     			}
     		}
-    		reloadKontostand();
+    		reloadKontostand(3);
     	}
     }
 
@@ -248,7 +242,19 @@ public class BankX_Client_Controller {
     		reloadTransakionshistorie();
     		//System.out.println("bool:	"+event.getSource().equals(tabTransaktionshistorie));
     	}
-    	reloadKontostand();
+    	//reloadKontostand(4);
+    }
+
+    public void reloadSession(){
+    	try {
+    		String accountItem = NetClientGet.getRequest(txtServerip.getText(), "account/"+txtKontonummer.getText(),lblWarnungStatus,lblWarnungLogin);
+    		JSONObject jObj = new JSONObject(accountItem);
+    		_$Session = jObj;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
     }
 
     public boolean CheckUeberweisungData(){
@@ -270,9 +276,10 @@ public class BankX_Client_Controller {
 	        	throw new NumberFormatException("Ungültige Angabe der Kontonummer des Empfängers!");
 	        }
 
-	        String[] parts = txtBetrag.getText().split( "\\." );
+	        String[] parts = txtBetrag.getText().split( "\\," );
+
 	        if ( parts.length > 2 ) {
-	        	throw new NumberFormatException("Ungültige Eingabe des Betrags, bitte mit , trenen!");
+	        	throw new NumberFormatException("Ungültige Eingabe des Betrags, bitte mit ',' trenen!");
 	        }
 
 	        for ( String s : parts ) {
@@ -296,7 +303,6 @@ public class BankX_Client_Controller {
     }
 
     public boolean CheckLoginData(){
-    	//System.out.println("Hier bin ich");
     	    try {
     	        if ( txtServerip.getText() == null || txtServerip.getText().isEmpty() ) {
     	            throw new NumberFormatException("Unvollständige Eingabe!");
@@ -327,9 +333,9 @@ public class BankX_Client_Controller {
     	    	if (!txtKontonummer.getText().matches(regex)) {
     	    		throw new NumberFormatException("Ungültige(s) Zeiche(s) in der Kontonummer");
     	    	}
-    	        if ( 999 > Integer.parseInt(txtKontonummer.getText()) || 2000 < Integer.parseInt(txtKontonummer.getText())) {
+    	        /*if ( 999 > Integer.parseInt(txtKontonummer.getText()) || 2000 < Integer.parseInt(txtKontonummer.getText())) {
     	        	throw new NumberFormatException("Ungültige Angabe der Kontonummer");
-    	        }
+    	        }*/
     	        return true;
     	    } catch (NumberFormatException nfe) {
     	    	lblWarnungLogin.setText(nfe.getMessage());
@@ -338,10 +344,32 @@ public class BankX_Client_Controller {
 
     }
 
-    public void reloadKontostand(){
+    public void reloadKontostand(int number){
+    	System.out.println("It´s me: "+number);
+    	double amount = 0;
     	if(login){
-    	_kontostand = NetClientGet.getRequest(txtServerip.getText(), ("account/"+_kontonummer+"/value"), lblWarnungStatus);
-		lblKontostand.setText(_kontostand);
+    		try {
+    		JSONArray jAry = new JSONArray(_$Session.get("transactions").toString());
+			for(int i=0; i < jAry.length(); i++){
+				//System.out.println(i+" "+jAry.get(i).toString());
+				JSONObject transaktion = new JSONObject(jAry.get(i).toString());
+				JSONObject receiver = new JSONObject(transaktion.get("receiver").toString());
+				JSONObject sender = new JSONObject(transaktion.get("sender").toString());
+				if(receiver.get("number").toString().equals(_kontonummer) ){
+					amount += transaktion.getDouble("amount");
+					}
+				if(sender.get("number").toString().equals(_kontonummer) ){
+					amount -= transaktion.getDouble("amount");
+					}
+			}
+
+    		} catch (JSONException e) {
+				e.printStackTrace();
+			}
+
+    		_kontostand = ""+amount;
+			//_kontostand = NetClientGet.getRequest(txtServerip.getText(), ("account/"+_kontonummer+"/value"), lblWarnungStatus);
+			lblKontostand.setText(_kontostand);
     	}
     }
 
@@ -452,42 +480,48 @@ public class BankX_Client_Controller {
      */
     private void reloadTransakionshistorie(){
     	allTransactions.clear();
-    	String res = NetClientGet.getRequest(_serverip, "admin/getAllTransactions",lblWarnungStatus);
-		try {
-			JSONObject jObj = new JSONObject(res);
-			JSONArray jary = jObj.getJSONArray("items");
-			//System.out.println("First: "+jary.get(0).toString());
-			for(int i=0;i < jary.length(); i++)
-			{
-				Table tb = new Table();
-				JSONObject trans_obj = new JSONObject(jary.get(i).toString().replace("[", ""));
-				//System.out.println("obj:"+trans_obj.get("reference").toString()+" : " + trans_obj.toString());
-				//System.out.println(new JSONObject(trans_obj.get("sender").toString()).get("number"));
+    	//http://10.13.37.113:9998/rest/account/2000
+    	//String res = NetClientGet.getRequest(_serverip, "account/"+_kontonummer,lblWarnungStatus);
+    	if(login){
+    		try {
+    			System.out.println("Transaktion");
+    			JSONArray jAry = new JSONArray(_$Session.get("transactions").toString());
+    			for(int i=0; i < jAry.length(); i++){
+    				//System.out.println(i+" "+jAry.get(i).toString());
+    				JSONObject transaktion = new JSONObject(jAry.get(i).toString());
+    				JSONObject receiver = new JSONObject(transaktion.get("receiver").toString());
+    				JSONObject sender = new JSONObject(transaktion.get("sender").toString());
 
-				String sender = new JSONObject(trans_obj.get("sender").toString()).get("number").toString();
-				String receiver = new JSONObject(trans_obj.get("receiver").toString()).get("number").toString();
-				String amount = new DecimalFormat("##,###.00").format(trans_obj.get("amount")) + "\u20ac";
-				String reference = trans_obj.get("reference").toString();
+    				Table tb = new Table();
 
-				Date date = new SimpleDateFormat("yyyy-MM-dd").parse(trans_obj.get("transactionDate").toString().substring(0, 10));
-				String formattedDate = new SimpleDateFormat("dd.MM.yyyy").format(date);
+    				String _sender = sender.get("number").toString();
+    				String _receiver = receiver.get("number").toString();
+    				String _amount = transaktion.get("amount").toString();
+    				String _reference = transaktion.get("reference").toString();
+    				String _formattedDate = transaktion.get("transactionDate").toString().substring(0, 10);
 
-				tb.setSender(sender);
-				tb.setReceiver(receiver);
-				tb.setReference(reference);
-				tb.setDate(formattedDate);
-				if(_kontonummer.equals(sender))
-					tb.setAmount("- "+amount);
-				else if (_kontonummer.equals(receiver))
-					tb.setAmount(amount);
-				allTransactions.add(tb);
+    				System.out.println("-------------------\n"+_sender +"/n"+_receiver+"/n"+_amount+"/n"+_reference+"/n"+_formattedDate);
+    				System.out.println();
+
+    				tb.setSender(_sender);
+					tb.setReceiver(_receiver);
+					tb.setReference(_reference);
+					tb.setDate(_formattedDate);
+					//tb.setAmount(_amount);
+					if(receiver.get("number").toString().equals(_kontonummer) ){
+						tb.setAmount("+ "+_amount);
+						}
+					if(sender.get("number").toString().equals(_kontonummer) ){
+						tb.setAmount("- "+_amount);
+						}
+					allTransactions.add(tb);
+    			}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			table_transaktionshistorie.setItems(allTransactions);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			//System.out.println(res);
-		}
+    		table_transaktionshistorie.setItems(allTransactions);
+    	}
     }
     public void showImage() {
         try {
